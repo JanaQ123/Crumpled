@@ -7,7 +7,7 @@ public class LV1_PlayerController : MonoBehaviour
     Vector3 direction;
     float x;
     float y;
-    float speed = 10;
+    float speed = 14;
     Vector3 directionX;
     int currentPosition = 1;
     public Vector3 targetPos;
@@ -15,12 +15,17 @@ public class LV1_PlayerController : MonoBehaviour
     //Changing Lanes
     float[] scales = { 0.53f, 0.71f, 0.87f };
     float[] positions = { -2.9f, -4.4f, -7f };
-    float[] limits = { 0.5f, 0.75f, 1, 1f, 0.75f, 0.75f };
+    float[] limits = { 0.5f, 0.75f, 1, 1f, 1, 1 };
     public bool isSwitching = false;
     bool isGoingDownStairs=false;
     float[] stairPositions = {182.3f, 185.5f, 188.5f, 192f, 195.5f,198f};
     int nextStair = 0;
     float switchDuration = 0.1f;
+
+    float moveCounter=0;
+    float maxMove=15;
+
+    [SerializeField] GameObject visual;
     void Start()
     {
         y = transform.position.y;
@@ -29,7 +34,18 @@ public class LV1_PlayerController : MonoBehaviour
     }
     void Update()
     {
+        if (directionX != Vector3.zero)
+        {
+            moveCounter++;
+            if (moveCounter >= maxMove) { moveCounter = maxMove; }
+        }
+        else
+        {
+            moveCounter = 0;
+        }
+
         transform.Translate(directionX * speed * Time.deltaTime);
+        visual.transform.Rotate(0, 0, -directionX.x * speed * Time.deltaTime * moveCounter);
 
         if (isSwitching)
         {
@@ -51,27 +67,29 @@ public class LV1_PlayerController : MonoBehaviour
         }
         if (isGoingDownStairs)
         {
-            speed = 6;
+            speed = 8;
 
             if (nextStair > 0)
             {
-   
                 float backLimit = stairPositions[nextStair - 1] + limits[nextStair - 1];
-
                 transform.position = new Vector3(Mathf.Max(transform.position.x, backLimit), transform.position.y, 0);
             }
 
             if (nextStair < 6 && transform.position.x > stairPositions[nextStair] && !isSwitching)
             {
-                targetPos = new Vector3(transform.localPosition.x, transform.localPosition.y - 1.5f, 0);
-                targetScale = transform.localScale;
-                isSwitching = true;
                 if (nextStair == 5)
                 {
                     print("final stair");
-                    targetPos = new Vector3(transform.localPosition.x, transform.localPosition.y, 0);
+                    targetPos = new Vector3(transform.localPosition.x, positions[currentPosition], 0); // actually move Y!
+                }
+                else
+                {
+                    targetPos = new Vector3(transform.localPosition.x, transform.localPosition.y - 1.5f, 0);
 
                 }
+                isSwitching = true;
+
+                targetScale = transform.localScale;
                 nextStair++;
                 switchDuration = 0.15f;
             }
@@ -86,6 +104,7 @@ public class LV1_PlayerController : MonoBehaviour
         if (data.Get<Vector2>().y != 0 && !isSwitching) { 
             ChangePositions(); //switch lanes
         }
+       
     }
     void ChangePositions()
     {
@@ -100,7 +119,8 @@ public class LV1_PlayerController : MonoBehaviour
 
 
         }
-        targetPos = new Vector3(transform.localPosition.x, positions[currentPosition], 0);
+        float yOffset = isGoingDownStairs ? -nextStair-1 : 0f;
+        targetPos = new Vector3(transform.localPosition.x, positions[currentPosition] + yOffset, 0);
         targetScale = new Vector3(scales[currentPosition], scales[currentPosition], scales[currentPosition]);
         isSwitching = true;
         switchDuration = 0.15f;
@@ -109,16 +129,13 @@ public class LV1_PlayerController : MonoBehaviour
     public void setStairControl()
     {
         isGoingDownStairs = !isGoingDownStairs;
-        if (!isGoingDownStairs)
+        if (!isGoingDownStairs) 
         {
+            transform.localPosition = new Vector3(transform.localPosition.x, positions[currentPosition], 0);
             targetPos = new Vector3(transform.localPosition.x, positions[currentPosition], 0);
             targetScale = new Vector3(scales[currentPosition], scales[currentPosition], scales[currentPosition]);
-            isSwitching = true;
-            switchDuration = 0.000001f;
-
-            float backLimit = stairPositions[nextStair - 1] + limits[nextStair - 1];
-
-            transform.position = new Vector3(Mathf.Max(transform.position.x, backLimit), transform.position.y, 0);
+            isSwitching = false;
+            speed = 14;
         }
     }
 

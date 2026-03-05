@@ -3,8 +3,6 @@ using UnityEngine;
 public class LV1_CameraTarget : MonoBehaviour
 {
     [SerializeField] GameObject player;
-
-
     float y;
     void Start()
     {
@@ -15,7 +13,6 @@ public class LV1_CameraTarget : MonoBehaviour
         if (player.GetComponent<LV1_PlayerController>().getStairStatus())
         {
             this.transform.localPosition = new Vector3(player.transform.localPosition.x, player.transform.localPosition.y, 0);
-
         }
         else
         {
@@ -26,8 +23,4 @@ public class LV1_CameraTarget : MonoBehaviour
     {
         y = -4.6f;
     }
-    
-
-
-
 }
