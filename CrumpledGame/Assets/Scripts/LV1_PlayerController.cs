@@ -1,4 +1,5 @@
 using System.Collections;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 public class LV1_PlayerController : MonoBehaviour
@@ -14,15 +15,17 @@ public class LV1_PlayerController : MonoBehaviour
     //Changing Lanes
     float[] scales = { 0.53f, 0.71f, 0.87f };
     float[] positions = { -2.9f, -4.4f, -7f };
-
+    float[] limits = { 0.5f, 0.75f, 1, 1f, 0.75f, 0.75f };
     public bool isSwitching = false;
     bool isGoingDownStairs=false;
-    float[] stairPositions = {182.3f, 185.8f, 188f, 192.5f, 195f,198f};
+    float[] stairPositions = {182.3f, 185.5f, 188.5f, 192f, 195.5f,198f};
     int nextStair = 0;
-
+    float switchDuration = 0.1f;
     void Start()
     {
         y = transform.position.y;
+        GetComponent<SpriteRenderer>().sortingLayerName = "Interactables-Front";
+        GetComponent<SpriteRenderer>().sortingOrder = 1;
     }
     void Update()
     {
@@ -32,8 +35,8 @@ public class LV1_PlayerController : MonoBehaviour
         {
            targetPos.x = transform.localPosition.x;
 
-            transform.localPosition = Vector3.Lerp(transform.localPosition, targetPos, Time.deltaTime / 0.1f);
-            transform.localScale = Vector3.Lerp(transform.localScale, targetScale, Time.deltaTime / 0.1f);
+            transform.localPosition = Vector3.Lerp(transform.localPosition, targetPos, Time.deltaTime / switchDuration);
+            transform.localScale = Vector3.Lerp(transform.localScale, targetScale, Time.deltaTime / switchDuration);
             if (Mathf.Abs(transform.localPosition.y - targetPos.y) < 0.01f)
             {
                 transform.localPosition = new Vector3(transform.localPosition.x, targetPos.y, 0);
@@ -41,12 +44,36 @@ public class LV1_PlayerController : MonoBehaviour
                 isSwitching = false;
             }
         }
+        if (nextStair >=5)
+        {
+            float backLimit = stairPositions[nextStair - 1] + limits[nextStair - 1];
+            transform.position = new Vector3(Mathf.Max(transform.position.x, backLimit), transform.position.y, 0);
+        }
         if (isGoingDownStairs)
         {
-            if(nextStair < 6 && transform.position.x > stairPositions[nextStair])
+            speed = 6;
+
+            if (nextStair > 0)
             {
-                transform.position= new Vector3(transform.position.x, transform.position.y-1.5f,0);
+   
+                float backLimit = stairPositions[nextStair - 1] + limits[nextStair - 1];
+
+                transform.position = new Vector3(Mathf.Max(transform.position.x, backLimit), transform.position.y, 0);
+            }
+
+            if (nextStair < 6 && transform.position.x > stairPositions[nextStair] && !isSwitching)
+            {
+                targetPos = new Vector3(transform.localPosition.x, transform.localPosition.y - 1.5f, 0);
+                targetScale = transform.localScale;
+                isSwitching = true;
+                if (nextStair == 5)
+                {
+                    print("final stair");
+                    targetPos = new Vector3(transform.localPosition.x, transform.localPosition.y, 0);
+
+                }
                 nextStair++;
+                switchDuration = 0.15f;
             }
         }
     }
@@ -66,8 +93,6 @@ public class LV1_PlayerController : MonoBehaviour
         {
             GetComponent<SpriteRenderer>().sortingLayerName = "Interactables-Front";
             GetComponent<SpriteRenderer>().sortingOrder = 1;
-
-
         }
         else
         {
@@ -78,11 +103,23 @@ public class LV1_PlayerController : MonoBehaviour
         targetPos = new Vector3(transform.localPosition.x, positions[currentPosition], 0);
         targetScale = new Vector3(scales[currentPosition], scales[currentPosition], scales[currentPosition]);
         isSwitching = true;
+        switchDuration = 0.15f;
     }
 
     public void setStairControl()
     {
         isGoingDownStairs = !isGoingDownStairs;
+        if (!isGoingDownStairs)
+        {
+            targetPos = new Vector3(transform.localPosition.x, positions[currentPosition], 0);
+            targetScale = new Vector3(scales[currentPosition], scales[currentPosition], scales[currentPosition]);
+            isSwitching = true;
+            switchDuration = 0.000001f;
+
+            float backLimit = stairPositions[nextStair - 1] + limits[nextStair - 1];
+
+            transform.position = new Vector3(Mathf.Max(transform.position.x, backLimit), transform.position.y, 0);
+        }
     }
 
     public bool getStairStatus()

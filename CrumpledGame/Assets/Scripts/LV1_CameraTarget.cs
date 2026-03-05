@@ -14,8 +14,8 @@ public class LV1_CameraTarget : MonoBehaviour
     {
         if (player.GetComponent<LV1_PlayerController>().getStairStatus())
         {
-            this.transform.localPosition = new Vector3(180, y, 0); //to prevent camera flying
-            
+            this.transform.localPosition = new Vector3(player.transform.localPosition.x, player.transform.localPosition.y, 0);
+
         }
         else
         {

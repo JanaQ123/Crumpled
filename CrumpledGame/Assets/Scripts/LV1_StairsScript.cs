@@ -19,11 +19,11 @@ public class LV1_StairsScript : MonoBehaviour
             stationaryCamera.Priority = 2; 
             player=other.gameObject;
             LV1_PlayerController pc = player.GetComponent<LV1_PlayerController>();
-            cameraTarget.transform.SetParent(null);
+            //cameraTarget.transform.SetParent(null);
             pc.setStairControl();
             pc.targetPos = player.transform.position;
             pc.isSwitching = false;
-            player.transform.SetParent(null);
+            //player.transform.SetParent(null);
 
         }
     }
@@ -35,8 +35,8 @@ public class LV1_StairsScript : MonoBehaviour
             followCamera.Priority = 2; 
             stationaryCamera.Priority = 1;
             playerParent.transform.position = new Vector3(playerParent.transform.position.x, -7.37f, 0f);
-            player.transform.SetParent(playerParent.transform);
-            cameraTarget.transform.SetParent(playerParent.transform);
+            //player.transform.SetParent(playerParent.transform);
+            //cameraTarget.transform.SetParent(playerParent.transform);
             player.GetComponent<LV1_PlayerController>().setStairControl();
         }
     }
