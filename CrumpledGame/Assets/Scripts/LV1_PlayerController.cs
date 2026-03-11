@@ -21,7 +21,7 @@ public class LV1_PlayerController : MonoBehaviour
     float[] stairPositions = {182.3f, 185.5f, 188.5f, 192f, 195.5f,198f};
     int nextStair = 0;
     float switchDuration = 0.1f;
-
+    bool canSwitchLane = true;
     float moveCounter=0;
     float maxMove=15;
 
@@ -101,7 +101,7 @@ public class LV1_PlayerController : MonoBehaviour
         directionX = new Vector3(Mathf.RoundToInt(direction.x), 0, 0); //Normalizes the x vector to allow presisng of 2 buttons
         currentPosition -= Mathf.RoundToInt(direction.y); //changes float direction value to int
         currentPosition = Mathf.Clamp(currentPosition, 0, 2); //clamps to be in array
-        if (data.Get<Vector2>().y != 0 && !isSwitching) { 
+        if (data.Get<Vector2>().y != 0 && !isSwitching&&canSwitchLane) { 
             ChangePositions(); //switch lanes
         }
        
@@ -144,5 +144,29 @@ public class LV1_PlayerController : MonoBehaviour
         return isGoingDownStairs;
     }
 
-   
+   public void StartSewerCover()
+    {
+        speed = speed/2;
+        canSwitchLane = false;
+
+    }
+
+    public void EndSewerCover()
+    {
+        canSwitchLane = true;
+        speed = speed * 2;
+    }
+
+    public void StartGum()
+    {
+        speed = 0;
+        canSwitchLane = false;
+        Invoke("EndGum", 1f);
+
+    }
+    void EndGum()
+    {
+        canSwitchLane = true;
+        speed = 14;
+    }
 }
