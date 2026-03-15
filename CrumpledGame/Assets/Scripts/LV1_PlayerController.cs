@@ -23,14 +23,14 @@ public class LV1_PlayerController : MonoBehaviour
     float switchDuration = 0.1f;
     bool canSwitchLane = true;
     float moveCounter=0;
-    float maxMove=15;
+    float maxMove=30;
 
     [SerializeField] GameObject visual;
     void Start()
     {
         y = transform.position.y;
-        GetComponent<SpriteRenderer>().sortingLayerName = "Interactables-Front";
-        GetComponent<SpriteRenderer>().sortingOrder = 1;
+        visual.GetComponent<SpriteRenderer>().sortingLayerName = "Interactables-Front";
+        visual.GetComponent<SpriteRenderer>().sortingOrder = 1;
     }
     void Update()
     {
@@ -110,12 +110,12 @@ public class LV1_PlayerController : MonoBehaviour
     {
         if (currentPosition == 1)
         {
-            GetComponent<SpriteRenderer>().sortingLayerName = "Interactables-Front";
-            GetComponent<SpriteRenderer>().sortingOrder = 1;
+            visual.GetComponent<SpriteRenderer>().sortingLayerName = "Interactables-Front";
+            visual.GetComponent<SpriteRenderer>().sortingOrder = 1;
         }
         else
         {
-            GetComponent<SpriteRenderer>().sortingLayerName = "Player";
+            visual.GetComponent<SpriteRenderer>().sortingLayerName = "Player";
 
 
         }
@@ -146,7 +146,7 @@ public class LV1_PlayerController : MonoBehaviour
 
    public void StartSewerCover()
     {
-        speed = speed/2;
+        speed = speed/10;
         canSwitchLane = false;
 
     }
@@ -154,19 +154,25 @@ public class LV1_PlayerController : MonoBehaviour
     public void EndSewerCover()
     {
         canSwitchLane = true;
-        speed = speed * 2;
+        speed = speed * 10;
     }
 
     public void StartGum()
     {
         speed = 0;
         canSwitchLane = false;
-        Invoke("EndGum", 1f);
+        this.transform.localScale=new Vector3(this.transform.localScale.x+0.1f, this.transform.localScale.y, this.transform.localScale.z);
+        visual.GetComponent<Animator>().SetBool("Pain", true);
+        Invoke("EndGum", 3f);
 
     }
     void EndGum()
     {
         canSwitchLane = true;
         speed = 14;
+        this.transform.localScale = new Vector3(this.transform.localScale.y, this.transform.localScale.y, this.transform.localScale.z);
+        visual.GetComponent<Animator>().SetBool("Pain", false);
+
+
     }
 }
