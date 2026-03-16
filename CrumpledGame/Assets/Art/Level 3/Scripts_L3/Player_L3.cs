@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class Player_L3 : MonoBehaviour
 {
+    //public float playerZ;
     void Start()
     {
         
@@ -9,10 +10,10 @@ public class Player_L3 : MonoBehaviour
 
     void Update()
     {
-        
+       //playerZ = transform.position.z; 
     }
 
-    void OnTriggerEnter2D(Collider2D other)
+    void OnTriggerEnter(Collider other)
     {
         print("player collided with " + other.name);
         if(!other.CompareTag("Cloud"))
@@ -24,16 +25,5 @@ public class Player_L3 : MonoBehaviour
         {
             cloud.Fade();
         }
-    }
-
-    void OnTriggerExit2D(Collider2D other)
-    {
-        if(!other.CompareTag("Cloud"))
-        {
-            return;
-        }
-        Cloud cloud = other.GetComponent<Cloud>();
-        if(cloud != null)
-            cloud.Despawn();
     }
 }
