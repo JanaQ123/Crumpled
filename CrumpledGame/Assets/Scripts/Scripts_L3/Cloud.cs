@@ -2,11 +2,11 @@ using UnityEngine;
 
 public class Cloud : MonoBehaviour
 {
-    public float fadeSpeed = 0.1f;
-    public float targetAlpha = 0.2f;
+    float fadeSpeed = 0.2f;
+    float targetAlpha = 1f;
     SpriteRenderer sr;
-    float currentAlpha = 1f;
-    bool fading = false;
+    float currentAlpha = 0.2f;
+    bool fadeIn = false;
 
     void Start()
     {
@@ -15,9 +15,9 @@ public class Cloud : MonoBehaviour
 
     void Update()
     {
-        if(!fading)
+        if(!fadeIn)
             return;
-        else if (fading && currentAlpha > targetAlpha)
+        else if (fadeIn && (currentAlpha < targetAlpha))
         {
             currentAlpha = Mathf.MoveTowards(currentAlpha, targetAlpha, fadeSpeed * Time.deltaTime);
             Color current_color = sr.color;
@@ -29,12 +29,12 @@ public class Cloud : MonoBehaviour
     public void Fade()
     {
         //tells clouds to fade
-        fading = true;
+        fadeIn = true;
     }
 
     public void Despawn()
     {
-        //hides clouds
-        gameObject.SetActive(false);
+        //destroys clouds
+        Destroy(gameObject);
     }
 }

@@ -188,7 +188,7 @@ SpriteRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_Sprite: {fileID: 21300000, guid: b087079756b2042a98270e566e2253b9, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.2}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -224,8 +224,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d2ee99d37fb0a4a56a2965ba57dbb989, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Cloud
-  fadeSpeed: 3
-  targetAlpha: 0.2
 --- !u!65 &7753691
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -316,7 +314,7 @@ SpriteRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_Sprite: {fileID: 21300000, guid: f57a58a3322d44b239035d6c26686929, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.2}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -352,8 +350,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d2ee99d37fb0a4a56a2965ba57dbb989, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Cloud
-  fadeSpeed: 3
-  targetAlpha: 0.2
 --- !u!65 &16801343
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -444,7 +440,7 @@ SpriteRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_Sprite: {fileID: 21300000, guid: 9bc08b718a37c43fbb8d7160247c856a, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.2}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -480,8 +476,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d2ee99d37fb0a4a56a2965ba57dbb989, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Cloud
-  fadeSpeed: 3
-  targetAlpha: 0.2
 --- !u!65 &43954174
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -572,7 +566,7 @@ SpriteRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_Sprite: {fileID: 21300000, guid: 5c23eac826d804702af715b0f089ff2e, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.2}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -608,8 +602,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d2ee99d37fb0a4a56a2965ba57dbb989, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Cloud
-  fadeSpeed: 3
-  targetAlpha: 0.2
 --- !u!65 &62172281
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -822,7 +814,7 @@ SpriteRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_Sprite: {fileID: 21300000, guid: a709852ec1b6b43809b1785b9028a588, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.2}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -858,8 +850,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d2ee99d37fb0a4a56a2965ba57dbb989, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Cloud
-  fadeSpeed: 3
-  targetAlpha: 0.2
 --- !u!65 &104830352
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -950,7 +940,7 @@ SpriteRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_Sprite: {fileID: 21300000, guid: 91d7fca767064459386612acf5ee143d, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.2}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -986,8 +976,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d2ee99d37fb0a4a56a2965ba57dbb989, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Cloud
-  fadeSpeed: 3
-  targetAlpha: 0.2
 --- !u!65 &113193260
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1078,7 +1066,7 @@ SpriteRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_Sprite: {fileID: 21300000, guid: bab6bb0c0bf70485ebdd80b10471dab9, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.2}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -1114,8 +1102,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d2ee99d37fb0a4a56a2965ba57dbb989, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Cloud
-  fadeSpeed: 3
-  targetAlpha: 0.2
 --- !u!65 &157763561
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1206,7 +1192,7 @@ SpriteRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_Sprite: {fileID: 21300000, guid: b087079756b2042a98270e566e2253b9, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.2}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -1242,8 +1228,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d2ee99d37fb0a4a56a2965ba57dbb989, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Cloud
-  fadeSpeed: 3
-  targetAlpha: 0.2
 --- !u!65 &162921890
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1334,7 +1318,7 @@ SpriteRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_Sprite: {fileID: 21300000, guid: 91d7fca767064459386612acf5ee143d, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.2}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -1370,8 +1354,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d2ee99d37fb0a4a56a2965ba57dbb989, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Cloud
-  fadeSpeed: 3
-  targetAlpha: 0.2
 --- !u!65 &189598810
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1462,7 +1444,7 @@ SpriteRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_Sprite: {fileID: 21300000, guid: a709852ec1b6b43809b1785b9028a588, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.2}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -1498,8 +1480,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d2ee99d37fb0a4a56a2965ba57dbb989, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Cloud
-  fadeSpeed: 3
-  targetAlpha: 0.2
 --- !u!65 &194165403
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1590,7 +1570,7 @@ SpriteRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_Sprite: {fileID: 21300000, guid: 9bc08b718a37c43fbb8d7160247c856a, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.2}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -1626,8 +1606,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d2ee99d37fb0a4a56a2965ba57dbb989, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Cloud
-  fadeSpeed: 3
-  targetAlpha: 0.2
 --- !u!65 &217384928
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1718,7 +1696,7 @@ SpriteRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_Sprite: {fileID: 21300000, guid: 5c23eac826d804702af715b0f089ff2e, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.2}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -1754,8 +1732,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d2ee99d37fb0a4a56a2965ba57dbb989, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Cloud
-  fadeSpeed: 3
-  targetAlpha: 0.2
 --- !u!65 &231013098
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1846,7 +1822,7 @@ SpriteRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_Sprite: {fileID: 21300000, guid: 602fd024d0d3442c4be6f473cdd49375, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.2}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -1882,8 +1858,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d2ee99d37fb0a4a56a2965ba57dbb989, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Cloud
-  fadeSpeed: 3
-  targetAlpha: 0.2
 --- !u!65 &274031346
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1990,7 +1964,7 @@ Transform:
   m_GameObject: {fileID: 280663581}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 8.98, y: -57.324, z: 339.3}
+  m_LocalPosition: {x: 8.98, y: -129.4, z: 339.3}
   m_LocalScale: {x: 2.407279, y: 2.407279, z: 2.407279}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2065,7 +2039,7 @@ SpriteRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_Sprite: {fileID: 21300000, guid: 91d7fca767064459386612acf5ee143d, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.2}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -2101,8 +2075,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d2ee99d37fb0a4a56a2965ba57dbb989, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Cloud
-  fadeSpeed: 3
-  targetAlpha: 0.2
 --- !u!65 &330062950
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2193,7 +2165,7 @@ SpriteRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_Sprite: {fileID: 21300000, guid: 602fd024d0d3442c4be6f473cdd49375, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.2}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -2229,8 +2201,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d2ee99d37fb0a4a56a2965ba57dbb989, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Cloud
-  fadeSpeed: 3
-  targetAlpha: 0.2
 --- !u!65 &332788697
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2321,7 +2291,7 @@ SpriteRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_Sprite: {fileID: 21300000, guid: 5c23eac826d804702af715b0f089ff2e, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.2}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -2357,8 +2327,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d2ee99d37fb0a4a56a2965ba57dbb989, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Cloud
-  fadeSpeed: 3
-  targetAlpha: 0.2
 --- !u!65 &380845264
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2465,7 +2433,7 @@ Transform:
   m_GameObject: {fileID: 412487050}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 5.9, y: -50.024002, z: 333.52}
+  m_LocalPosition: {x: 5.9, y: -122.09999, z: 333.52}
   m_LocalScale: {x: 1.4685, y: 1.4685, z: 1.4685}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2540,7 +2508,7 @@ SpriteRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_Sprite: {fileID: 21300000, guid: 552818735f331440b8ead7971a433725, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.2}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -2576,8 +2544,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d2ee99d37fb0a4a56a2965ba57dbb989, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Cloud
-  fadeSpeed: 3
-  targetAlpha: 0.2
 --- !u!65 &461982210
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2668,7 +2634,7 @@ SpriteRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_Sprite: {fileID: 21300000, guid: bab6bb0c0bf70485ebdd80b10471dab9, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.2}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -2704,8 +2670,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d2ee99d37fb0a4a56a2965ba57dbb989, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Cloud
-  fadeSpeed: 3
-  targetAlpha: 0.2
 --- !u!65 &470674829
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2796,7 +2760,7 @@ SpriteRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_Sprite: {fileID: 21300000, guid: f57a58a3322d44b239035d6c26686929, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.2}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -2832,8 +2796,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d2ee99d37fb0a4a56a2965ba57dbb989, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Cloud
-  fadeSpeed: 3
-  targetAlpha: 0.2
 --- !u!65 &485612178
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2955,7 +2917,7 @@ SpriteRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_Sprite: {fileID: 21300000, guid: b087079756b2042a98270e566e2253b9, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.2}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -2991,8 +2953,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d2ee99d37fb0a4a56a2965ba57dbb989, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Cloud
-  fadeSpeed: 3
-  targetAlpha: 0.2
 --- !u!65 &508912358
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3083,7 +3043,7 @@ SpriteRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_Sprite: {fileID: 21300000, guid: f57a58a3322d44b239035d6c26686929, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.2}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -3119,8 +3079,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d2ee99d37fb0a4a56a2965ba57dbb989, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Cloud
-  fadeSpeed: 3
-  targetAlpha: 0.2
 --- !u!65 &519125757
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3211,7 +3169,7 @@ SpriteRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_Sprite: {fileID: 21300000, guid: 552818735f331440b8ead7971a433725, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.2}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -3247,8 +3205,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d2ee99d37fb0a4a56a2965ba57dbb989, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Cloud
-  fadeSpeed: 3
-  targetAlpha: 0.2
 --- !u!65 &545749927
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3355,7 +3311,7 @@ Transform:
   m_GameObject: {fileID: 545790256}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -6, y: -62.424004, z: 327.01996}
+  m_LocalPosition: {x: -6, y: -134.5, z: 327.01996}
   m_LocalScale: {x: 1.9045516, y: 1.9045516, z: 1.9045516}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3461,7 +3417,7 @@ SpriteRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_Sprite: {fileID: 21300000, guid: c6561bd2c2fd742ad808ecc5c214a58e, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.2}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -3497,8 +3453,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d2ee99d37fb0a4a56a2965ba57dbb989, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Cloud
-  fadeSpeed: 3
-  targetAlpha: 0.2
 --- !u!65 &612710843
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3589,7 +3543,7 @@ SpriteRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_Sprite: {fileID: 21300000, guid: f57a58a3322d44b239035d6c26686929, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.2}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -3625,8 +3579,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d2ee99d37fb0a4a56a2965ba57dbb989, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Cloud
-  fadeSpeed: 3
-  targetAlpha: 0.2
 --- !u!65 &663211068
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3717,7 +3669,7 @@ SpriteRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_Sprite: {fileID: 21300000, guid: 552818735f331440b8ead7971a433725, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.2}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -3753,8 +3705,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d2ee99d37fb0a4a56a2965ba57dbb989, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Cloud
-  fadeSpeed: 3
-  targetAlpha: 0.2
 --- !u!65 &679756371
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3776,100 +3726,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 7.33, y: 1.42, z: 0.2}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!1 &680703207
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 680703208}
-  - component: {fileID: 680703211}
-  - component: {fileID: 680703210}
-  - component: {fileID: 680703209}
-  m_Layer: 0
-  m_Name: back
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &680703208
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 680703207}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0.3420201, y: 0, z: 0, w: 0.9396927}
-  m_LocalPosition: {x: 0, y: -10.2, z: -9.6}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1725266259}
-  m_LocalEulerAnglesHint: {x: -40, y: 0, z: 0}
---- !u!54 &680703209
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 680703207}
-  serializedVersion: 5
-  m_Mass: 1
-  m_LinearDamping: 0
-  m_AngularDamping: 0.05
-  m_CenterOfMass: {x: 0, y: 0, z: 0}
-  m_InertiaTensor: {x: 1, y: 1, z: 1}
-  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ImplicitCom: 1
-  m_ImplicitTensor: 1
-  m_UseGravity: 0
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
---- !u!65 &680703210
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 680703207}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 1
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 47, y: 15, z: 1}
-  m_Center: {x: 0, y: 1, z: 0}
---- !u!114 &680703211
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 680703207}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e22b0ff03887c49ada937dbd36dca185, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::CloudDestroy
 --- !u!1 &687834809
 GameObject:
   m_ObjectHideFlags: 0
@@ -3939,7 +3795,7 @@ SpriteRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_Sprite: {fileID: 21300000, guid: 91d7fca767064459386612acf5ee143d, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.2}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -3975,8 +3831,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d2ee99d37fb0a4a56a2965ba57dbb989, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Cloud
-  fadeSpeed: 3
-  targetAlpha: 0.2
 --- !u!65 &687834813
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -4083,7 +3937,7 @@ Transform:
   m_GameObject: {fileID: 694473977}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 16.5, y: -66.324, z: 421.1}
+  m_LocalPosition: {x: 16.5, y: -138.4, z: 421.1}
   m_LocalScale: {x: 6.2780285, y: 6.2780285, z: 6.2780285}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -4174,7 +4028,7 @@ Transform:
   m_GameObject: {fileID: 697023773}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -7.577, y: -50.794, z: 311.47}
+  m_LocalPosition: {x: -7.577, y: -122.869995, z: 311.47}
   m_LocalScale: {x: 0.810005, y: 0.810005, z: 0.810005}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -4249,7 +4103,7 @@ SpriteRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_Sprite: {fileID: 21300000, guid: 91d7fca767064459386612acf5ee143d, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.2}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -4285,8 +4139,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d2ee99d37fb0a4a56a2965ba57dbb989, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Cloud
-  fadeSpeed: 3
-  targetAlpha: 0.2
 --- !u!65 &720157819
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -4339,7 +4191,6 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1725266259}
   - {fileID: 833276413}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -4454,7 +4305,7 @@ SpriteRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_Sprite: {fileID: 21300000, guid: 91d7fca767064459386612acf5ee143d, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.2}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -4490,8 +4341,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d2ee99d37fb0a4a56a2965ba57dbb989, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Cloud
-  fadeSpeed: 3
-  targetAlpha: 0.2
 --- !u!65 &760258530
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -4709,7 +4558,7 @@ SpriteRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_Sprite: {fileID: 21300000, guid: 91d7fca767064459386612acf5ee143d, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.2}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -4745,8 +4594,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d2ee99d37fb0a4a56a2965ba57dbb989, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Cloud
-  fadeSpeed: 3
-  targetAlpha: 0.2
 --- !u!65 &770393066
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -4928,7 +4775,7 @@ SpriteRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_Sprite: {fileID: 21300000, guid: 480787aa5510b43d2b138a3499163112, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.2}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -4964,8 +4811,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d2ee99d37fb0a4a56a2965ba57dbb989, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Cloud
-  fadeSpeed: 3
-  targetAlpha: 0.2
 --- !u!65 &785369169
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -5056,7 +4901,7 @@ SpriteRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_Sprite: {fileID: 21300000, guid: 91d7fca767064459386612acf5ee143d, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.2}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -5092,8 +4937,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d2ee99d37fb0a4a56a2965ba57dbb989, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Cloud
-  fadeSpeed: 3
-  targetAlpha: 0.2
 --- !u!65 &815125183
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -5200,7 +5043,7 @@ Transform:
   m_GameObject: {fileID: 825783615}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -13.28, y: -58.524002, z: 383.31}
+  m_LocalPosition: {x: -13.28, y: -130.59999, z: 383.31}
   m_LocalScale: {x: 2.3902209, y: 2.3902209, z: 2.3902209}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -5296,7 +5139,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 3.108996, z: -13}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 1725266259}
   m_Father: {fileID: 736637010}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &833276414
@@ -5412,7 +5256,7 @@ SpriteRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_Sprite: {fileID: 21300000, guid: 552818735f331440b8ead7971a433725, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.2}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -5448,8 +5292,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d2ee99d37fb0a4a56a2965ba57dbb989, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Cloud
-  fadeSpeed: 3
-  targetAlpha: 0.2
 --- !u!65 &851846528
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -5540,7 +5382,7 @@ SpriteRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_Sprite: {fileID: 21300000, guid: a709852ec1b6b43809b1785b9028a588, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.2}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -5576,8 +5418,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d2ee99d37fb0a4a56a2965ba57dbb989, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Cloud
-  fadeSpeed: 3
-  targetAlpha: 0.2
 --- !u!65 &859586117
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -5684,7 +5524,7 @@ Transform:
   m_GameObject: {fileID: 877046152}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -20.2, y: -45.524002, z: 400.8}
+  m_LocalPosition: {x: -20.2, y: -117.59999, z: 400.8}
   m_LocalScale: {x: 1.9369, y: 1.9369, z: 1.9369}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -5759,7 +5599,7 @@ SpriteRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_Sprite: {fileID: 21300000, guid: 552818735f331440b8ead7971a433725, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.2}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -5795,8 +5635,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d2ee99d37fb0a4a56a2965ba57dbb989, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Cloud
-  fadeSpeed: 3
-  targetAlpha: 0.2
 --- !u!65 &942358242
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -5903,7 +5741,7 @@ Transform:
   m_GameObject: {fileID: 957911273}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.02, y: -62.014, z: 361.75}
+  m_LocalPosition: {x: -2.02, y: -134.09, z: 361.75}
   m_LocalScale: {x: 2.9092, y: 2.9092, z: 2.9092}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -5978,7 +5816,7 @@ SpriteRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_Sprite: {fileID: 21300000, guid: 552818735f331440b8ead7971a433725, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.2}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -6014,8 +5852,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d2ee99d37fb0a4a56a2965ba57dbb989, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Cloud
-  fadeSpeed: 3
-  targetAlpha: 0.2
 --- !u!65 &968876934
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -6106,7 +5942,7 @@ SpriteRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_Sprite: {fileID: 21300000, guid: 552818735f331440b8ead7971a433725, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.2}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -6142,8 +5978,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d2ee99d37fb0a4a56a2965ba57dbb989, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Cloud
-  fadeSpeed: 3
-  targetAlpha: 0.2
 --- !u!65 &979749188
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -6234,7 +6068,7 @@ SpriteRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_Sprite: {fileID: 21300000, guid: 91d7fca767064459386612acf5ee143d, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.2}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -6270,8 +6104,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d2ee99d37fb0a4a56a2965ba57dbb989, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Cloud
-  fadeSpeed: 3
-  targetAlpha: 0.2
 --- !u!65 &983477779
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -6362,7 +6194,7 @@ SpriteRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_Sprite: {fileID: 21300000, guid: bab6bb0c0bf70485ebdd80b10471dab9, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.2}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -6398,8 +6230,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d2ee99d37fb0a4a56a2965ba57dbb989, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Cloud
-  fadeSpeed: 3
-  targetAlpha: 0.2
 --- !u!65 &1016100445
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -6506,7 +6336,7 @@ Transform:
   m_GameObject: {fileID: 1027213318}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -6.66, y: -56.964, z: 295.8}
+  m_LocalPosition: {x: -6.66, y: -129.04, z: 295.8}
   m_LocalScale: {x: 1.0109621, y: 1.0109621, z: 1.0109621}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -6581,7 +6411,7 @@ SpriteRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_Sprite: {fileID: 21300000, guid: a9fd991a8ab424473a2ec9b195b32763, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.2}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -6617,8 +6447,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d2ee99d37fb0a4a56a2965ba57dbb989, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Cloud
-  fadeSpeed: 3
-  targetAlpha: 0.2
 --- !u!65 &1046964698
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -6725,7 +6553,7 @@ Transform:
   m_GameObject: {fileID: 1078662037}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -9.4, y: -67.224, z: 341.54}
+  m_LocalPosition: {x: -9.4, y: -139.29999, z: 341.54}
   m_LocalScale: {x: 4.9126797, y: 4.9126797, z: 4.9126797}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -6816,7 +6644,7 @@ Transform:
   m_GameObject: {fileID: 1088273777}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 30.3, y: -60.824, z: 409.8}
+  m_LocalPosition: {x: 30.3, y: -132.9, z: 409.8}
   m_LocalScale: {x: 4.4275794, y: 4.4275794, z: 4.4275794}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -6891,7 +6719,7 @@ SpriteRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_Sprite: {fileID: 21300000, guid: 9bc08b718a37c43fbb8d7160247c856a, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.2}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -6927,8 +6755,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d2ee99d37fb0a4a56a2965ba57dbb989, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Cloud
-  fadeSpeed: 3
-  targetAlpha: 0.2
 --- !u!65 &1106844563
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -7019,7 +6845,7 @@ SpriteRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_Sprite: {fileID: 21300000, guid: 9bc08b718a37c43fbb8d7160247c856a, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.2}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -7055,8 +6881,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d2ee99d37fb0a4a56a2965ba57dbb989, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Cloud
-  fadeSpeed: 3
-  targetAlpha: 0.2
 --- !u!65 &1108042769
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -7163,7 +6987,7 @@ Transform:
   m_GameObject: {fileID: 1112368771}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 4.49, y: -56.7, z: 294.23}
+  m_LocalPosition: {x: 4.49, y: -128.776, z: 294.23}
   m_LocalScale: {x: 1.0651416, y: 1.0651416, z: 1.0651416}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -7238,7 +7062,7 @@ SpriteRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_Sprite: {fileID: 21300000, guid: bab6bb0c0bf70485ebdd80b10471dab9, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.2}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -7274,8 +7098,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d2ee99d37fb0a4a56a2965ba57dbb989, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Cloud
-  fadeSpeed: 3
-  targetAlpha: 0.2
 --- !u!65 &1120124103
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -7366,7 +7188,7 @@ SpriteRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_Sprite: {fileID: 21300000, guid: 5c23eac826d804702af715b0f089ff2e, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.2}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -7402,8 +7224,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d2ee99d37fb0a4a56a2965ba57dbb989, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Cloud
-  fadeSpeed: 1
-  targetAlpha: 0.2
 --- !u!65 &1133674461
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -7541,7 +7361,7 @@ Transform:
   m_GameObject: {fileID: 1163365296}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3.3, y: -51.124, z: 371.3}
+  m_LocalPosition: {x: 3.3, y: -123.2, z: 371.3}
   m_LocalScale: {x: 1.3005, y: 1.3005, z: 1.3005}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -7632,7 +7452,7 @@ Transform:
   m_GameObject: {fileID: 1180468423}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 7.7, y: -69.384, z: 301.27}
+  m_LocalPosition: {x: 7.7, y: -141.45999, z: 301.27}
   m_LocalScale: {x: 4.3649144, y: 4.3649144, z: 4.3649144}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -7707,7 +7527,7 @@ SpriteRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_Sprite: {fileID: 21300000, guid: 91d7fca767064459386612acf5ee143d, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.2}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -7743,8 +7563,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d2ee99d37fb0a4a56a2965ba57dbb989, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Cloud
-  fadeSpeed: 3
-  targetAlpha: 0.2
 --- !u!65 &1225548550
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -7835,7 +7653,7 @@ SpriteRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_Sprite: {fileID: 21300000, guid: 552818735f331440b8ead7971a433725, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.2}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -7871,8 +7689,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d2ee99d37fb0a4a56a2965ba57dbb989, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Cloud
-  fadeSpeed: 3
-  targetAlpha: 0.2
 --- !u!65 &1229193116
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -7979,7 +7795,7 @@ Transform:
   m_GameObject: {fileID: 1234760592}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3.71, y: -60.484, z: 395.42}
+  m_LocalPosition: {x: 3.71, y: -132.56, z: 395.42}
   m_LocalScale: {x: 3.4332292, y: 3.4332292, z: 3.4332292}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -8070,7 +7886,7 @@ Transform:
   m_GameObject: {fileID: 1265531161}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -8.5, y: -54.134003, z: 349.6}
+  m_LocalPosition: {x: -8.5, y: -126.20999, z: 349.6}
   m_LocalScale: {x: 1.1503, y: 1.1503, z: 1.1503}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -8161,7 +7977,7 @@ Transform:
   m_GameObject: {fileID: 1276827425}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -14.663998, y: -65.424, z: 425.90002}
+  m_LocalPosition: {x: -14.663998, y: -137.5, z: 425.90002}
   m_LocalScale: {x: 5.1205196, y: 5.1205196, z: 5.1205196}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -8236,7 +8052,7 @@ SpriteRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_Sprite: {fileID: 21300000, guid: 602fd024d0d3442c4be6f473cdd49375, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.2}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -8272,8 +8088,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d2ee99d37fb0a4a56a2965ba57dbb989, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Cloud
-  fadeSpeed: 3
-  targetAlpha: 0.2
 --- !u!65 &1293851216
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -8442,7 +8256,7 @@ SpriteRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_Sprite: {fileID: 21300000, guid: bab6bb0c0bf70485ebdd80b10471dab9, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.2}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -8478,8 +8292,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d2ee99d37fb0a4a56a2965ba57dbb989, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Cloud
-  fadeSpeed: 3
-  targetAlpha: 0.2
 --- !u!65 &1324200482
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -8570,7 +8382,7 @@ SpriteRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_Sprite: {fileID: 21300000, guid: bab6bb0c0bf70485ebdd80b10471dab9, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.2}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -8606,8 +8418,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d2ee99d37fb0a4a56a2965ba57dbb989, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Cloud
-  fadeSpeed: 3
-  targetAlpha: 0.2
 --- !u!65 &1361778669
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -8789,7 +8599,7 @@ SpriteRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_Sprite: {fileID: 21300000, guid: a709852ec1b6b43809b1785b9028a588, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.2}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -8825,8 +8635,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d2ee99d37fb0a4a56a2965ba57dbb989, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Cloud
-  fadeSpeed: 3
-  targetAlpha: 0.2
 --- !u!65 &1427897056
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -9031,7 +8839,7 @@ SpriteRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_Sprite: {fileID: 21300000, guid: bab6bb0c0bf70485ebdd80b10471dab9, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.2}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -9067,8 +8875,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d2ee99d37fb0a4a56a2965ba57dbb989, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Cloud
-  fadeSpeed: 3
-  targetAlpha: 0.2
 --- !u!65 &1467593545
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -9159,7 +8965,7 @@ SpriteRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_Sprite: {fileID: 21300000, guid: 91d7fca767064459386612acf5ee143d, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.2}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -9195,8 +9001,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d2ee99d37fb0a4a56a2965ba57dbb989, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Cloud
-  fadeSpeed: 3
-  targetAlpha: 0.2
 --- !u!65 &1518294152
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -9287,7 +9091,7 @@ SpriteRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_Sprite: {fileID: 21300000, guid: 5c23eac826d804702af715b0f089ff2e, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.2}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -9323,8 +9127,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d2ee99d37fb0a4a56a2965ba57dbb989, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Cloud
-  fadeSpeed: 3
-  targetAlpha: 0.2
 --- !u!65 &1545823802
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -9372,8 +9174,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1558808386}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.3420201, y: 0, z: 0, w: 0.9396927}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: 0.3420201, y: -0, z: -0, w: 0.9396927}
+  m_LocalPosition: {x: 0, y: -3.108996, z: 13}
   m_LocalScale: {x: 0.39999998, y: 0.39999998, z: 0.39999998}
   m_ConstrainProportionsScale: 1
   m_Children:
@@ -9381,7 +9183,7 @@ Transform:
   - {fileID: 65564323}
   - {fileID: 1304495806}
   - {fileID: 1671420439}
-  m_Father: {fileID: 1964045025}
+  m_Father: {fileID: 1918513099}
   m_LocalEulerAnglesHint: {x: 40, y: 0, z: 0}
 --- !u!95 &1558808388
 Animator:
@@ -9549,7 +9351,7 @@ Transform:
   m_GameObject: {fileID: 1560680898}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 14.6, y: -63.124, z: 314.73}
+  m_LocalPosition: {x: 14.6, y: -135.2, z: 314.73}
   m_LocalScale: {x: 3.5180876, y: 3.5180876, z: 3.5180876}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -9624,7 +9426,7 @@ SpriteRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_Sprite: {fileID: 21300000, guid: 552818735f331440b8ead7971a433725, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.2}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -9660,8 +9462,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d2ee99d37fb0a4a56a2965ba57dbb989, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Cloud
-  fadeSpeed: 3
-  targetAlpha: 0.2
 --- !u!65 &1563210676
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -9768,7 +9568,7 @@ Transform:
   m_GameObject: {fileID: 1584002193}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -7.82, y: -58.123, z: 305.43}
+  m_LocalPosition: {x: -7.82, y: -130.19899, z: 305.43}
   m_LocalScale: {x: 2.831773, y: 2.831773, z: 2.831773}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -9843,7 +9643,7 @@ SpriteRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_Sprite: {fileID: 21300000, guid: bab6bb0c0bf70485ebdd80b10471dab9, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.2}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -9879,8 +9679,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d2ee99d37fb0a4a56a2965ba57dbb989, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Cloud
-  fadeSpeed: 3
-  targetAlpha: 0.2
 --- !u!65 &1604742327
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -9971,7 +9769,7 @@ SpriteRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_Sprite: {fileID: 21300000, guid: 552818735f331440b8ead7971a433725, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.2}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -10007,8 +9805,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d2ee99d37fb0a4a56a2965ba57dbb989, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Cloud
-  fadeSpeed: 3
-  targetAlpha: 0.2
 --- !u!65 &1610257331
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -10115,7 +9911,7 @@ Transform:
   m_GameObject: {fileID: 1653429565}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 14.08, y: -60.324, z: 360.6}
+  m_LocalPosition: {x: 14.08, y: -132.4, z: 360.6}
   m_LocalScale: {x: 3.5180876, y: 3.5180876, z: 3.5180876}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -10268,7 +10064,7 @@ SpriteRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_Sprite: {fileID: 21300000, guid: bab6bb0c0bf70485ebdd80b10471dab9, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.2}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -10304,8 +10100,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d2ee99d37fb0a4a56a2965ba57dbb989, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Cloud
-  fadeSpeed: 3
-  targetAlpha: 0.2
 --- !u!65 &1678937636
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -10396,7 +10190,7 @@ SpriteRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_Sprite: {fileID: 21300000, guid: 91d7fca767064459386612acf5ee143d, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.2}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -10432,8 +10226,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d2ee99d37fb0a4a56a2965ba57dbb989, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Cloud
-  fadeSpeed: 3
-  targetAlpha: 0.2
 --- !u!65 &1709455423
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -10540,16 +10332,15 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1725266257}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.3420201, y: 0, z: 0, w: 0.9396927}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: 0.3420201, y: -0, z: -0, w: 0.9396927}
+  m_LocalPosition: {x: 0, y: -3.108996, z: 13}
   m_LocalScale: {x: 0.57574, y: 0.57574, z: 0.57574}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1395082958}
   - {fileID: 1870933744}
   - {fileID: 1886218350}
-  - {fileID: 680703208}
-  m_Father: {fileID: 736637010}
+  m_Father: {fileID: 833276413}
   m_LocalEulerAnglesHint: {x: 40, y: 0, z: 0}
 --- !u!95 &1725266260
 Animator:
@@ -10642,7 +10433,7 @@ SpriteRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_Sprite: {fileID: 21300000, guid: 91d7fca767064459386612acf5ee143d, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.2}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -10678,8 +10469,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d2ee99d37fb0a4a56a2965ba57dbb989, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Cloud
-  fadeSpeed: 3
-  targetAlpha: 0.2
 --- !u!65 &1740607809
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -10770,7 +10559,7 @@ SpriteRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_Sprite: {fileID: 21300000, guid: 552818735f331440b8ead7971a433725, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.2}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -10806,8 +10595,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d2ee99d37fb0a4a56a2965ba57dbb989, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Cloud
-  fadeSpeed: 3
-  targetAlpha: 0.2
 --- !u!65 &1765563586
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -10898,7 +10685,7 @@ SpriteRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_Sprite: {fileID: 21300000, guid: 552818735f331440b8ead7971a433725, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.2}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -10934,8 +10721,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d2ee99d37fb0a4a56a2965ba57dbb989, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Cloud
-  fadeSpeed: 3
-  targetAlpha: 0.2
 --- !u!65 &1792174433
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -11026,7 +10811,7 @@ SpriteRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_Sprite: {fileID: 21300000, guid: 552818735f331440b8ead7971a433725, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.2}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -11062,8 +10847,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d2ee99d37fb0a4a56a2965ba57dbb989, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Cloud
-  fadeSpeed: 3
-  targetAlpha: 0.2
 --- !u!65 &1808070238
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -11154,7 +10937,7 @@ SpriteRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_Sprite: {fileID: 21300000, guid: bab6bb0c0bf70485ebdd80b10471dab9, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.2}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -11190,8 +10973,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d2ee99d37fb0a4a56a2965ba57dbb989, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Cloud
-  fadeSpeed: 3
-  targetAlpha: 0.2
 --- !u!65 &1820393005
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -11282,7 +11063,7 @@ SpriteRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_Sprite: {fileID: 21300000, guid: 5c23eac826d804702af715b0f089ff2e, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.2}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -11318,8 +11099,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d2ee99d37fb0a4a56a2965ba57dbb989, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Cloud
-  fadeSpeed: 3
-  targetAlpha: 0.2
 --- !u!65 &1832436054
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -11410,7 +11189,7 @@ SpriteRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_Sprite: {fileID: 21300000, guid: 552818735f331440b8ead7971a433725, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.2}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -11446,8 +11225,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d2ee99d37fb0a4a56a2965ba57dbb989, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Cloud
-  fadeSpeed: 3
-  targetAlpha: 0.2
 --- !u!65 &1858255232
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -11573,7 +11350,7 @@ GameObject:
   - component: {fileID: 1886218354}
   - component: {fileID: 1886218353}
   m_Layer: 0
-  m_Name: front
+  m_Name: collider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -11588,7 +11365,7 @@ Transform:
   m_GameObject: {fileID: 1886218349}
   serializedVersion: 2
   m_LocalRotation: {x: -0.3420201, y: 0, z: 0, w: 0.9396927}
-  m_LocalPosition: {x: 0, y: 4.7, z: 8.3}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -11640,8 +11417,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 47, y: 15, z: 1}
-  m_Center: {x: 0, y: 1, z: 0}
+  m_Size: {x: 117.91262, y: 71.20992, z: 74.99705}
+  m_Center: {x: 3.203063, y: 29.10494, z: 14.2622385}
 --- !u!114 &1886218355
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11723,7 +11500,7 @@ SpriteRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_Sprite: {fileID: 21300000, guid: 91d7fca767064459386612acf5ee143d, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.2}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -11759,8 +11536,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d2ee99d37fb0a4a56a2965ba57dbb989, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Cloud
-  fadeSpeed: 3
-  targetAlpha: 0.2
 --- !u!65 &1886997439
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -11867,7 +11642,7 @@ Transform:
   m_GameObject: {fileID: 1907010094}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 6.46, y: -57.324, z: 300.05}
+  m_LocalPosition: {x: 6.46, y: -129.4, z: 300.05}
   m_LocalScale: {x: 2.407279, y: 2.407279, z: 2.407279}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -11904,7 +11679,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 3.108996, z: -13}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 1558808387}
   m_Father: {fileID: 1964045025}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1918513100
@@ -12079,7 +11855,7 @@ SpriteRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_Sprite: {fileID: 21300000, guid: 552818735f331440b8ead7971a433725, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.2}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -12115,8 +11891,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d2ee99d37fb0a4a56a2965ba57dbb989, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Cloud
-  fadeSpeed: 3
-  targetAlpha: 0.2
 --- !u!65 &1946438250
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -12165,11 +11939,10 @@ Transform:
   m_GameObject: {fileID: 1964045024}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -52, z: 300}
+  m_LocalPosition: {x: 0, y: -124.07599, z: 300}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1558808387}
   - {fileID: 1918513099}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -12284,7 +12057,7 @@ SpriteRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_Sprite: {fileID: 21300000, guid: 552818735f331440b8ead7971a433725, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.2}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -12320,8 +12093,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d2ee99d37fb0a4a56a2965ba57dbb989, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Cloud
-  fadeSpeed: 3
-  targetAlpha: 0.2
 --- !u!65 &1975840549
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -12412,7 +12183,7 @@ SpriteRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_Sprite: {fileID: 21300000, guid: 552818735f331440b8ead7971a433725, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.2}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -12448,8 +12219,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d2ee99d37fb0a4a56a2965ba57dbb989, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Cloud
-  fadeSpeed: 3
-  targetAlpha: 0.2
 --- !u!65 &1978177607
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -12556,7 +12325,7 @@ Transform:
   m_GameObject: {fileID: 1985945865}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -11.6, y: -54.324, z: 434.6}
+  m_LocalPosition: {x: -11.6, y: -126.399994, z: 434.6}
   m_LocalScale: {x: 1.2121, y: 1.2121, z: 1.2121}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -12631,7 +12400,7 @@ SpriteRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_Sprite: {fileID: 21300000, guid: 5c23eac826d804702af715b0f089ff2e, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.2}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -12667,8 +12436,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d2ee99d37fb0a4a56a2965ba57dbb989, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Cloud
-  fadeSpeed: 3
-  targetAlpha: 0.2
 --- !u!65 &2007862571
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -12850,7 +12617,7 @@ SpriteRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_Sprite: {fileID: 21300000, guid: d4e0598a644e84a04bf87ec682caf776, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.2}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -12886,8 +12653,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d2ee99d37fb0a4a56a2965ba57dbb989, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Cloud
-  fadeSpeed: 3
-  targetAlpha: 0.2
 --- !u!65 &2059704989
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -12978,7 +12743,7 @@ SpriteRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_Sprite: {fileID: 21300000, guid: a709852ec1b6b43809b1785b9028a588, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.2}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -13014,8 +12779,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d2ee99d37fb0a4a56a2965ba57dbb989, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Cloud
-  fadeSpeed: 3
-  targetAlpha: 0.2
 --- !u!65 &2102249988
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -13106,7 +12869,7 @@ SpriteRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_Sprite: {fileID: 21300000, guid: 552818735f331440b8ead7971a433725, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.2}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -13142,8 +12905,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d2ee99d37fb0a4a56a2965ba57dbb989, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Cloud
-  fadeSpeed: 3
-  targetAlpha: 0.2
 --- !u!65 &2104880558
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -13250,7 +13011,7 @@ Transform:
   m_GameObject: {fileID: 2116467742}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 4.87, y: -61.524002, z: 323.39}
+  m_LocalPosition: {x: 4.87, y: -133.59999, z: 323.39}
   m_LocalScale: {x: 3.3246, y: 3.3246, z: 3.3246}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -13325,7 +13086,7 @@ SpriteRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_Sprite: {fileID: 21300000, guid: 552818735f331440b8ead7971a433725, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.2}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -13361,8 +13122,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d2ee99d37fb0a4a56a2965ba57dbb989, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Cloud
-  fadeSpeed: 3
-  targetAlpha: 0.2
 --- !u!65 &2122587099
 BoxCollider:
   m_ObjectHideFlags: 0

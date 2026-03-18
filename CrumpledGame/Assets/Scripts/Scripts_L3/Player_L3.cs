@@ -3,11 +3,17 @@ using UnityEngine.InputSystem;
 
 public class Player_L3 : MonoBehaviour
 {
-    float moveSpeed = 4f;
+    float moveSpeed = 5f;
     float playerPosX;
     Vector3 direction;
+    //Vector3 camOffset;
+    void Start()
+    {
+        //camOffset = Camera.main.transform.position - transform.position;
+    }
     void Update()
     {
+       //Camera.main.transform.position = transform.position + camOffset;
        PlayerMove();
     }
     void PlayerMove()
