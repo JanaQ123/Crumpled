@@ -148,20 +148,24 @@ public class LV1_PlayerController : MonoBehaviour
     {
         speed = speed/10;
         canSwitchLane = false;
+        visual.GetComponent<Animator>().SetBool("Pain", true);
+
 
     }
 
     public void EndSewerCover()
     {
+        visual.GetComponent<Animator>().SetBool("Pain", false);
         canSwitchLane = true;
         speed = speed * 10;
+
     }
 
     public void StartGum()
     {
         speed = 0;
         canSwitchLane = false;
-        this.transform.localScale=new Vector3(this.transform.localScale.x+0.1f, this.transform.localScale.y, this.transform.localScale.z);
+        this.transform.localScale=new Vector3(this.transform.localScale.x+0.2f, this.transform.localScale.y, this.transform.localScale.z);
         visual.GetComponent<Animator>().SetBool("Pain", true);
         Invoke("EndGum", 3f);
 
