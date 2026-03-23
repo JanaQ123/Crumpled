@@ -1,14 +1,7 @@
 using UnityEngine;
 
 public class TriggerCloud : MonoBehaviour
-{
-    Animator airplaneAnimation;
-    
-    void Start()
-    {
-        airplaneAnimation = GameObject.Find("airplane").GetComponent<Animator>();
-    }
-    
+{   
     void OnTriggerEnter(Collider other)
     {
         if(other.CompareTag("Cloud"))
@@ -18,11 +11,6 @@ public class TriggerCloud : MonoBehaviour
             {
                 cloud.FadeIn();
             }
-        }
-        else if (other.CompareTag("Airplane"))
-        {
-            //triggers airplane animation
-            airplaneAnimation.SetTrigger("TakeOff");
         }
     }
     void OnTriggerExit(Collider other)
@@ -35,7 +23,7 @@ public class TriggerCloud : MonoBehaviour
         Cloud cloud = other.GetComponent<Cloud>();
         if(cloud != null)
         {
-            cloud.Despawn();
+            //cloud.Despawn();
             cloud.FadeOut();
         }
     }

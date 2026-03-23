@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class Cloud : MonoBehaviour
 {
-    float fadeSpeed = 0.2f;
+    float fadeSpeed = 0.5f;
     float targetAlpha;
     SpriteRenderer sr;
     float currentAlpha = 0.2f;
@@ -17,7 +17,8 @@ public class Cloud : MonoBehaviour
     {
         if (!fadeIn)
         {
-            targetAlpha = 0.2f;
+            targetAlpha = 0.5f;
+            fadeSpeed = 0.6f;
             currentAlpha = Mathf.MoveTowards(currentAlpha, targetAlpha, fadeSpeed * Time.deltaTime);
             Color current_color = sr.color;
             current_color.a = currentAlpha;
@@ -26,6 +27,7 @@ public class Cloud : MonoBehaviour
         else if (fadeIn)
         {
             targetAlpha = 1f;
+            fadeSpeed = 0.2f;
             currentAlpha = Mathf.MoveTowards(currentAlpha, targetAlpha, fadeSpeed * Time.deltaTime);
             Color current_color = sr.color;
             current_color.a = currentAlpha;
@@ -45,9 +47,9 @@ public class Cloud : MonoBehaviour
         fadeIn = false;
     }
 
-    public void Despawn()
-    {
-        //destroys clouds
-        Destroy(gameObject);
-    }
+    // public void Despawn()
+    // {
+    //     //destroys clouds
+    //    Destroy(gameObject);
+    // }
 }
