@@ -16,7 +16,7 @@ public class TriggerCloud : MonoBehaviour
             Cloud cloud = other.GetComponent<Cloud>();
             if(cloud != null)
             {
-                cloud.Fade();
+                cloud.FadeIn();
             }
         }
         else if (other.CompareTag("Airplane"))
@@ -34,6 +34,9 @@ public class TriggerCloud : MonoBehaviour
         }
         Cloud cloud = other.GetComponent<Cloud>();
         if(cloud != null)
+        {
             cloud.Despawn();
+            cloud.FadeOut();
+        }
     }
 }
