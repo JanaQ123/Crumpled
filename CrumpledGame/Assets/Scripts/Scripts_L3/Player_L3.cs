@@ -10,10 +10,12 @@ public class Player_L3 : MonoBehaviour
     Vector3 direction;
     Vector3 camOffset;
     Vector3 playerPos;
+    Rigidbody rb;
     
     void Start()
     {
         camOffset = Camera.main.transform.position - transform.position;
+        rb = GetComponent<Rigidbody>();
     }
     void Update()
     {
@@ -21,12 +23,12 @@ public class Player_L3 : MonoBehaviour
     }
     void PlayerMove()
     {
+        transform.Translate(direction * Time.deltaTime * moveSpeed);
         playerPos = Camera.main.transform.position + camOffset;
         playerPosX = transform.position.x;
         playerPosZ = playerPos.z;
         playerPosX = Mathf.Clamp(playerPosX, -9.3f, 9.3f);
         transform.position = new Vector3(playerPosX, 0f, playerPosZ);
-        transform.Translate(direction * Time.deltaTime * moveSpeed);
     }
     public void OnMove(InputValue value)
     {
