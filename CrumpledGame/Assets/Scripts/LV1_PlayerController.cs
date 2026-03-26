@@ -2,6 +2,8 @@ using System.Collections;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.Windows;
+using static UnityEditor.Experimental.AssetDatabaseExperimental.AssetDatabaseCounters;
 public class LV1_PlayerController : MonoBehaviour
 {
     Vector3 direction;
@@ -24,8 +26,11 @@ public class LV1_PlayerController : MonoBehaviour
     bool canSwitchLane = true;
     float moveCounter=0;
     float maxMove=30;
-
+    bool gotKicked=false;
+    int kickCounter;
     [SerializeField] GameObject visual;
+    [SerializeField] GameObject eyes;
+
     void Start()
     {
         y = transform.position.y;
@@ -34,6 +39,30 @@ public class LV1_PlayerController : MonoBehaviour
     }
     void Update()
     {
+        if (gotKicked)
+        {
+            if (gotKicked)
+            {
+                if (kickCounter < 75)
+                {
+                    // Arc upward
+                    transform.position += new Vector3(-1, 1, 0) * Time.deltaTime * speed;
+                    kickCounter++;
+                }
+                else if (kickCounter < 150)
+                {
+                    // Arc downward
+                    transform.position += new Vector3(-1, -1, 0) * Time.deltaTime * speed;
+                    kickCounter++;
+                }
+                else
+                {
+                    gotKicked = false;
+                    kickCounter = 0;
+                }
+
+            }
+        }
         if (directionX != Vector3.zero)
         {
             moveCounter++;
@@ -104,7 +133,16 @@ public class LV1_PlayerController : MonoBehaviour
         if (data.Get<Vector2>().y != 0 && !isSwitching&&canSwitchLane) { 
             ChangePositions(); //switch lanes
         }
-       
+        Vector2 input = data.Get<Vector2>();
+        if (input != Vector2.zero)
+            eyes.GetComponent<Animator>().SetBool("Close", true);
+        else
+            eyes.GetComponent<Animator>().SetBool("Close", false);
+    }
+
+    public void Kick()
+    {
+        gotKicked = true;
     }
     void ChangePositions()
     {
@@ -112,6 +150,8 @@ public class LV1_PlayerController : MonoBehaviour
         {
             visual.GetComponent<SpriteRenderer>().sortingLayerName = "Interactables-Front";
             visual.GetComponent<SpriteRenderer>().sortingOrder = 1;
+            eyes.GetComponent<SpriteRenderer>().sortingLayerName = "Interactables-Front";
+            eyes.GetComponent<SpriteRenderer>().sortingOrder = 2;
         }
         else
         {
@@ -148,14 +188,14 @@ public class LV1_PlayerController : MonoBehaviour
     {
         speed = speed/10;
         canSwitchLane = false;
-        visual.GetComponent<Animator>().SetBool("Pain", true);
+        eyes.GetComponent<Animator>().SetBool("Pain", true);
 
 
     }
 
     public void EndSewerCover()
     {
-        visual.GetComponent<Animator>().SetBool("Pain", false);
+        eyes.GetComponent<Animator>().SetBool("Pain", false);
         canSwitchLane = true;
         speed = speed * 10;
 
@@ -166,7 +206,7 @@ public class LV1_PlayerController : MonoBehaviour
         speed = 0;
         canSwitchLane = false;
         this.transform.localScale=new Vector3(this.transform.localScale.x+0.2f, this.transform.localScale.y, this.transform.localScale.z);
-        visual.GetComponent<Animator>().SetBool("Pain", true);
+        eyes.GetComponent<Animator>().SetBool("Pain", true);
         Invoke("EndGum", 3f);
 
     }
@@ -175,7 +215,7 @@ public class LV1_PlayerController : MonoBehaviour
         canSwitchLane = true;
         speed = 14;
         this.transform.localScale = new Vector3(this.transform.localScale.y, this.transform.localScale.y, this.transform.localScale.z);
-        visual.GetComponent<Animator>().SetBool("Pain", false);
+        eyes.GetComponent<Animator>().SetBool("Pain", false);
 
 
     }
