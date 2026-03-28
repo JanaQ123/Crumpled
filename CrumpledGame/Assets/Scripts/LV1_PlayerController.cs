@@ -28,41 +28,66 @@ public class LV1_PlayerController : MonoBehaviour
     float maxMove=30;
     bool gotKicked=false;
     int kickCounter;
+    Vector3 originalShadowScale;
+    Vector3 tempShadowScale;
+    Vector3 originalPlayerScale;
+    float shadowRatio;
+    float shadowY;
+    float shadowOffset=1.1f;
     [SerializeField] GameObject visual;
     [SerializeField] GameObject eyes;
+    [SerializeField] GameObject shadow;
 
     void Start()
     {
         y = transform.position.y;
         visual.GetComponent<SpriteRenderer>().sortingLayerName = "Interactables-Front";
         visual.GetComponent<SpriteRenderer>().sortingOrder = 1;
+        originalShadowScale = shadow.transform.localScale;
+        originalPlayerScale = transform.localScale;
+        shadowY = shadow.transform.localPosition.y;
+      
+
     }
     void Update()
     {
-        if (gotKicked)
-        {
-            if (gotKicked)
+         if (gotKicked)
             {
-                if (kickCounter < 75)
+            shadow.transform.localPosition = new Vector3(transform.localPosition.x, shadowY, transform.localPosition.z);
+              Vector3 minScale = tempShadowScale * 0.2f; 
+              isSwitching = false;
+                if (kickCounter < 65)
                 {
-                    // Arc upward
                     transform.position += new Vector3(-1, 1, 0) * Time.deltaTime * speed;
                     kickCounter++;
+                    float t = kickCounter / 65f; // 0 to 1
+                    shadow.transform.localScale = Vector3.Lerp(originalShadowScale, minScale, t);
+
                 }
-                else if (kickCounter < 150)
+                else if (kickCounter < 130)
                 {
-                    // Arc downward
+                    shadow.transform.localScale = new Vector3(1.1f, 1.1f, 1.1f);
                     transform.position += new Vector3(-1, -1, 0) * Time.deltaTime * speed;
+                    float t = (kickCounter - 65f) / 65f; // 0 to 1
+                    shadow.transform.localScale = Vector3.Lerp(minScale, originalShadowScale, t);
                     kickCounter++;
+
                 }
                 else
                 {
                     gotKicked = false;
+                    isSwitching = true;
                     kickCounter = 0;
                 }
 
             }
-        }
+            else
+            {
+                shadow.transform.localPosition = new Vector3(transform.localPosition.x, transform.localPosition.y-shadowOffset, transform.localPosition.z);
+                shadowRatio = transform.localScale.x / originalPlayerScale.x;
+                shadow.transform.localScale = originalShadowScale * shadowRatio;
+            }
+
         if (directionX != Vector3.zero)
         {
             moveCounter++;
@@ -143,19 +168,43 @@ public class LV1_PlayerController : MonoBehaviour
     public void Kick()
     {
         gotKicked = true;
+        tempShadowScale = shadow.transform.localScale;
+        shadowY = shadow.transform.localPosition.y;
+
     }
     void ChangePositions()
     {
+        if (currentPosition == 0)
+        {
+            visual.GetComponent<SpriteRenderer>().sortingLayerName = "Midground";
+            visual.GetComponent<SpriteRenderer>().sortingOrder =2;
+            eyes.GetComponent<SpriteRenderer>().sortingLayerName = "Midground";
+            eyes.GetComponent<SpriteRenderer>().sortingOrder =3;
+            shadow.GetComponent<SpriteRenderer>().sortingLayerName = "Midground";
+            shadow.GetComponent<SpriteRenderer>().sortingOrder = 1;
+            shadowOffset = 0.75f;
+        }
         if (currentPosition == 1)
         {
-            visual.GetComponent<SpriteRenderer>().sortingLayerName = "Interactables-Front";
-            visual.GetComponent<SpriteRenderer>().sortingOrder = 1;
-            eyes.GetComponent<SpriteRenderer>().sortingLayerName = "Interactables-Front";
-            eyes.GetComponent<SpriteRenderer>().sortingOrder = 2;
+            visual.GetComponent<SpriteRenderer>().sortingLayerName = "Interactables-Behind";
+            visual.GetComponent<SpriteRenderer>().sortingOrder = 2;
+            eyes.GetComponent<SpriteRenderer>().sortingLayerName = "Interactables-Behind";
+            eyes.GetComponent<SpriteRenderer>().sortingOrder = 3;
+            shadow.GetComponent<SpriteRenderer>().sortingLayerName = "Interactables-Behind";
+            shadow.GetComponent<SpriteRenderer>().sortingOrder = 1;
+            shadowOffset = 1.1f;
+
         }
-        else
+        if (currentPosition == 2) 
         {
+
             visual.GetComponent<SpriteRenderer>().sortingLayerName = "Player";
+            visual.GetComponent<SpriteRenderer>().sortingOrder = 2;
+            eyes.GetComponent<SpriteRenderer>().sortingLayerName = "Player";
+            eyes.GetComponent<SpriteRenderer>().sortingOrder = 3;
+            shadow.GetComponent<SpriteRenderer>().sortingLayerName = "Player";
+            shadow.GetComponent<SpriteRenderer>().sortingOrder = 1;
+            shadowOffset = 1.3f;
 
 
         }
