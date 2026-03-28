@@ -4,7 +4,7 @@ using UnityEngine.SceneManagement;
 
 public class Player_L3 : MonoBehaviour
 {
-    float moveSpeed = 6f;
+    float moveSpeed = 9f;
     float playerPosX;
     Vector3 direction;
     Vector3 playerPos;    
@@ -14,7 +14,6 @@ public class Player_L3 : MonoBehaviour
     }
     void PlayerMove()
     {
-        //transform.Translate(direction * Time.deltaTime * moveSpeed);
         float moveAmount = direction.x * moveSpeed * Time.deltaTime;
         playerPosX = transform.localPosition.x + moveAmount;
         playerPosX = Mathf.Clamp(playerPosX, -17.2f, 17.2f);
@@ -24,7 +23,6 @@ public class Player_L3 : MonoBehaviour
     {
         direction = new Vector3(value.Get<Vector2>().x, 0f, 0f);
     }
-
     void OnCollisionEnter(Collision other)
     {
         if(other.collider.CompareTag("Bird"))
