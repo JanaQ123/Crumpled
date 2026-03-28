@@ -6,17 +6,8 @@ public class Player_L3 : MonoBehaviour
 {
     float moveSpeed = 5f;
     float playerPosX;
-    float playerPosZ;
     Vector3 direction;
-    Vector3 camOffset;
-    Vector3 playerPos;
-    Rigidbody rb;
-    
-    void Start()
-    {
-        camOffset = Camera.main.transform.position - transform.position;
-        rb = GetComponent<Rigidbody>();
-    }
+    Vector3 playerPos;    
     void Update()
     {
        PlayerMove();
@@ -24,11 +15,9 @@ public class Player_L3 : MonoBehaviour
     void PlayerMove()
     {
         transform.Translate(direction * Time.deltaTime * moveSpeed);
-        playerPos = Camera.main.transform.position + camOffset;
         playerPosX = transform.position.x;
-        playerPosZ = playerPos.z;
         playerPosX = Mathf.Clamp(playerPosX, -9.3f, 9.3f);
-        transform.position = new Vector3(playerPosX, 0f, playerPosZ);
+        transform.position = new Vector3(playerPosX, transform.position.y, transform.position.z);
     }
     public void OnMove(InputValue value)
     {
