@@ -1753,71 +1753,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 9.59, y: 3.43, z: 0.2}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!1 &268429990
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 268429992}
-  - component: {fileID: 268429991}
-  m_Layer: 0
-  m_Name: Master Timeline
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!320 &268429991
-PlayableDirector:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 268429990}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_PlayableAsset: {fileID: 11400000, guid: 381eddd31d695476197b128a1f689c6b, type: 2}
-  m_InitialState: 1
-  m_WrapMode: 2
-  m_DirectorUpdateMode: 1
-  m_InitialTime: 0
-  m_SceneBindings:
-  - key: {fileID: 7728350971818185645, guid: 381eddd31d695476197b128a1f689c6b, type: 2}
-    value: {fileID: 1457516936}
-  - key: {fileID: -451127029175728781, guid: 381eddd31d695476197b128a1f689c6b, type: 2}
-    value: {fileID: 2011426682}
-  - key: {fileID: 5753751518717982278, guid: 381eddd31d695476197b128a1f689c6b, type: 2}
-    value: {fileID: 843658958}
-  - key: {fileID: 7523786594444396461, guid: 381eddd31d695476197b128a1f689c6b, type: 2}
-    value: {fileID: 0}
-  - key: {fileID: -4712920938570926935, guid: 381eddd31d695476197b128a1f689c6b, type: 2}
-    value: {fileID: 619258714}
-  - key: {fileID: 7172896410700118288, guid: 381eddd31d695476197b128a1f689c6b, type: 2}
-    value: {fileID: 1725266260}
-  m_ExposedReferences:
-    m_References:
-    - 137db2d4ea979414c97f5f420d472bad: {fileID: 833276410}
-    - 6262f0a56a9e6492bbc452b4c8b3ca81: {fileID: 0}
-    - 463ae42bae4a24ca6a35b4e46be139d0: {fileID: 0}
-    - 3df437306da0b49349aa9ff8f96c723a: {fileID: 0}
---- !u!4 &268429992
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 268429990}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &274031342
 GameObject:
   m_ObjectHideFlags: 0
@@ -4518,7 +4453,6 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1725266259}
-  - {fileID: 1886218350}
   m_Father: {fileID: 619258713}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &736637011
@@ -4582,8 +4516,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.31785798, y: 8.869685, z: 0.30976534}
-  m_Center: {x: 0.0016088933, y: 0.22026777, z: -0.012551546}
+  m_Size: {x: 0.31785798, y: 1.3582287, z: 0.30976534}
+  m_Center: {x: 0.0016088933, y: -3.5354605, z: -0.012551546}
 --- !u!54 &736637015
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -4609,7 +4543,7 @@ Rigidbody:
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 112
+  m_Constraints: 126
   m_CollisionDetection: 0
 --- !u!1 &760258526
 GameObject:
@@ -9442,6 +9376,8 @@ PlayableDirector:
     value: {fileID: 619258714}
   - key: {fileID: -3986797849406123755, guid: 4fd2a12849ea646d0b45d5ddd230bed8, type: 2}
     value: {fileID: 1457516936}
+  - key: {fileID: 9124578943011919538, guid: 4fd2a12849ea646d0b45d5ddd230bed8, type: 2}
+    value: {fileID: 1725266260}
   m_ExposedReferences:
     m_References: []
 --- !u!4 &1373690509
@@ -11779,6 +11715,7 @@ Transform:
   - {fileID: 1188990718}
   - {fileID: 334609500}
   - {fileID: 1423904638}
+  - {fileID: 1886218350}
   m_Father: {fileID: 736637010}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!95 &1725266260
@@ -12891,11 +12828,11 @@ Transform:
   m_GameObject: {fileID: 1886218349}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: -0.000015258789}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 736637010}
+  m_Father: {fileID: 1725266259}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &1886218354
 BoxCollider:
@@ -15157,7 +15094,6 @@ SceneRoots:
   - {fileID: 619258713}
   - {fileID: 1964045025}
   - {fileID: 1373690509}
-  - {fileID: 268429992}
   - {fileID: 80262300}
   - {fileID: 1133674459}
   - {fileID: 380845262}
