@@ -2,50 +2,42 @@ using UnityEngine;
 
 public class Cloud : MonoBehaviour
 {
-    float fadeSpeed = 0.4f;
+    float fadeSpeed = 0.3f;
     float targetAlpha;
     SpriteRenderer sr;
     float currentAlpha = 0f;
-    bool fadeIn = false;
-
+    bool fade = false; //so they dont all fade at the same time
     void Start()
     {
         sr = GetComponent<SpriteRenderer>();
+        Color c = sr.color;
+        c.a = 0f;
+        sr.color = c;
     }
     void Update()
     {
-        if (!fadeIn)
+        if (!fade)
         {
-            targetAlpha = 0.5f;
-            fadeSpeed = 0.6f;
-            currentAlpha = Mathf.MoveTowards(currentAlpha, targetAlpha, fadeSpeed * Time.deltaTime);
-            Color current_color = sr.color;
-            current_color.a = currentAlpha;
-            sr.color = current_color;
+            return;
         }
-        else if (fadeIn)
-        {
-            targetAlpha = 1f;
-            fadeSpeed = 0.1f;
-            currentAlpha = Mathf.MoveTowards(currentAlpha, targetAlpha, fadeSpeed * Time.deltaTime);
-            Color current_color = sr.color;
-            current_color.a = currentAlpha;
-            sr.color = current_color; 
-        }
+        //fade in/out depending on current & alpha values
+        currentAlpha = Mathf.MoveTowards(currentAlpha, targetAlpha, fadeSpeed * Time.deltaTime);
+        Color current_color = sr.color;
+        current_color.a = currentAlpha;
+        sr.color = current_color;
     }
     public void FadeIn()
     {
-        //tells clouds to fade
-        fadeIn = true;
+        //clouds fade in
+        fade = true;
+        targetAlpha = 1f;
+        fadeSpeed = 0.3f;
     }
     public void FadeOut()
     {
-        //tells clouds to fade out
-        fadeIn = false;
+        //clouds fade out
+        fade = true;
+        targetAlpha = 0f;
+        fadeSpeed = 0.3f;
     }
-    // public void Despawn()
-    // {
-    //     //destroys clouds
-    //    Destroy(gameObject);
-    // }
 }
