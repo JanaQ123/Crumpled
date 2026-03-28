@@ -7,7 +7,8 @@ public class Player_L3 : MonoBehaviour
     float moveSpeed = 9f;
     float playerPosX;
     Vector3 direction;
-    Vector3 playerPos;    
+    Vector3 playerPos;  
+    public TimelineController timelineController;
     void Update()
     {
        PlayerMove();
@@ -25,9 +26,15 @@ public class Player_L3 : MonoBehaviour
     }
     void OnCollisionEnter(Collision other)
     {
+        //if player hit bird, restart level
         if(other.collider.CompareTag("Bird"))
         {
             SceneManager.LoadScene("Level 3");
+        }
+        //if player hit building, restart at checkpoint
+        else if (other.collider.CompareTag("Building"))
+        {
+            timelineController.RestartAtCheckPoint();
         }
     }
 }
