@@ -4,7 +4,7 @@ using UnityEngine.SceneManagement;
 
 public class Player_L3 : MonoBehaviour
 {
-    float moveSpeed = 5f;
+    float moveSpeed = 6f;
     float playerPosX;
     Vector3 direction;
     Vector3 playerPos;    
@@ -14,10 +14,11 @@ public class Player_L3 : MonoBehaviour
     }
     void PlayerMove()
     {
-        transform.Translate(direction * Time.deltaTime * moveSpeed);
-        playerPosX = transform.position.x;
-        playerPosX = Mathf.Clamp(playerPosX, -9.3f, 9.3f);
-        transform.position = new Vector3(playerPosX, transform.position.y, transform.position.z);
+        //transform.Translate(direction * Time.deltaTime * moveSpeed);
+        float moveAmount = direction.x * moveSpeed * Time.deltaTime;
+        playerPosX = transform.localPosition.x + moveAmount;
+        playerPosX = Mathf.Clamp(playerPosX, -17.2f, 17.2f);
+        transform.localPosition = new Vector3(playerPosX, transform.localPosition.y, transform.localPosition.z);
     }
     public void OnMove(InputValue value)
     {
