@@ -5,7 +5,7 @@ public class LV1_NPC : MonoBehaviour
     float speed = 9f;
     bool isWalking = true;
     Animator anim;
-  
+   
     void Update()
     {
         //if (isWalking)

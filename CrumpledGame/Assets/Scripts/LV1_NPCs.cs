@@ -48,6 +48,7 @@ public class LV1_NPCs : MonoBehaviour
     }
     void GoUpStairs()
     {
+        anim.speed = 1;
         anim.SetBool("Stairs", true);
         speed = 1;
 
