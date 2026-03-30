@@ -27,15 +27,14 @@ public class LV1_NPCs : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        print("entered");
         if (collision.gameObject.tag == "Player")
         { collision.gameObject.GetComponent<LV1_PlayerController>().Kick(); }
 
         if (collision.gameObject.tag == "Stairs")
         {
-            anim.SetBool("Stop", true);
-            speed = 0;
-            Invoke("GoUpStairs", 1f);
+            anim.speed = 1;
+            anim.SetBool("Stairs", true);
+            speed = 1;
 
         }
     }

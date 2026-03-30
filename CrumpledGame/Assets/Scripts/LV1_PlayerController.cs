@@ -15,8 +15,8 @@ public class LV1_PlayerController : MonoBehaviour
     public Vector3 targetPos;
     Vector3 targetScale;
     //Changing Lanes
-    float[] scales = { 0.53f, 0.71f, 0.87f };
-    float[] positions = { -2.9f, -4.4f, -7f };
+    float[] scales = { 0.53f, 0.65f, 0.87f };
+    float[] positions = { -2.9f, -4.5f, -7f };
     float[] limits = { 0.5f, 0.75f, 1, 1f, 1, 1 };
     public bool isSwitching = false;
     bool isGoingDownStairs=false;
@@ -25,17 +25,18 @@ public class LV1_PlayerController : MonoBehaviour
     float switchDuration = 0.1f;
     bool canSwitchLane = true;
     float moveCounter=0;
-    float maxMove=30;
+    float maxMove=40;
     bool gotKicked=false;
     int kickCounter;
     Vector3 originalShadowScale;
     Vector3 tempShadowScale;
     Vector3 originalPlayerScale;
+    Quaternion originalRotation;
     float shadowRatio;
     float shadowY;
     float shadowOffset=1.1f;
+    Rigidbody2D rb;
     [SerializeField] GameObject visual;
-    [SerializeField] GameObject eyes;
     [SerializeField] GameObject shadow;
 
     void Start()
@@ -46,7 +47,8 @@ public class LV1_PlayerController : MonoBehaviour
         originalShadowScale = shadow.transform.localScale;
         originalPlayerScale = transform.localScale;
         shadowY = shadow.transform.localPosition.y;
-      
+        rb=this.GetComponent<Rigidbody2D>();  
+      originalRotation=this.transform.rotation;
 
     }
     void Update()
@@ -90,16 +92,17 @@ public class LV1_PlayerController : MonoBehaviour
 
         if (directionX != Vector3.zero)
         {
-            moveCounter++;
-            if (moveCounter >= maxMove) { moveCounter = maxMove; }
+            moveCounter = Mathf.Min(moveCounter + 1, maxMove);
+            visual.transform.Rotate(0, 0, -directionX.x * speed * Time.deltaTime * moveCounter);
         }
         else
         {
+            if (moveCounter >= maxMove)
+            {
+                StartCoroutine(RotateBack());
+            }
             moveCounter = 0;
         }
-
-        transform.Translate(directionX * speed * Time.deltaTime);
-        visual.transform.Rotate(0, 0, -directionX.x * speed * Time.deltaTime * moveCounter);
 
         if (isSwitching)
         {
@@ -149,6 +152,21 @@ public class LV1_PlayerController : MonoBehaviour
             }
         }
     }
+    IEnumerator RotateBack()
+    {
+        Quaternion currentRot = visual.transform.rotation;
+        float t = 0f;
+        float duration = 0.5f;
+
+        while (t < 1f)
+        {
+            t += Time.deltaTime / duration;
+            visual.transform.rotation = Quaternion.Slerp(currentRot, originalRotation, t);
+            yield return null;
+        }
+
+        visual.transform.rotation = originalRotation;
+    }
     void OnMove(InputValue data)
     {
         direction = new Vector3(data.Get<Vector2>().x, data.Get<Vector2>().y, 0);
@@ -159,10 +177,6 @@ public class LV1_PlayerController : MonoBehaviour
             ChangePositions(); //switch lanes
         }
         Vector2 input = data.Get<Vector2>();
-        if (input != Vector2.zero)
-            eyes.GetComponent<Animator>().SetBool("Close", true);
-        else
-            eyes.GetComponent<Animator>().SetBool("Close", false);
     }
 
     public void Kick()
@@ -178,8 +192,6 @@ public class LV1_PlayerController : MonoBehaviour
         {
             visual.GetComponent<SpriteRenderer>().sortingLayerName = "Midground";
             visual.GetComponent<SpriteRenderer>().sortingOrder =2;
-            eyes.GetComponent<SpriteRenderer>().sortingLayerName = "Midground";
-            eyes.GetComponent<SpriteRenderer>().sortingOrder =3;
             shadow.GetComponent<SpriteRenderer>().sortingLayerName = "Midground";
             shadow.GetComponent<SpriteRenderer>().sortingOrder = 1;
             shadowOffset = 0.75f;
@@ -188,8 +200,6 @@ public class LV1_PlayerController : MonoBehaviour
         {
             visual.GetComponent<SpriteRenderer>().sortingLayerName = "Interactables-Behind";
             visual.GetComponent<SpriteRenderer>().sortingOrder = 2;
-            eyes.GetComponent<SpriteRenderer>().sortingLayerName = "Interactables-Behind";
-            eyes.GetComponent<SpriteRenderer>().sortingOrder = 3;
             shadow.GetComponent<SpriteRenderer>().sortingLayerName = "Interactables-Behind";
             shadow.GetComponent<SpriteRenderer>().sortingOrder = 1;
             shadowOffset = 1.1f;
@@ -200,8 +210,6 @@ public class LV1_PlayerController : MonoBehaviour
 
             visual.GetComponent<SpriteRenderer>().sortingLayerName = "Player";
             visual.GetComponent<SpriteRenderer>().sortingOrder = 2;
-            eyes.GetComponent<SpriteRenderer>().sortingLayerName = "Player";
-            eyes.GetComponent<SpriteRenderer>().sortingOrder = 3;
             shadow.GetComponent<SpriteRenderer>().sortingLayerName = "Player";
             shadow.GetComponent<SpriteRenderer>().sortingOrder = 1;
             shadowOffset = 1.3f;
@@ -237,14 +245,14 @@ public class LV1_PlayerController : MonoBehaviour
     {
         speed = speed/10;
         canSwitchLane = false;
-        eyes.GetComponent<Animator>().SetBool("Pain", true);
+        visual.GetComponent<Animator>().SetBool("Pain", true);
 
 
     }
 
     public void EndSewerCover()
     {
-        eyes.GetComponent<Animator>().SetBool("Pain", false);
+        visual.GetComponent<Animator>().SetBool("Pain", false);
         canSwitchLane = true;
         speed = speed * 10;
 
@@ -255,7 +263,7 @@ public class LV1_PlayerController : MonoBehaviour
         speed = 0;
         canSwitchLane = false;
         this.transform.localScale=new Vector3(this.transform.localScale.x+0.2f, this.transform.localScale.y, this.transform.localScale.z);
-        eyes.GetComponent<Animator>().SetBool("Pain", true);
+        visual.GetComponent<Animator>().SetBool("Pain", true);
         Invoke("EndGum", 3f);
 
     }
@@ -264,8 +272,13 @@ public class LV1_PlayerController : MonoBehaviour
         canSwitchLane = true;
         speed = 14;
         this.transform.localScale = new Vector3(this.transform.localScale.y, this.transform.localScale.y, this.transform.localScale.z);
-        eyes.GetComponent<Animator>().SetBool("Pain", false);
+        visual.GetComponent<Animator>().SetBool("Pain", false);
 
 
+    }
+    void FixedUpdate()
+    {
+        Vector2 newPos = rb.position + new Vector2(direction.x, 0) * speed * Time.fixedDeltaTime;
+        rb.MovePosition(newPos);
     }
 }
