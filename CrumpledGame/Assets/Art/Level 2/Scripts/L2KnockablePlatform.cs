@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using UnityEngine;
 using static UnityEngine.Rendering.DebugUI.Table;
@@ -9,64 +10,84 @@ public class L2KnockablePlatform : MonoBehaviour
 
     public float shakeDuration = 0.2f;
     public float shakeAmount = 0.1f;
+    float shakeTimer;
 
     public float fallRotation = 90f;
     public float fallSpeed = 3f;
 
     bool isFalling = false;
+    bool isShaking = false;
+
+    Vector3 originalPos;
     Quaternion originalRotation;
+    Quaternion targetRotation;
 
     void Start()
     {
         originalRotation = transform.rotation;
+        originalPos = transform.position;
+        targetRotation = originalRotation;
+    }
+
+    void Update()
+    {
+        HandleShake();
+        HandleFall();
+
+    }
+
+    void HandleShake()
+    {
+        if (!isShaking) return;
+
+        if (shakeTimer > 0)
+        {
+            shakeTimer -= Time.deltaTime;
+
+            float intensity = shakeAmount * currentHits;
+
+            float x = UnityEngine.Random.Range(-intensity, intensity);
+            float r = UnityEngine.Random.Range(-5f * currentHits, 5f * currentHits);
+
+            transform.position = originalPos + new Vector3(x, 0, 0);
+            transform.localRotation = Quaternion.Euler(0, 0, r);
+        }
+        else
+        {
+            isShaking = false;
+            transform.localPosition = originalPos;
+            transform.rotation = originalRotation;
+        }
+    }
+
+    void HandleFall()
+    {
+        if (!isFalling) return;
+
+        transform.rotation = Quaternion.Lerp(transform.rotation,targetRotation,Time.deltaTime * fallSpeed);
     }
 
     public void Hit()
     {
-        if (isFalling) return;
+        if (isFalling)
+        {
+            transform.position += new Vector3(-3, 0, 0);
+            return;
+        }
 
         currentHits++;
 
-        StartCoroutine(Shake());
+        isShaking = true;
+        shakeTimer = shakeDuration;
+
 
         if (currentHits >= hitsToFall)
         {
-            StartCoroutine(FallOver());
+            isFalling = true;
+            targetRotation = Quaternion.Euler(0, 0, fallRotation);
         }
     }
 
-    IEnumerator Shake()
-    {
-        Vector3 originalPos = transform.localPosition;
-        float elapsed = 0f;
-
-        while (elapsed < shakeDuration)
-        {
-            float x = Random.Range(-shakeAmount, shakeAmount);
-            transform.localPosition = originalPos + new Vector3(x, 0, 0);
-
-            elapsed += Time.deltaTime;
-            yield return null;
-        }
-
-        transform.localPosition = originalPos;
-    }
-
-    IEnumerator FallOver()
-    {
-        isFalling = true;
-
-        Quaternion startRot = transform.rotation;
-        Quaternion endRot = Quaternion.Euler(0, 0, fallRotation);
-
-        float t = 0;
-
-        while (t < 1)
-        {
-            t += Time.deltaTime * fallSpeed;
-            transform.rotation = Quaternion.Lerp(startRot, endRot, t);
-            yield return null;
-        }
-    }
+  
 }
 

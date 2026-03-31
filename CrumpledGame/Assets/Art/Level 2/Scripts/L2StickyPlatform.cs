@@ -2,10 +2,10 @@ using UnityEngine;
 
 public class L2StickyPlatform : MonoBehaviour
 {
-    public float slowMultiplier = 0.5f; 
+    public float slowMultiplier = 0.05f; 
     public float duration = 1f;
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("Player"))
         {
@@ -13,8 +13,21 @@ public class L2StickyPlatform : MonoBehaviour
 
             if (player != null)
             {
-                player.ApplySlow(slowMultiplier, duration);
+                print("I entered slow");
+                player.ApplySlow(slowMultiplier);
             }
         }
     }
+    //void OnTriggerExit2D(Collider2D collision)
+    //{
+    //    if (collision.gameObject.CompareTag("Player"))
+    //    {
+    //        L2PlayerMovement player = collision.gameObject.GetComponent<L2PlayerMovement>();
+
+    //        if (player != null)
+    //        {
+    //            player.RemoveSlow();
+    //        }
+    //    }
+    //}
 }

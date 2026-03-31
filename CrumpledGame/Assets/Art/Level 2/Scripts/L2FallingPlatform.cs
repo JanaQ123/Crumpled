@@ -3,48 +3,110 @@ using System.Collections;
 
 public class L2FallingPlatform : MonoBehaviour
 {
-    public float delayBeforeShake = 1.5f;
+    public float shakeDelay = 1f;
     public float shakeDuration = 0.5f;
-    public float shakeAmount = 0.1f;
+    public float respawnDelay = 3.5f;
+    public float shakeMagnitude = 0.05f;
 
-    bool isTriggered = false;
+    float shakeDurationTimer = 0f;
+    float shakeTimer = 0f;
+
+    bool playerOnPlatform = false;
+    bool isShaking = false;
+    bool isFalling = false;
+    //bool isTriggered = false;
+
     Vector3 originalPosition;
+    Quaternion originalRotation;
     Rigidbody2D rb;
 
     void Start()
     {
         originalPosition = transform.position;
+        originalRotation = transform.rotation;
         rb = GetComponent<Rigidbody2D>();
-        rb.bodyType = RigidbodyType2D.Kinematic; 
+        rb.bodyType = RigidbodyType2D.Kinematic;
+
     }
 
-    public void ActivatePlatform()
+    private void Update()
     {
-        if (!isTriggered)
+        if (isFalling || isShaking) return;
+
+        if (playerOnPlatform)
         {
-            isTriggered = true;
-            StartCoroutine(FallSequence());
+            shakeTimer += Time.deltaTime;
+
+            if (shakeTimer >= shakeDelay)
+            {
+                StartShaking();
+            }
+        }
+        else
+        {
+            shakeTimer = 0f;
         }
     }
 
-    IEnumerator FallSequence()
+    void StartShaking()
     {
-         yield return new WaitForSeconds(delayBeforeShake);
-        float elapsed = 0f;
+        isShaking = true;
+        shakeDurationTimer = 0f;
+        InvokeRepeating("ShakePlatform", 0f, 0.02f);
+        Invoke("CheckIfShouldFall", shakeDuration);
+    }
+    void ShakePlatform()
+    {
+        transform.position = originalPosition + (Vector3)Random.insideUnitCircle * shakeMagnitude;
+    }
+    void CheckIfShouldFall()
+    {
+        CancelInvoke("ShakePlatform");
+        transform.position = originalPosition;
+        isShaking = false;
 
-        while (elapsed < shakeDuration)
+        if (playerOnPlatform)
         {
-            float x = Random.Range(-shakeAmount, shakeAmount);
-            float y = Random.Range(-shakeAmount, shakeAmount);
-
-            transform.position = originalPosition + new Vector3(x, y, 0);
-
-            elapsed += Time.deltaTime;
-            yield return null;
+            Fall();
         }
+        else
+        {
+            // Player escaped, reset everything
+            shakeTimer = 0f;
+        }
+    }
+    void Fall()
+    {
+        isFalling = true;
+        rb.bodyType = RigidbodyType2D.Dynamic;
+        Invoke("Respawn", respawnDelay);
+    }
+    void Respawn()
+    {
+        // Reset state
+        isFalling = false;
+        playerOnPlatform = false;
+        shakeTimer = 0f;
+        rb.bodyType = RigidbodyType2D.Kinematic;
+        rb.linearVelocity = Vector2.zero;
+        rb.angularVelocity = 0f;
 
         transform.position = originalPosition;
-
-        rb.bodyType = RigidbodyType2D.Dynamic;
+        transform.rotation = originalRotation;
+    }
+    void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            playerOnPlatform = true;
+        }
+    }
+    void OnCollisionExit2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            playerOnPlatform = false;
+        }
     }
 }
+

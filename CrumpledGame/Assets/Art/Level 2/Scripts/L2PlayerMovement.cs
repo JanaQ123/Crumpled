@@ -23,6 +23,8 @@ public class L2PlayerMovement : MonoBehaviour
 
     Coroutine slowCoroutine;
 
+    const float originalSpeed = 10;
+
 
     void Start()
     {
@@ -77,12 +79,6 @@ public class L2PlayerMovement : MonoBehaviour
         {
             kp.Hit();
         }
-
-        L2FallingPlatform fp = collision.gameObject.GetComponent<L2FallingPlatform>();
-        if (fp != null)
-        {
-            fp.ActivatePlatform();
-        }
     }
 
     void OnCollisionExit2D(Collision2D collision)
@@ -106,26 +102,21 @@ public class L2PlayerMovement : MonoBehaviour
     }
 
     //fot the sticky platforms
-    public void ApplySlow (float slowMultiplier, float duration)
+    public void ApplySlow (float slowMultiplier)
     {
-        if(slowCoroutine != null)
-        {
-            StopCoroutine(slowCoroutine);
-        }
-        slowCoroutine= StartCoroutine(Slow(slowMultiplier, duration));
+        speed = 0.4f;
+        Invoke("RemoveSlow", 2f);
+
     }
 
-    IEnumerator Slow (float slowMultiplier, float duration)
+    public void RemoveSlow()
     {
-        float originalSpeed = speed;
-        speed = originalSpeed * slowMultiplier;
+        
+        speed = originalSpeed;  
 
-        yield return new WaitForSeconds(duration);
-       
-        speed = originalSpeed;
-
-        slowCoroutine = null;
     }
+
+    
 
 }
 
