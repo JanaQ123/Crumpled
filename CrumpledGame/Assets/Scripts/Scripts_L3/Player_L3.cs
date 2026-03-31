@@ -9,6 +9,12 @@ public class Player_L3 : MonoBehaviour
     Vector3 direction;
     Vector3 playerPos;  
     public TimelineController timelineController;
+    Camera mainCam;
+    float newFarClip = 100f;
+    void Start()
+    {
+        mainCam = Camera.main;
+    }
     void Update()
     {
        PlayerMove();
@@ -35,6 +41,11 @@ public class Player_L3 : MonoBehaviour
         else if (other.collider.CompareTag("Building"))
         {
             timelineController.RestartAtCheckPoint();
+        }
+        else if (other.collider.CompareTag("ClipPlane"))
+        {
+            print("Hit ClipPlane");
+            mainCam.farClipPlane = newFarClip;
         }
     }
 }
