@@ -15,7 +15,7 @@ public class LV1_PlayerController : MonoBehaviour
     public Vector3 targetPos;
     Vector3 targetScale;
     //Changing Lanes
-    float[] scales = { 0.53f, 0.65f, 0.87f };
+    float[] scales = { 0.53f, 0.6f, 0.8f };
     float[] positions = { -2.9f, -4.5f, -7f };
     float[] limits = { 0.5f, 0.75f, 1, 1f, 1, 1 };
     public bool isSwitching = false;
@@ -34,7 +34,7 @@ public class LV1_PlayerController : MonoBehaviour
     Quaternion originalRotation;
     float shadowRatio;
     float shadowY;
-    float shadowOffset=1.1f;
+    float shadowOffset=1f;
     Rigidbody2D rb;
     [SerializeField] GameObject visual;
     [SerializeField] GameObject shadow;
@@ -173,7 +173,9 @@ public class LV1_PlayerController : MonoBehaviour
         directionX = new Vector3(Mathf.RoundToInt(direction.x), 0, 0); //Normalizes the x vector to allow presisng of 2 buttons
         currentPosition -= Mathf.RoundToInt(direction.y); //changes float direction value to int
         currentPosition = Mathf.Clamp(currentPosition, 0, 2); //clamps to be in array
-        if (data.Get<Vector2>().y != 0 && !isSwitching&&canSwitchLane) { 
+        RaycastHit2D hit = Physics2D.Raycast(transform.position, new Vector2(0, data.Get<Vector2>().y), 2f, ~LayerMask.GetMask("Player"));
+
+        if (hit.collider == null && data.Get<Vector2>().y != 0 && !isSwitching&&canSwitchLane) { 
             ChangePositions(); //switch lanes
         }
         Vector2 input = data.Get<Vector2>();
@@ -202,7 +204,7 @@ public class LV1_PlayerController : MonoBehaviour
             visual.GetComponent<SpriteRenderer>().sortingOrder = 2;
             shadow.GetComponent<SpriteRenderer>().sortingLayerName = "Interactables-Behind";
             shadow.GetComponent<SpriteRenderer>().sortingOrder = 1;
-            shadowOffset = 1.1f;
+            shadowOffset = 1f;
 
         }
         if (currentPosition == 2) 
@@ -212,7 +214,7 @@ public class LV1_PlayerController : MonoBehaviour
             visual.GetComponent<SpriteRenderer>().sortingOrder = 2;
             shadow.GetComponent<SpriteRenderer>().sortingLayerName = "Player";
             shadow.GetComponent<SpriteRenderer>().sortingOrder = 1;
-            shadowOffset = 1.3f;
+            shadowOffset = 1.1f;
 
 
         }
