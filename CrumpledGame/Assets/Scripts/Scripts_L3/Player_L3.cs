@@ -10,10 +10,12 @@ public class Player_L3 : MonoBehaviour
     Vector3 playerPos;  
     public TimelineController timelineController;
     Camera mainCam;
+    float currentFarClip = 50f;
     float newFarClip = 100f;
     void Start()
     {
         mainCam = Camera.main;
+        mainCam.farClipPlane = currentFarClip;
     }
     void Update()
     {
@@ -37,15 +39,22 @@ public class Player_L3 : MonoBehaviour
         {
             SceneManager.LoadScene("Level 3");
         }
-        //if player hit building, restart at checkpoint
-        else if (other.collider.CompareTag("Building"))
+        //if player hit building or clothes, restart at checkpoint
+        else if (other.collider.CompareTag("Building") || other.collider.CompareTag("Clothes"))
         {
+            print("I collided with " + other.collider.tag);
             timelineController.RestartAtCheckPoint();
         }
         else if (other.collider.CompareTag("ClipPlane"))
         {
-            print("Hit ClipPlane");
             mainCam.farClipPlane = newFarClip;
+        }
+    }
+    public void OnRestart(InputValue value)
+    {
+        if (value.isPressed)
+        {
+            SceneManager.LoadScene("Level 3");
         }
     }
 }
