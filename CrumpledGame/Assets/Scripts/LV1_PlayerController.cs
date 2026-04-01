@@ -23,7 +23,7 @@ public class LV1_PlayerController : MonoBehaviour
     float[] stairPositions = {182.3f, 185.5f, 188.5f, 192f, 195.5f,198f};
     int nextStair = 0;
     float switchDuration = 0.1f;
-    bool canSwitchLane = true;
+    public bool canSwitchLane = true;
     float moveCounter=0;
     float maxMove=40;
     bool gotKicked=false;
@@ -38,6 +38,14 @@ public class LV1_PlayerController : MonoBehaviour
     Rigidbody2D rb;
     [SerializeField] GameObject visual;
     [SerializeField] GameObject shadow;
+
+    [Header("Hill Roll")]
+    public bool isRolling = true;         // set false when roll is done
+    public float rollGravity = 9.8f;
+    public float maxRollSpeed = 10f;
+    public float playerHalfHeight = 0.5f;
+    public float dragMultiplier = 0.95f;
+    Vector2 rollVelocity = Vector2.zero;
 
     void Start()
     {
@@ -264,7 +272,7 @@ public class LV1_PlayerController : MonoBehaviour
     {
         speed = 0;
         canSwitchLane = false;
-        this.transform.localScale=new Vector3(this.transform.localScale.x+0.2f, this.transform.localScale.y, this.transform.localScale.z);
+        //this.transform.localScale=new Vector3(this.transform.localScale.x+0.2f, this.transform.localScale.y, this.transform.localScale.z);
         visual.GetComponent<Animator>().SetBool("Pain", true);
         Invoke("EndGum", 3f);
 
@@ -273,14 +281,76 @@ public class LV1_PlayerController : MonoBehaviour
     {
         canSwitchLane = true;
         speed = 14;
-        this.transform.localScale = new Vector3(this.transform.localScale.y, this.transform.localScale.y, this.transform.localScale.z);
+        //this.transform.localScale = new Vector3(this.transform.localScale.y, this.transform.localScale.y, this.transform.localScale.z);
         visual.GetComponent<Animator>().SetBool("Pain", false);
 
 
     }
     void FixedUpdate()
     {
+
+        if (isRolling)
+        {
+            RollDownHill();
+            return; 
+        }
+
         Vector2 newPos = rb.position + new Vector2(direction.x, 0) * speed * Time.fixedDeltaTime;
         rb.MovePosition(newPos);
+    }
+
+    void RollDownHill()
+    {
+        Vector2 rayOrigin = rb.position + Vector2.up * 0.1f;
+        RaycastHit2D hit = Physics2D.Raycast(rayOrigin, Vector2.down, 3f, LayerMask.GetMask("Ground"));
+
+        Debug.DrawRay(rayOrigin, Vector2.down * 3f, Color.red); // visualize in scene view
+
+        if (hit.collider != null)
+        {
+            Vector2 slope = new Vector2(hit.normal.y, -hit.normal.x);
+
+            float slopeAngle = Vector2.Angle(hit.normal, Vector2.up);
+            if (slopeAngle > 5f)
+            {
+                // is the slope going down in the direction of movement?
+                bool goingDownhill = (slope.x > 0 && rollVelocity.x > 0) ||
+                                     (slope.x < 0 && rollVelocity.x < 0);
+
+                if (goingDownhill)
+                {
+                    // downhill - apply light gravity, heavy drag
+                    rollVelocity += slope * rollGravity * Time.fixedDeltaTime;
+                    rollVelocity *= 0.92f; // strong drag going down
+                }
+                else
+                {
+                    // uphill - help the player climb, no gravity fighting them
+                    rollVelocity += slope * rollGravity * 0.2f * Time.fixedDeltaTime; // barely any gravity
+                    rollVelocity *= 0.98f; // light drag going up
+                }
+            }
+            else
+            {
+                // flat ground friction
+                rollVelocity.x = Mathf.MoveTowards(rollVelocity.x, 0, rollGravity * Time.fixedDeltaTime);
+            }
+
+
+            // ✅ player input nudges him forward/back on top of slope gravity
+            rollVelocity.x += direction.x * speed * Time.fixedDeltaTime;
+
+            rollVelocity.x = Mathf.Clamp(rollVelocity.x, -maxRollSpeed, maxRollSpeed);
+            rollVelocity.y = Mathf.Clamp(rollVelocity.y, -maxRollSpeed, maxRollSpeed);
+
+            Vector2 newPos = rb.position + rollVelocity * Time.fixedDeltaTime;
+            newPos.y = hit.point.y + playerHalfHeight;
+            rb.MovePosition(newPos);
+        }
+        else
+        {
+            rollVelocity += Vector2.down * rollGravity * Time.fixedDeltaTime;
+            rb.MovePosition(rb.position + rollVelocity * Time.fixedDeltaTime);
+        }
     }
 }

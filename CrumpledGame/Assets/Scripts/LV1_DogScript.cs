@@ -1,0 +1,78 @@
+using UnityEngine;
+using UnityEngine.Playables;
+using UnityEngine.UIElements;
+
+public class LV1_DogScript : MonoBehaviour
+{
+    [SerializeField] GameObject dog;
+    [SerializeField] GameObject player;
+    [SerializeField] GameObject playerShadow;
+
+    [SerializeField] GameObject dogHead;
+    [SerializeField] GameObject dogHeadBone;
+    [SerializeField] PlayableDirector endingTimeline;
+
+
+    bool isFollow =false;
+    bool isAttached = false;
+    float speed = 17;
+    Animator anim;
+    void Start()
+    {
+        anim=dog.GetComponent<Animator>();
+        endingTimeline.gameObject.SetActive(false);
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "Player")
+        {
+            anim.SetTrigger("Walk");
+            Invoke("DelayWalk", 0.5f);
+        }
+    }
+    void DelayWalk()
+    {
+        isFollow = true;
+        dogHead.GetComponent<SpriteRenderer>().sortingLayerName = "Interactables-Front";
+
+
+    }
+    public void Attach()
+    {
+        isAttached=true;
+
+    }
+    void Update()
+    {
+        if (isFollow)
+        {
+           transform.position = Vector3.MoveTowards(
+                               transform.position,
+                               player.transform.position,
+                               speed * Time.deltaTime
+       );
+            if (Vector3.Distance(this.transform.position, player.transform.position) <= 0.1f)
+            {
+                anim.SetTrigger("Bend");
+                isFollow = false;
+
+            }
+        }
+        if (isAttached)
+        {
+            player.transform.position = dogHeadBone.transform.position;
+            playerShadow.SetActive(false);
+            player.GetComponent<LV1_PlayerController>().canSwitchLane = false;
+            player.transform.localScale = new Vector3(0.43f, 0.43f, 0.43f);
+            player.transform.localRotation = Quaternion.identity;
+            Invoke("PlayTimeline", 2f);
+        }
+    }
+    void PlayTimeline()
+    {
+        endingTimeline.gameObject.SetActive(true);
+        endingTimeline.Play();
+    }
+
+}

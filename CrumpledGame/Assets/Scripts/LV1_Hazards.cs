@@ -7,7 +7,6 @@ public class LV1_Hazards : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        print("entered");
         if (collision.gameObject.tag == "Player")
         {
             player = collision.gameObject;
