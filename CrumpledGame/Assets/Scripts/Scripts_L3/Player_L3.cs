@@ -4,7 +4,7 @@ using UnityEngine.SceneManagement;
 
 public class Player_L3 : MonoBehaviour
 {
-    float moveSpeed = 9f;
+    float moveSpeed = 10f;
     float playerPosX;
     Vector3 direction;
     Vector3 playerPos;  
