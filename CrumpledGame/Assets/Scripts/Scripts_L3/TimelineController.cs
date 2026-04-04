@@ -16,11 +16,12 @@ public class TimelineController : MonoBehaviour
         timeline.enabled = false;
         player.GetComponent<Player_L3>().isDead = true;
         playerAnim.Play("player_died");
-        player.GetComponent<Player_L3>().isDead = false;
     }
     public void RestartAtCheckPoint()
     {
-        timeline.Evaluate();
+        player.GetComponent<Player_L3>().isDead = false;
+        playerAnim.Play("flying");
+        timeline.enabled = true;
         timeline.time = checkpoint;
         timeline.Play();
     }

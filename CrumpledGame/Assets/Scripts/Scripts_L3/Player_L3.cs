@@ -57,7 +57,7 @@ public class Player_L3 : MonoBehaviour
     void RestartLevel()
     {
         SceneManager.LoadScene("Level 3");
-        isFlying.SetTrigger("flying"); 
+        isFlying.Play("flying"); 
     }
     void RestartCheckpoint()
     {
