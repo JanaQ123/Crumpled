@@ -48,6 +48,11 @@ public class Player_L3 : MonoBehaviour
             isFlying.SetTrigger("flying");
             Invoke("RestartCheckpoint", 3f);
         }
+        //if player hits letter, collect it
+        else if (other.collider.CompareTag("Letter_L3"))
+        {
+            other.gameObject.SetActive(false);
+        }
     }
     public void OnRestart(InputValue value)
     {
