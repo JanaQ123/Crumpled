@@ -4,21 +4,20 @@ using UnityEngine.SceneManagement;
 
 public class Player_L3 : MonoBehaviour
 {
-    float moveSpeed = 10f;
+    float moveSpeed = 10.5f;
     float playerPosX;
     Vector3 direction;
     Vector3 playerPos;  
     public TimelineController timelineController;
     Animator isFlying;
-    //public bool isDead = false;
+    public bool isDead = false;
     void Start()
     {
         isFlying = GetComponentInChildren<Animator>();
-        //isFlying.SetTrigger("flying");
     }
     void Update()
     {
-       //if(isDead) return;
+       if(isDead) return;
        PlayerMove();
     }
     void PlayerMove()
@@ -38,15 +37,12 @@ public class Player_L3 : MonoBehaviour
         if(other.collider.CompareTag("Bird"))
         {
             timelineController.StopTimeline();
-            isFlying.SetTrigger("died");
-            Invoke("RestartLevel", 3.2f);
+            Invoke("RestartLevel", 3f);
         }
         //if player hit building or clothes, restart at checkpoint
         else if (other.collider.CompareTag("Building") || other.collider.CompareTag("Clothes"))
         {
-            timelineController.StopTimeline();
-            isFlying.SetTrigger("died");
-            Invoke("RestartCheckpoint", 3.2f);
+            Invoke("RestartCheckpoint", 3f);
         }
     }
     public void OnRestart(InputValue value)
@@ -59,9 +55,11 @@ public class Player_L3 : MonoBehaviour
     void RestartLevel()
     {
         SceneManager.LoadScene("Level 3");
+        isFlying.SetTrigger("flying"); 
     }
     void RestartCheckpoint()
     {
         timelineController.RestartAtCheckPoint();
+        isFlying.SetTrigger("flying");
     }
 }
