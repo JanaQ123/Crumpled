@@ -42,6 +42,8 @@ public class Player_L3 : MonoBehaviour
         //if player hit building or clothes, restart at checkpoint
         else if (other.collider.CompareTag("Building") || other.collider.CompareTag("Clothes"))
         {
+            timelineController.StopTimeline();
+            isFlying.SetTrigger("flying");
             Invoke("RestartCheckpoint", 3f);
         }
     }
@@ -60,6 +62,5 @@ public class Player_L3 : MonoBehaviour
     void RestartCheckpoint()
     {
         timelineController.RestartAtCheckPoint();
-        isFlying.SetTrigger("flying");
     }
 }

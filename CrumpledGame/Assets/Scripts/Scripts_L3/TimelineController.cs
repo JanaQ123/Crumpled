@@ -20,13 +20,8 @@ public class TimelineController : MonoBehaviour
     }
     public void RestartAtCheckPoint()
     {
-        timeline.enabled = false;
-        player.GetComponent<Player_L3>().isDead = true;
-        playerAnim.Play("player_died");
         timeline.Evaluate();
-        timeline.enabled = true;
         timeline.time = checkpoint;
-        player.GetComponent<Player_L3>().isDead = false;
         timeline.Play();
     }
 }
