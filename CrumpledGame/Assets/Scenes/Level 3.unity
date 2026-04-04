@@ -3960,59 +3960,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 7.33, y: 1.42, z: 0.2}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!1 &465121717
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 465121719}
-  - component: {fileID: 465121718}
-  m_Layer: 0
-  m_Name: far clipping plane collider
-  m_TagString: ClipPlane
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!65 &465121718
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 465121717}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 31.120588, y: 48.24729, z: 10.789612}
-  m_Center: {x: 2.0836802, y: 9.796383, z: -0.28063965}
---- !u!4 &465121719
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 465121717}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -104.7, z: 331.31}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &468304785
 GameObject:
   m_ObjectHideFlags: 0
@@ -6932,8 +6879,8 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1886218350}
   - {fileID: 1725266259}
+  - {fileID: 1886218350}
   m_Father: {fileID: 619258713}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &736637011
@@ -6949,6 +6896,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Player_L3
   timelineController: {fileID: 1373690510}
+  isDead: 0
 --- !u!114 &736637012
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13593,6 +13541,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c4d0190c3bdae4340b4d9534834b9826, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TimelineController
+  playerScript: {fileID: 736637011}
+  playerAnim: {fileID: 1725266260}
 --- !u!1 &1393151588
 GameObject:
   m_ObjectHideFlags: 0
@@ -17153,7 +17103,7 @@ Animator:
   m_GameObject: {fileID: 1725266257}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 237a62ae86a674a59bfd986a8694057f, type: 2}
+  m_Controller: {fileID: 9100000, guid: 94c8dd8144fea4baab29731ec7b70da3, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -21796,7 +21746,6 @@ SceneRoots:
   - {fileID: 785369167}
   - {fileID: 2059704987}
   - {fileID: 1152059025}
-  - {fileID: 465121719}
   - {fileID: 1112368773}
   - {fileID: 1027213320}
   - {fileID: 1907010096}

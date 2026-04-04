@@ -9,16 +9,16 @@ public class Player_L3 : MonoBehaviour
     Vector3 direction;
     Vector3 playerPos;  
     public TimelineController timelineController;
-    Camera mainCam;
-    float currentFarClip = 50f;
-    float newFarClip = 100f;
+    Animator isFlying;
+    //public bool isDead = false;
     void Start()
     {
-        mainCam = Camera.main;
-        mainCam.farClipPlane = currentFarClip;
+        isFlying = GetComponentInChildren<Animator>();
+        //isFlying.SetTrigger("flying");
     }
     void Update()
     {
+       //if(isDead) return;
        PlayerMove();
     }
     void PlayerMove()
@@ -37,17 +37,16 @@ public class Player_L3 : MonoBehaviour
         //if player hit bird, restart level
         if(other.collider.CompareTag("Bird"))
         {
-            SceneManager.LoadScene("Level 3");
+            timelineController.StopTimeline();
+            isFlying.SetTrigger("died");
+            Invoke("RestartLevel", 3.2f);
         }
         //if player hit building or clothes, restart at checkpoint
         else if (other.collider.CompareTag("Building") || other.collider.CompareTag("Clothes"))
         {
-            print("I collided with " + other.collider.tag);
-            timelineController.RestartAtCheckPoint();
-        }
-        else if (other.collider.CompareTag("ClipPlane"))
-        {
-            mainCam.farClipPlane = newFarClip;
+            timelineController.StopTimeline();
+            isFlying.SetTrigger("died");
+            Invoke("RestartCheckpoint", 3.2f);
         }
     }
     public void OnRestart(InputValue value)
@@ -56,5 +55,13 @@ public class Player_L3 : MonoBehaviour
         {
             SceneManager.LoadScene("Level 3");
         }
+    }
+    void RestartLevel()
+    {
+        SceneManager.LoadScene("Level 3");
+    }
+    void RestartCheckpoint()
+    {
+        timelineController.RestartAtCheckPoint();
     }
 }
