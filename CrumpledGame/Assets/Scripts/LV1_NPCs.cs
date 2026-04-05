@@ -9,7 +9,7 @@ public class LV1_NPCs : MonoBehaviour
     bool isWalking = false;
     Animator anim;
     bool stepOver = false;
-    float stepDownAmount = 0.3f;
+    float stepDownAmount = 2f;
     bool steppedDown = false;
     float originalY;
     void Start()
@@ -29,7 +29,6 @@ public class LV1_NPCs : MonoBehaviour
         RaycastHit2D hit = Physics2D.Raycast(transform.position + new Vector3(-2, 2, 0), -transform.right, 5f, LayerMask.GetMask("Obstacle"));
         if (hit.collider != null && !stepOver)
         {
-            print("i hit an obstacle");
             stepOver = true;
             StartCoroutine(StepOverObstacle());
         }
@@ -65,7 +64,6 @@ public class LV1_NPCs : MonoBehaviour
         
         while (Physics2D.Raycast(transform.position, transform.up, 2f, LayerMask.GetMask("Obstacle")))
         {
-            print("can't move im stuckkk");
             yield return null; 
         }
         while (Mathf.Abs(transform.parent.position.y - originalY) > 0.01f)

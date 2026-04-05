@@ -28,8 +28,9 @@ public class LV1_StairsScript : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             playerParent.transform.position = new Vector3(playerParent.transform.position.x, -7.73f, 0f);
-            cameraTarget.GetComponent<LV1_CameraTarget>().ChangeY();
+            //cameraTarget.GetComponent<LV1_CameraTarget>().ChangeY();
             player.GetComponent<LV1_PlayerController>().setStairControl();
+            playerParent.GetComponentInChildren<LV1_CameraTarget>().resetTarget=true;
         }
     }
 }

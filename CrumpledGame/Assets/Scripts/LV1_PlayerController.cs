@@ -156,12 +156,13 @@ public class LV1_PlayerController : MonoBehaviour
                 transform.position = new Vector3(Mathf.Max(transform.position.x, backLimit), transform.position.y, 0);
             }
 
-            if (nextStair < 6 && transform.position.x > stairPositions[nextStair] && !isSwitching)
+            //if(nextStair < stairPositions.Length -)
+            if (nextStair <= 6 && transform.position.x > stairPositions[nextStair] && !isSwitching)
             {
-                if (nextStair == 5)
+                if (nextStair == 3)
                 {
                     print("final stair");
-                    targetPos = new Vector3(transform.localPosition.x, positions[currentPosition], 0); // actually move Y!
+                    targetPos = new Vector3(transform.localPosition.x, transform.localPosition.y - 2f, 0); // actually move Y!
                 }
                 else
                 {
@@ -218,16 +219,16 @@ public class LV1_PlayerController : MonoBehaviour
         {
             visual.GetComponent<SpriteRenderer>().sortingLayerName = "Midground";
             visual.GetComponent<SpriteRenderer>().sortingOrder =2;
-            shadow.GetComponent<SpriteRenderer>().sortingLayerName = "Midground";
-            shadow.GetComponent<SpriteRenderer>().sortingOrder = 1;
+            //shadow.GetComponent<SpriteRenderer>().sortingLayerName = "Midground";
+            //shadow.GetComponent<SpriteRenderer>().sortingOrder = 1;
             shadowOffset = 0.75f;
         }
         if (currentPosition == 1)
         {
             visual.GetComponent<SpriteRenderer>().sortingLayerName = "Player";
             visual.GetComponent<SpriteRenderer>().sortingOrder = 2;
-            shadow.GetComponent<SpriteRenderer>().sortingLayerName = "Player";
-            shadow.GetComponent<SpriteRenderer>().sortingOrder = 1;
+            //shadow.GetComponent<SpriteRenderer>().sortingLayerName = "Player";
+            //shadow.GetComponent<SpriteRenderer>().sortingOrder = 1;
             shadowOffset = 1f;
 
         }
@@ -236,13 +237,14 @@ public class LV1_PlayerController : MonoBehaviour
 
             visual.GetComponent<SpriteRenderer>().sortingLayerName = "Interactables-Front";
             visual.GetComponent<SpriteRenderer>().sortingOrder = 2;
-            shadow.GetComponent<SpriteRenderer>().sortingLayerName = "Interactables-Front";
-            shadow.GetComponent<SpriteRenderer>().sortingOrder = 1;
+            //shadow.GetComponent<SpriteRenderer>().sortingLayerName = "Interactables-Front";
+            //shadow.GetComponent<SpriteRenderer>().sortingOrder = 1;
             shadowOffset = 1.1f;
 
 
         }
         float yOffset = isGoingDownStairs ? -nextStair-1 : 0f;
+        if (isGoingDownStairs && nextStair == 4) yOffset -= 1f;
         targetPos = new Vector3(transform.localPosition.x, positions[currentPosition] + yOffset, 0);
         targetScale = new Vector3(scales[currentPosition], scales[currentPosition], scales[currentPosition]);
         isSwitching = true;
@@ -257,9 +259,10 @@ public class LV1_PlayerController : MonoBehaviour
             transform.localPosition = new Vector3(transform.localPosition.x, positions[currentPosition], 0);
             targetPos = new Vector3(transform.localPosition.x, positions[currentPosition], 0);
             targetScale = new Vector3(scales[currentPosition], scales[currentPosition], scales[currentPosition]);
-            isSwitching = false;
             speed = 14;
         }
+        isSwitching = false;
+
     }
 
     public bool getStairStatus()

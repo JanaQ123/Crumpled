@@ -28,8 +28,6 @@ public class LV1_Hazards : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        print("exited");
-
         if (collision.gameObject.tag == "Player")
         {
             player = collision.gameObject;
