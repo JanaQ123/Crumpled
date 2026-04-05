@@ -1,21 +1,39 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.Identifiers;
+using UnityEngine.UIElements;
 
 public class LV1_NPCs : MonoBehaviour
 {
     float speed = 9f;
-    bool isWalking = true;
+    bool isWalking = false;
     Animator anim;
+    bool stepOver = false;
+    float stepDownAmount = 0.3f;
+    bool steppedDown = false;
+    float originalY;
     void Start()
     {
         anim = GetComponent<Animator>();
-        anim.speed = Random.Range(0.8f, 1.2f);
+        //anim.speed = Random.Range(0.8f, 1.2f);
         anim.Play("DefaultWalk", 0, Random.Range(0f, 1f));
+        originalY = transform.parent.position.y;
     }
     void Update()
     {
+        Debug.DrawRay(transform.position+new Vector3(-4, 2, 0), -transform.right * 5f, Color.red);
         if (isWalking)
+        {
             transform.parent.Translate(Vector3.left * speed * Time.deltaTime);
+        }
+        RaycastHit2D hit = Physics2D.Raycast(transform.position + new Vector3(-2, 2, 0), -transform.right, 5f, LayerMask.GetMask("Obstacle"));
+        if (hit.collider != null && !stepOver)
+        {
+            print("i hit an obstacle");
+            stepOver = true;
+            StartCoroutine(StepOverObstacle());
+        }
+     
     }
     public void StartWalking()
     {
@@ -24,6 +42,41 @@ public class LV1_NPCs : MonoBehaviour
     public void StopWalking()
     {
         isWalking = false;
+
+    }
+
+    IEnumerator StepOverObstacle()
+    {
+        float targetY = originalY - stepDownAmount;
+        if (steppedDown == false)
+        {
+            steppedDown = true;
+
+            while (Mathf.Abs(transform.parent.position.y - targetY) > 0.01f)
+            {
+                float newY = Mathf.MoveTowards(transform.parent.position.y, targetY, speed * Time.deltaTime);
+                transform.parent.position = new Vector3(transform.parent.position.x, newY, transform.parent.position.z);
+                yield return null;
+            }
+
+        }
+        
+       yield return new WaitForSeconds(1f);
+        
+        while (Physics2D.Raycast(transform.position, transform.up, 2f, LayerMask.GetMask("Obstacle")))
+        {
+            print("can't move im stuckkk");
+            yield return null; 
+        }
+        while (Mathf.Abs(transform.parent.position.y - originalY) > 0.01f)
+        {
+            float newY = Mathf.MoveTowards(transform.parent.position.y, originalY, speed * Time.deltaTime);
+            transform.parent.position = new Vector3(transform.parent.position.x, newY, transform.parent.position.z);
+            yield return null;
+        }
+        transform.parent.position = new Vector3(transform.parent.position.x, originalY, transform.parent.position.z);
+        steppedDown = false;
+        stepOver = false;
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {

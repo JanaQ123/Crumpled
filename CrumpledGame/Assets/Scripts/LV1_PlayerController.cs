@@ -2,6 +2,7 @@ using System.Collections;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 using UnityEngine.Windows;
 using static UnityEditor.Experimental.AssetDatabaseExperimental.AssetDatabaseCounters;
 public class LV1_PlayerController : MonoBehaviour
@@ -9,14 +10,14 @@ public class LV1_PlayerController : MonoBehaviour
     Vector3 direction;
     float x;
     float y;
-    float speed = 14;
+    float speed = 12;
     Vector3 directionX;
     int currentPosition = 1;
     public Vector3 targetPos;
     Vector3 targetScale;
     //Changing Lanes
     float[] scales = { 0.53f, 0.6f, 0.8f };
-    float[] positions = { -2.9f, -4.5f, -7f };
+    float[] positions = { -2.9f, -4.7f, -7.2f };
     float[] limits = { 0.5f, 0.75f, 1, 1f, 1, 1 };
     public bool isSwitching = false;
     bool isGoingDownStairs=false;
@@ -57,7 +58,13 @@ public class LV1_PlayerController : MonoBehaviour
         shadowY = shadow.transform.localPosition.y;
         rb=this.GetComponent<Rigidbody2D>();  
       originalRotation=this.transform.rotation;
+        currentPosition = 1;
+        ChangePositions();
 
+    }
+    void OnRestart()
+    {
+        SceneManager.LoadScene("Level 1");
     }
     void Update()
     {
@@ -114,16 +121,25 @@ public class LV1_PlayerController : MonoBehaviour
 
         if (isSwitching)
         {
-           targetPos.x = transform.localPosition.x;
+            targetPos.x = transform.localPosition.x;
 
-            transform.localPosition = Vector3.Lerp(transform.localPosition, targetPos, Time.deltaTime / switchDuration);
+            // transform.localPosition = Vector3.Lerp(transform.localPosition, targetPos, Time.deltaTime / switchDuration);
+            transform.localPosition = Vector3.MoveTowards(
+                 transform.localPosition,
+                 targetPos,
+                 9 * Time.deltaTime //speed is 9
+             );
             transform.localScale = Vector3.Lerp(transform.localScale, targetScale, Time.deltaTime / switchDuration);
+
+
             if (Mathf.Abs(transform.localPosition.y - targetPos.y) < 0.01f)
             {
                 transform.localPosition = new Vector3(transform.localPosition.x, targetPos.y, 0);
                 transform.localScale = targetScale;
                 isSwitching = false;
             }
+
+
         }
         if (nextStair >=5)
         {
@@ -208,9 +224,9 @@ public class LV1_PlayerController : MonoBehaviour
         }
         if (currentPosition == 1)
         {
-            visual.GetComponent<SpriteRenderer>().sortingLayerName = "Interactables-Behind";
+            visual.GetComponent<SpriteRenderer>().sortingLayerName = "Player";
             visual.GetComponent<SpriteRenderer>().sortingOrder = 2;
-            shadow.GetComponent<SpriteRenderer>().sortingLayerName = "Interactables-Behind";
+            shadow.GetComponent<SpriteRenderer>().sortingLayerName = "Player";
             shadow.GetComponent<SpriteRenderer>().sortingOrder = 1;
             shadowOffset = 1f;
 
@@ -218,9 +234,9 @@ public class LV1_PlayerController : MonoBehaviour
         if (currentPosition == 2) 
         {
 
-            visual.GetComponent<SpriteRenderer>().sortingLayerName = "Player";
+            visual.GetComponent<SpriteRenderer>().sortingLayerName = "Interactables-Front";
             visual.GetComponent<SpriteRenderer>().sortingOrder = 2;
-            shadow.GetComponent<SpriteRenderer>().sortingLayerName = "Player";
+            shadow.GetComponent<SpriteRenderer>().sortingLayerName = "Interactables-Front";
             shadow.GetComponent<SpriteRenderer>().sortingOrder = 1;
             shadowOffset = 1.1f;
 
