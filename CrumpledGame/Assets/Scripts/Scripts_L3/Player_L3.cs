@@ -4,7 +4,7 @@ using UnityEngine.SceneManagement;
 
 public class Player_L3 : MonoBehaviour
 {
-    float moveSpeed = 10.5f;
+    float moveSpeed = 11.5f;
     float playerPosX;
     Vector3 direction;
     Vector3 playerPos;  
@@ -37,6 +37,7 @@ public class Player_L3 : MonoBehaviour
         if(other.collider.CompareTag("Bird"))
         {
             //other.gameObject.GetComponent<Renderer>().enabled = false;
+            //other.gameObject.transform.position = Vector3.MoveTowards(other.gameObject.transform.position, other.gameObject.transform.position + new Vector3(0, 10, 0), 8 * Time.deltaTime);
             other.gameObject.SetActive(false);
             timelineController.StopTimeline();
             Invoke("RestartLevel", 3f);
