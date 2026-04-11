@@ -16,7 +16,6 @@ public class LV1_NPCs : MonoBehaviour
     {
         anim = GetComponent<Animator>();
         //anim.speed = Random.Range(0.8f, 1.2f);
-        anim.Play("DefaultWalk", 0, Random.Range(0f, 1f));
         originalY = transform.parent.position.y;
     }
     void Update()
@@ -36,6 +35,9 @@ public class LV1_NPCs : MonoBehaviour
     }
     public void StartWalking()
     {
+        speed = 9;
+        anim.SetBool("Stairs", false);
+        anim.Play("DefaultWalk", 0, Random.Range(0f, 1f));
         isWalking = true;
     }
     public void StopWalking()
@@ -83,6 +85,7 @@ public class LV1_NPCs : MonoBehaviour
 
         if (collision.gameObject.tag == "Stairs")
         {
+
             anim.speed = 1;
             anim.SetBool("Stairs", true);
             speed = 1;
@@ -103,11 +106,5 @@ public class LV1_NPCs : MonoBehaviour
         speed = 1;
 
     }
-    public void OnStairsAnimationEnd()
-    {
-        Destroy(transform.parent.gameObject);
-
-    }
-
 
 }

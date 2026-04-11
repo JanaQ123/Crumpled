@@ -1,4 +1,6 @@
+using System;
 using System.Collections;
+using Unity.Cinemachine;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -10,6 +12,7 @@ public class LV1_PlayerController : MonoBehaviour
     Vector3 direction;
     float x;
     float y;
+    float savedSpeed = 12;
     float speed = 12;
     Vector3 directionX;
     int currentPosition = 1;
@@ -39,6 +42,10 @@ public class LV1_PlayerController : MonoBehaviour
     Rigidbody2D rb;
     [SerializeField] GameObject visual;
     [SerializeField] GameObject shadow;
+    [SerializeField] CinemachineCamera mountainCam;
+
+    bool inGum = false;
+    bool inSewer = false;
 
     [Header("Hill Roll")]
     public bool isRolling = true;         // set false when roll is done
@@ -69,7 +76,12 @@ public class LV1_PlayerController : MonoBehaviour
     void Update()
     {
          if (gotKicked)
+
             {
+            visual.GetComponent<Animator>().SetBool("Pain", true);
+
+            if (inGum) {EndGum(); }  
+            if(inSewer) {   EndSewerCover(); }  
             shadow.transform.localPosition = new Vector3(transform.localPosition.x, shadowY, transform.localPosition.z);
               Vector3 minScale = tempShadowScale * 0.2f; 
               isSwitching = false;
@@ -95,6 +107,8 @@ public class LV1_PlayerController : MonoBehaviour
                     gotKicked = false;
                     isSwitching = true;
                     kickCounter = 0;
+                    visual.GetComponent<Animator>().SetBool("Pain", false);
+
                 }
 
             }
@@ -259,7 +273,7 @@ public class LV1_PlayerController : MonoBehaviour
             transform.localPosition = new Vector3(transform.localPosition.x, positions[currentPosition], 0);
             targetPos = new Vector3(transform.localPosition.x, positions[currentPosition], 0);
             targetScale = new Vector3(scales[currentPosition], scales[currentPosition], scales[currentPosition]);
-            speed = 14;
+            speed = savedSpeed;
         }
         isSwitching = false;
 
@@ -275,7 +289,7 @@ public class LV1_PlayerController : MonoBehaviour
         speed = speed/10;
         canSwitchLane = false;
         visual.GetComponent<Animator>().SetBool("Pain", true);
-
+        inSewer = true;
 
     }
 
@@ -283,7 +297,8 @@ public class LV1_PlayerController : MonoBehaviour
     {
         visual.GetComponent<Animator>().SetBool("Pain", false);
         canSwitchLane = true;
-        speed = speed * 10;
+        speed = savedSpeed;
+        inSewer = false;
 
     }
 
@@ -291,6 +306,7 @@ public class LV1_PlayerController : MonoBehaviour
     {
         speed = 0;
         canSwitchLane = false;
+        inGum = true;
         //this.transform.localScale=new Vector3(this.transform.localScale.x+0.2f, this.transform.localScale.y, this.transform.localScale.z);
         visual.GetComponent<Animator>().SetBool("Pain", true);
         Invoke("EndGum", 3f);
@@ -298,8 +314,9 @@ public class LV1_PlayerController : MonoBehaviour
     }
     void EndGum()
     {
+        inGum = false;
         canSwitchLane = true;
-        speed = 14;
+        speed = savedSpeed;
         //this.transform.localScale = new Vector3(this.transform.localScale.y, this.transform.localScale.y, this.transform.localScale.z);
         visual.GetComponent<Animator>().SetBool("Pain", false);
 
@@ -307,69 +324,131 @@ public class LV1_PlayerController : MonoBehaviour
     }
     void FixedUpdate()
     {
-
         if (isRolling)
         {
-            RollDownHill();
-            return; 
+            rb.AddForce(new Vector2(direction.x * speed, 0));
+            return;
         }
 
-        Vector2 newPos = rb.position + new Vector2(direction.x, 0) * speed * Time.fixedDeltaTime;
-        rb.MovePosition(newPos);
+        else
+
+        {
+
+            Vector2 newPos = rb.position + new Vector2(direction.x, 0) * speed * Time.fixedDeltaTime;
+            rb.MovePosition(newPos);
+
+        }
+
+
+
+        //Vector2 newPos = rb.position + new Vector2(direction.x, 0) * speed * Time.fixedDeltaTime;
+
+        //rb.MovePosition(newPos);
     }
 
-    void RollDownHill()
+    //void RollDownHill()
+    //{
+    //    Vector2 rayOrigin = rb.position + Vector2.up * 0.1f;
+    //    RaycastHit2D hit = Physics2D.Raycast(rayOrigin, Vector2.down, 3f, LayerMask.GetMask("Ground"));
+
+    //    Debug.DrawRay(rayOrigin, Vector2.down * 3f, Color.red); // visualize in scene view
+
+    //    if (hit.collider != null)
+    //    {
+    //        Vector2 slope = new Vector2(hit.normal.y, -hit.normal.x);
+
+    //        float slopeAngle = Vector2.Angle(hit.normal, Vector2.up);
+    //        if (slopeAngle > 5f)
+    //        {
+    //            // is the slope going down in the direction of movement?
+    //            bool goingDownhill = (slope.x > 0 && rollVelocity.x > 0) ||
+    //                                 (slope.x < 0 && rollVelocity.x < 0);
+
+    //            if (goingDownhill)
+    //            {
+    //                // downhill - apply light gravity, heavy drag
+    //                rollVelocity += slope * rollGravity * Time.fixedDeltaTime;
+    //                rollVelocity *= 0.92f; // strong drag going down
+    //            }
+    //            else
+    //            {
+    //                // uphill - help the player climb, no gravity fighting them
+    //                rollVelocity += slope * rollGravity * 0.2f * Time.fixedDeltaTime; // barely any gravity
+    //                rollVelocity *= 0.98f; // light drag going up
+    //            }
+    //        }
+    //        else
+    //        {
+    //            // flat ground friction
+    //            rollVelocity.x = Mathf.MoveTowards(rollVelocity.x, 0, rollGravity * Time.fixedDeltaTime);
+    //        }
+
+
+    //        // ✅ player input nudges him forward/back on top of slope gravity
+    //        rollVelocity.x += direction.x * speed * Time.fixedDeltaTime;
+
+    //        rollVelocity.x = Mathf.Clamp(rollVelocity.x, -maxRollSpeed, maxRollSpeed);
+    //        rollVelocity.y = Mathf.Clamp(rollVelocity.y, -maxRollSpeed, maxRollSpeed);
+
+    //        Vector2 newPos = rb.position + rollVelocity * Time.fixedDeltaTime;
+    //        newPos.y = hit.point.y + playerHalfHeight;
+    //        rb.MovePosition(newPos);
+    //    }
+    //    else
+    //    {
+    //        rollVelocity += Vector2.down * rollGravity * Time.fixedDeltaTime;
+    //        rb.MovePosition(rb.position + rollVelocity * Time.fixedDeltaTime);
+    //    }
+    //}
+    public void StartRolling()
+
     {
-        Vector2 rayOrigin = rb.position + Vector2.up * 0.1f;
-        RaycastHit2D hit = Physics2D.Raycast(rayOrigin, Vector2.down, 3f, LayerMask.GetMask("Ground"));
+        rb = this.GetComponent<Rigidbody2D>();
 
-        Debug.DrawRay(rayOrigin, Vector2.down * 3f, Color.red); // visualize in scene view
+        rb.gravityScale = 1f;
+        rb.angularDamping = 0.05f;
+        rb.linearDamping = 0.5f;
 
-        if (hit.collider != null)
-        {
-            Vector2 slope = new Vector2(hit.normal.y, -hit.normal.x);
+        rb.constraints = RigidbodyConstraints2D.None; // unfreeze everything
 
-            float slopeAngle = Vector2.Angle(hit.normal, Vector2.up);
-            if (slopeAngle > 5f)
-            {
-                // is the slope going down in the direction of movement?
-                bool goingDownhill = (slope.x > 0 && rollVelocity.x > 0) ||
-                                     (slope.x < 0 && rollVelocity.x < 0);
+        rb.collisionDetectionMode = CollisionDetectionMode2D.Continuous;
 
-                if (goingDownhill)
-                {
-                    // downhill - apply light gravity, heavy drag
-                    rollVelocity += slope * rollGravity * Time.fixedDeltaTime;
-                    rollVelocity *= 0.92f; // strong drag going down
-                }
-                else
-                {
-                    // uphill - help the player climb, no gravity fighting them
-                    rollVelocity += slope * rollGravity * 0.2f * Time.fixedDeltaTime; // barely any gravity
-                    rollVelocity *= 0.98f; // light drag going up
-                }
-            }
-            else
-            {
-                // flat ground friction
-                rollVelocity.x = Mathf.MoveTowards(rollVelocity.x, 0, rollGravity * Time.fixedDeltaTime);
-            }
+        rb.interpolation = RigidbodyInterpolation2D.Interpolate;
+
+        isRolling = true;
+
+        canSwitchLane = false;
 
 
-            // ✅ player input nudges him forward/back on top of slope gravity
-            rollVelocity.x += direction.x * speed * Time.fixedDeltaTime;
 
-            rollVelocity.x = Mathf.Clamp(rollVelocity.x, -maxRollSpeed, maxRollSpeed);
-            rollVelocity.y = Mathf.Clamp(rollVelocity.y, -maxRollSpeed, maxRollSpeed);
+    }
 
-            Vector2 newPos = rb.position + rollVelocity * Time.fixedDeltaTime;
-            newPos.y = hit.point.y + playerHalfHeight;
-            rb.MovePosition(newPos);
-        }
-        else
-        {
-            rollVelocity += Vector2.down * rollGravity * Time.fixedDeltaTime;
-            rb.MovePosition(rb.position + rollVelocity * Time.fixedDeltaTime);
-        }
+    public void StopRolling()
+
+    {
+        rb = this.GetComponent<Rigidbody2D>();
+
+        isRolling = false;
+
+        mountainCam.Priority = 0;
+
+        rb.WakeUp();
+
+
+
+    }
+
+    public void StartLanes()
+
+    {
+
+        currentPosition = 1;
+
+        ChangePositions();
+
+        canSwitchLane = true;
+
+
+
     }
 }

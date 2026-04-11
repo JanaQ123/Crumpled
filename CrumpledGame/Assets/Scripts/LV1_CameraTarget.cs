@@ -20,21 +20,20 @@ public class LV1_CameraTarget : MonoBehaviour
             //}
 
             Vector3 targetPos = new Vector3(
-                6f,
+                188,
                 -9.5f,
-                -2
+                -3
                     );
 
-            transform.localPosition = Vector3.MoveTowards(
-                transform.localPosition,
-                targetPos,
-                6 * Time.deltaTime
-            );
+            transform.position = Vector3.MoveTowards(
+             transform.position,
+             targetPos,  // your hardcoded world position
+             6 * Time.deltaTime
+             );
 
-            if (Vector3.Distance(transform.localPosition, targetPos) <= 0.01f)
+            if (Vector3.Distance(transform.position, targetPos) <= 0.01f)
             {
-                transform.localPosition = targetPos; // snap exact
-                //resetTarget = false;
+                transform.position = targetPos;
             }
         }
         //else if (resetTarget)
