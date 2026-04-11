@@ -9,23 +9,24 @@ public class LV1_NPCs : MonoBehaviour
     bool isWalking = false;
     Animator anim;
     bool stepOver = false;
-    float stepDownAmount = 2f;
+    float stepDownAmount = 1.7f;
     bool steppedDown = false;
     float originalY;
+    bool climbedStairs = false;
     void Start()
     {
         anim = GetComponent<Animator>();
-        //anim.speed = Random.Range(0.8f, 1.2f);
         originalY = transform.parent.position.y;
     }
     void Update()
     {
-        Debug.DrawRay(transform.position+new Vector3(-4, 2, 0), -transform.right * 5f, Color.red);
+        //Debug.DrawRay(transform.position + new Vector3(-10, 2, 0), -transform.right * 10f, Color.blue);
+
         if (isWalking)
         {
             transform.parent.Translate(Vector3.left * speed * Time.deltaTime);
         }
-        RaycastHit2D hit = Physics2D.Raycast(transform.position + new Vector3(-2, 2, 0), -transform.right, 5f, LayerMask.GetMask("Obstacle"));
+        RaycastHit2D hit = Physics2D.Raycast(transform.position + new Vector3(-2, 1, 0), -transform.right, 4f, LayerMask.GetMask("Obstacle"));
         if (hit.collider != null && !stepOver)
         {
             stepOver = true;
@@ -39,11 +40,12 @@ public class LV1_NPCs : MonoBehaviour
         anim.SetBool("Stairs", false);
         anim.Play("DefaultWalk", 0, Random.Range(0f, 1f));
         isWalking = true;
+        climbedStairs = false;
+
     }
     public void StopWalking()
     {
         isWalking = false;
-
     }
 
     IEnumerator StepOverObstacle()
@@ -81,23 +83,50 @@ public class LV1_NPCs : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.tag == "Player")
-        { collision.gameObject.GetComponent<LV1_PlayerController>().Kick(); }
-
-        if (collision.gameObject.tag == "Stairs")
         {
+            LayerMask mask = LayerMask.GetMask("Boundary", "Obstacle");
+            RaycastHit2D hit = Physics2D.Raycast(transform.position + new Vector3(-5, 2, 0), -transform.right, 5f, mask);
+            if (hit.collider == null)
+            {
+                collision.gameObject.GetComponent<LV1_PlayerController>().Kick();
+            }
+            if (hit)
+            {
+                collision.gameObject.GetComponent<LV1_PlayerController>().gotKicked = false;
+                collision.gameObject.GetComponent<LV1_PlayerController>().ChangePositions();
 
+            }
+        }
+
+        if (collision.gameObject.tag == "Stairs" && !climbedStairs)
+        {
             anim.speed = 1;
             anim.SetBool("Stairs", true);
             speed = 1;
-
+            climbedStairs = true;
         }
     }
     void OnTriggerStay2D(Collider2D collision)
     {
         if (collision.gameObject.tag == "Player")
-        { collision.gameObject.GetComponent<LV1_PlayerController>().Kick(); }
-       
+        {
+            LayerMask mask = LayerMask.GetMask("Boundary", "Obstacle");
 
+            RaycastHit2D hit = Physics2D.Raycast(transform.position + new Vector3(-5, 2, 0), -transform.right, 5f, mask);
+            if (hit.collider == null)
+            {
+
+                collision.gameObject.GetComponent<LV1_PlayerController>().Kick();
+            }
+            if (hit)
+            {
+                collision.gameObject.GetComponent<LV1_PlayerController>().gotKicked = false;
+                collision.gameObject.GetComponent<LV1_PlayerController>().ChangePositions();
+
+            }
+
+
+        }
     }
     void GoUpStairs()
     {

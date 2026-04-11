@@ -30,7 +30,7 @@ public class LV1_PlayerController : MonoBehaviour
     public bool canSwitchLane = true;
     float moveCounter=0;
     float maxMove=40;
-    bool gotKicked=false;
+    public bool gotKicked=false;
     int kickCounter;
     Vector3 originalShadowScale;
     Vector3 tempShadowScale;
@@ -43,9 +43,10 @@ public class LV1_PlayerController : MonoBehaviour
     [SerializeField] GameObject visual;
     [SerializeField] GameObject shadow;
     [SerializeField] CinemachineCamera mountainCam;
-
+    public bool canMoveBack = true;
     bool inGum = false;
     bool inSewer = false;
+    public bool inEndingGum = false;
 
     [Header("Hill Roll")]
     public bool isRolling = true;         // set false when roll is done
@@ -75,7 +76,8 @@ public class LV1_PlayerController : MonoBehaviour
     }
     void Update()
     {
-         if (gotKicked)
+
+        if (gotKicked)
 
             {
             visual.GetComponent<Animator>().SetBool("Pain", true);
@@ -117,7 +119,12 @@ public class LV1_PlayerController : MonoBehaviour
                 shadow.transform.localPosition = new Vector3(transform.localPosition.x, transform.localPosition.y-shadowOffset, transform.localPosition.z);
                 shadowRatio = transform.localScale.x / originalPlayerScale.x;
                 shadow.transform.localScale = originalShadowScale * shadowRatio;
+            if (!inGum && !inSewer)
+            {
+                visual.GetComponent<Animator>().SetBool("Pain", false);
+
             }
+        }
 
         if (directionX != Vector3.zero)
         {
@@ -175,7 +182,6 @@ public class LV1_PlayerController : MonoBehaviour
             {
                 if (nextStair == 3)
                 {
-                    print("final stair");
                     targetPos = new Vector3(transform.localPosition.x, transform.localPosition.y - 2f, 0); // actually move Y!
                 }
                 else
@@ -209,7 +215,8 @@ public class LV1_PlayerController : MonoBehaviour
     void OnMove(InputValue data)
     {
         direction = new Vector3(data.Get<Vector2>().x, data.Get<Vector2>().y, 0);
-        directionX = new Vector3(Mathf.RoundToInt(direction.x), 0, 0); //Normalizes the x vector to allow presisng of 2 buttons
+        directionX = new Vector3(Mathf.RoundToInt(direction.x), 0, 0);
+        if (!canMoveBack && direction.x < 0) direction.x = 0; // block left input
         currentPosition -= Mathf.RoundToInt(direction.y); //changes float direction value to int
         currentPosition = Mathf.Clamp(currentPosition, 0, 2); //clamps to be in array
         RaycastHit2D hit = Physics2D.Raycast(transform.position, new Vector2(0, data.Get<Vector2>().y), 2f, ~LayerMask.GetMask("Player"));
@@ -227,7 +234,7 @@ public class LV1_PlayerController : MonoBehaviour
         shadowY = shadow.transform.localPosition.y;
 
     }
-    void ChangePositions()
+    public void ChangePositions()
     {
         if (currentPosition == 0)
         {
@@ -304,6 +311,7 @@ public class LV1_PlayerController : MonoBehaviour
 
     public void StartGum()
     {
+
         speed = 0;
         canSwitchLane = false;
         inGum = true;

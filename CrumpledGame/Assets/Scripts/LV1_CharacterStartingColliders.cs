@@ -12,30 +12,33 @@ public class LV1_CharacterStartingColliders : MonoBehaviour
     Vector3[] npcStartPositions;
     void Start()
     {
-        player = GameObject.FindGameObjectWithTag("Player").transform;
+        if (player == null)
+        {
+            player = GameObject.Find("PlayerParent").transform.Find("ScenePaperBall");
+        }
 
         npcStartPositions = new Vector3[Characters.Length];
         for (int i = 0; i < Characters.Length; i++)
         {
             npcStartPositions[i] = Characters[i].transform.position;
         }
-        npcOffScreenX = isMarket ? -130 : -200;
+        npcOffScreenX = isMarket ? -130 : -220;
     }
 
     void Update()
     {
+        if (player != null) { print("found player"); }
 
         if (previousTrigger == null) return;
 
 
-        if (triggered && player.position.x < previousTrigger.transform.position.x)
+        if (triggered && player.position.x < (previousTrigger.transform.position.x-10))
         {
-            // wait until NPC is off screen THEN reset
+            Debug.Log($"Player local X: {player.position.x} | Boundary X: {previousTrigger.transform.position.x}");
+
             bool allNPCsOffScreen = true;
             for (int i = 0; i < Characters.Length; i++)
             {
-                Debug.Log($"{Characters[i].name} parent X: {Characters[i].transform.localPosition.x} | offScreenX: {npcOffScreenX}");
-
                 if (Characters[i].transform.localPosition.x > npcOffScreenX)
                 {
                     allNPCsOffScreen = false;
@@ -59,7 +62,6 @@ public class LV1_CharacterStartingColliders : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            triggered = true;
             for (int i = 0; i < Characters.Length; i++)
             {
                 Characters[i].gameObject.GetComponentInChildren<LV1_NPCs>().StartWalking();
@@ -71,4 +73,13 @@ public class LV1_CharacterStartingColliders : MonoBehaviour
             }
         }
     }
+
+    void OnTriggerExit2D(Collider2D other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            triggered = true;
+        }
+    }
+
 }

@@ -17,6 +17,8 @@ public class LV1_DogScript : MonoBehaviour
     bool isAttached = false;
     float speed = 17;
     Animator anim;
+    float closeTimer = 0f;
+
     void Start()
     {
         anim=dog.GetComponent<Animator>();
@@ -47,24 +49,26 @@ public class LV1_DogScript : MonoBehaviour
     {
         if (isFollow)
         {
+            player.GetComponent<LV1_PlayerController>().canSwitchLane=false;
            transform.position = Vector3.MoveTowards(
                                transform.position,
                                player.transform.position,
                                speed * Time.deltaTime
        );
-            if (Vector3.Distance(this.transform.position, player.transform.position) <= 0.1f)
+            if (Vector3.Distance(this.transform.position, player.transform.position) <= 0.1f && player.GetComponent<LV1_PlayerController>().inEndingGum)
             {
                 anim.SetTrigger("Bend");
                 isFollow = false;
 
             }
+            player.GetComponent<LV1_PlayerController>().canSwitchLane = false;
+            player.GetComponent<LV1_PlayerController>().canMoveBack = false;
         }
         if (isAttached)
         {
             player.transform.position = dogHeadBone.transform.position;
             playerShadow.SetActive(false);
-            player.GetComponent<LV1_PlayerController>().canSwitchLane = false;
-            player.transform.localScale = new Vector3(0.43f, 0.43f, 0.43f);
+            player.transform.localScale = new Vector3(0.5f, 0.5f, 0.5f);
             player.transform.localRotation = Quaternion.identity;
             Invoke("PlayTimeline", 2f);
         }

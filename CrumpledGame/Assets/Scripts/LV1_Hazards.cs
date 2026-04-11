@@ -17,6 +17,11 @@ public class LV1_Hazards : MonoBehaviour
             if (identifier == 1)
             {
                 player.GetComponent<LV1_PlayerController>().StartGum();
+                if (this.gameObject.name == "EndingGum")
+                {
+                    player.GetComponent<LV1_PlayerController>().inEndingGum = true;
+
+                }
             }
 
 
