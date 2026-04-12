@@ -36,9 +36,9 @@ public class Player_L3 : MonoBehaviour
         //if player hit bird, restart level
         if(other.collider.CompareTag("Bird"))
         {
-            //other.gameObject.GetComponent<Renderer>().enabled = false;
             //other.gameObject.transform.position = Vector3.MoveTowards(other.gameObject.transform.position, other.gameObject.transform.position + new Vector3(0, 10, 0), 8 * Time.deltaTime);
-            other.gameObject.SetActive(false);
+            //other.gameObject.SetActive(false);
+            print("I am hit");
             timelineController.StopTimeline();
             Invoke("RestartLevel", 3f);
         }
