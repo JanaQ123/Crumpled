@@ -68,6 +68,7 @@ public class LV1_PlayerController : MonoBehaviour
       originalRotation=this.transform.rotation;
         currentPosition = 1;
         ChangePositions();
+        mountainCam.Priority = 0;
 
     }
     void OnRestart()

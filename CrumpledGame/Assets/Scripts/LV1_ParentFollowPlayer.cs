@@ -7,6 +7,8 @@ public class LV1_PlayerParentFollow : MonoBehaviour
     public GameObject rollingPlayer;
 
     public GameObject normalPlayer;
+    public GameObject playerShadow;
+
 
     private Vector3 offset;
 
@@ -25,13 +27,14 @@ public class LV1_PlayerParentFollow : MonoBehaviour
     {
         rollingPlayer.SetActive(rolling);
         normalPlayer.SetActive(!rolling);
+        playerShadow.SetActive(!rolling);
 
         if (rolling)
 
         {
 
             
-            rollingPlayer.GetComponent<LV1_PlayerController>().StartRolling();
+            //rollingPlayer.GetComponent<LV1_PlayerController>().StartRolling();
 
         }
 
@@ -41,7 +44,7 @@ public class LV1_PlayerParentFollow : MonoBehaviour
 
             // entering follow mode
 
-            this.transform.position = new Vector3(2.3f,0.27f,0);
+            this.transform.position = new Vector3(4.6f,0.27f,0);
             normalPlayer.GetComponent<LV1_PlayerController>().StopRolling();
 
 

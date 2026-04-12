@@ -22,16 +22,16 @@ public class LV1_StopHillCollider : MonoBehaviour
 
     }
 
-    private void OnTriggerExit2D(Collider2D collision)
+    //private void OnTriggerExit2D(Collider2D collision)
 
-    {
-        if (collision.gameObject.tag == "Player")
-        {
-            collision.GetComponent<LV1_PlayerController>().StartLanes();
-        }
+    //{
+    //    if (collision.gameObject.tag == "Player")
+    //    {
+    //        collision.GetComponent<LV1_PlayerController>().StartLanes();
+    //    }
 
 
 
-    }
+    //}
 
 }
