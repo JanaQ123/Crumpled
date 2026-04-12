@@ -9,7 +9,7 @@ using UnityEngine.Windows;
 using static UnityEditor.Experimental.AssetDatabaseExperimental.AssetDatabaseCounters;
 public class LV1_PlayerController : MonoBehaviour
 {
-    Vector3 direction;
+    public Vector3 direction;
     float x;
     float y;
     float savedSpeed = 12;

@@ -26,7 +26,7 @@ public class LV1_StartBallHandler : MonoBehaviour
     {
         bool isMoving = rb.linearVelocity.magnitude > 0.1f;
 
-        if (wasMoving && !isMoving)
+        if (wasMoving && !isMoving && !canMove)
         {
             StartCoroutine(SettleAndWakeUp());
         }
@@ -61,12 +61,15 @@ public class LV1_StartBallHandler : MonoBehaviour
             transform.eulerAngles = new Vector3(0, 0, angle);
             yield return null;
         }
-        StartCoroutine(LerpCameraOffset(new Vector3(0, 0, -14), 1));
+        StartCoroutine(LerpCameraOffset(new Vector3(0, 0, -14), 0.5f));
         transform.eulerAngles = Vector3.zero;
         anim.SetTrigger("Open");
+        Invoke("AllowMove", 6.5f);
+
     }
     public void AllowMove()
     {
+        StartCoroutine(LerpCameraOffset(new Vector3(0, 0, -10), 0.5f));
         print("could move");
         canMove = true;
         rb.constraints = RigidbodyConstraints2D.None;

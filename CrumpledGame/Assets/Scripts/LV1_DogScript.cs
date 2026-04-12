@@ -50,11 +50,15 @@ public class LV1_DogScript : MonoBehaviour
         if (isFollow)
         {
             player.GetComponent<LV1_PlayerController>().canSwitchLane=false;
-           transform.position = Vector3.MoveTowards(
+            bool playerMoving = player.GetComponent<LV1_PlayerController>().direction !=Vector3.zero;
+            anim.SetBool("Follow", playerMoving);
+            transform.position = Vector3.MoveTowards(
                                transform.position,
                                player.transform.position,
                                speed * Time.deltaTime
        );
+        
+
             if (Vector3.Distance(this.transform.position, player.transform.position) <= 0.1f && player.GetComponent<LV1_PlayerController>().inEndingGum)
             {
                 anim.SetTrigger("Bend");
