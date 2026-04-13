@@ -3,18 +3,19 @@ using System.Collections;
 
 public class L2FallingPlatform : MonoBehaviour
 {
-    public float shakeDelay = 1f;
+    public float shakeDelay = 0.5f;
     public float shakeDuration = 0.5f;
     public float respawnDelay = 3.5f;
     public float shakeMagnitude = 0.05f;
+    public float randomSpinForce = 80f;
 
-    float shakeDurationTimer = 0f;
+    public GameObject platformPrefab;
+
     float shakeTimer = 0f;
-
     bool playerOnPlatform = false;
     bool isShaking = false;
     bool isFalling = false;
-    //bool isTriggered = false;
+    bool hasSpawned = false;
 
     Vector3 originalPosition;
     Quaternion originalRotation;
@@ -26,21 +27,17 @@ public class L2FallingPlatform : MonoBehaviour
         originalRotation = transform.rotation;
         rb = GetComponent<Rigidbody2D>();
         rb.bodyType = RigidbodyType2D.Kinematic;
-
     }
 
-    private void Update()
+    void Update()
     {
         if (isFalling || isShaking) return;
 
         if (playerOnPlatform)
         {
             shakeTimer += Time.deltaTime;
-
             if (shakeTimer >= shakeDelay)
-            {
                 StartShaking();
-            }
         }
         else
         {
@@ -51,14 +48,15 @@ public class L2FallingPlatform : MonoBehaviour
     void StartShaking()
     {
         isShaking = true;
-        shakeDurationTimer = 0f;
         InvokeRepeating("ShakePlatform", 0f, 0.02f);
         Invoke("CheckIfShouldFall", shakeDuration);
     }
+
     void ShakePlatform()
     {
         transform.position = originalPosition + (Vector3)Random.insideUnitCircle * shakeMagnitude;
     }
+
     void CheckIfShouldFall()
     {
         CancelInvoke("ShakePlatform");
@@ -66,47 +64,43 @@ public class L2FallingPlatform : MonoBehaviour
         isShaking = false;
 
         if (playerOnPlatform)
-        {
             Fall();
-        }
         else
-        {
-            // Player escaped, reset everything
             shakeTimer = 0f;
-        }
     }
+
     void Fall()
     {
         isFalling = true;
         rb.bodyType = RigidbodyType2D.Dynamic;
-        Invoke("Respawn", respawnDelay);
-    }
-    void Respawn()
-    {
-        // Reset state
-        isFalling = false;
-        playerOnPlatform = false;
-        shakeTimer = 0f;
-        rb.bodyType = RigidbodyType2D.Kinematic;
-        rb.linearVelocity = Vector2.zero;
-        rb.angularVelocity = 0f;
+        rb.angularVelocity = Random.Range(-randomSpinForce, randomSpinForce);
 
-        transform.position = originalPosition;
-        transform.rotation = originalRotation;
+        Invoke("SpawnNewPlatform", respawnDelay);
     }
+
+    void SpawnNewPlatform()
+    {
+        if (hasSpawned) return;
+        hasSpawned = true;
+
+        // Spawn a new platform — it handles its own drop logic
+        Vector3 spawnPos = originalPosition + new Vector3(0, 6f, 0);
+        GameObject newGO = Instantiate(platformPrefab, spawnPos, originalRotation);
+
+        // Give it the drop target
+        L2FallingPlatformSpawned spawned = newGO.GetComponent<L2FallingPlatformSpawned>();
+        if (spawned != null) spawned.Init(originalPosition, originalRotation);
+    }
+
     void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("Player"))
-        {
             playerOnPlatform = true;
-        }
     }
+
     void OnCollisionExit2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("Player"))
-        {
             playerOnPlatform = false;
-        }
     }
 }
-

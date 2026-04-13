@@ -17,6 +17,9 @@ public class L2KnockablePlatform : MonoBehaviour
 
     bool isFalling = false;
     bool isShaking = false;
+    public float pushValue = -3;
+
+    public Transform visual;
 
     Vector3 originalPos;
     Quaternion originalRotation;
@@ -24,9 +27,9 @@ public class L2KnockablePlatform : MonoBehaviour
 
     void Start()
     {
-        originalRotation = transform.rotation;
-        originalPos = transform.position;
-        targetRotation = originalRotation;
+        originalRotation = visual.localRotation;
+        originalPos = visual.localPosition;
+        targetRotation = visual.rotation;
     }
 
     void Update()
@@ -49,14 +52,14 @@ public class L2KnockablePlatform : MonoBehaviour
             float x = UnityEngine.Random.Range(-intensity, intensity);
             float r = UnityEngine.Random.Range(-5f * currentHits, 5f * currentHits);
 
-            transform.position = originalPos + new Vector3(x, 0, 0);
-            transform.localRotation = Quaternion.Euler(0, 0, r);
+            visual.localPosition = originalPos + new Vector3(x, 0, 0);
+            visual.localRotation = Quaternion.Euler(0, 0, r);
         }
         else
         {
             isShaking = false;
-            transform.localPosition = originalPos;
-            transform.rotation = originalRotation;
+            visual.localPosition = originalPos;
+            visual.localRotation = originalRotation;
         }
     }
 
@@ -71,7 +74,7 @@ public class L2KnockablePlatform : MonoBehaviour
     {
         if (isFalling)
         {
-            transform.position += new Vector3(-3, 0, 0);
+            transform.position += new Vector3(pushValue, 0, 0);
             return;
         }
 
