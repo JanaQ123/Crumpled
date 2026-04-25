@@ -17,7 +17,6 @@ public class LV1_DogScript : MonoBehaviour
     bool isAttached = false;
     float speed = 17;
     Animator anim;
-    float closeTimer = 0f;
 
     void Start()
     {
