@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class Cloud : MonoBehaviour
+public class L3_Cloud : MonoBehaviour
 {
     float fadeSpeed = 0.3f;
     float targetAlpha;

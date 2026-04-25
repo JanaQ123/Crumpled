@@ -1781,10 +1781,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 190064754}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8a89759d4ea1b41139b04bad1423c68f, type: 3}
+  m_Script: {fileID: 11500000, guid: 86f6d8452d6d84e34a030ad91f32d730, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: '::'
-  birdController: {fileID: 843658954}
+  m_EditorClassIdentifier: Assembly-CSharp::L3_Bird2StartCollider
+  bird2Controller: {fileID: 843658954}
 --- !u!1 &194165399
 GameObject:
   m_ObjectHideFlags: 0
@@ -5689,7 +5689,7 @@ Transform:
   m_GameObject: {fileID: 619258712}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 188.60464}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -6543,7 +6543,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a89759d4ea1b41139b04bad1423c68f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::L3_BirdStartCollider
-  birdController: {fileID: 2011426678}
+  bird1Controller: {fileID: 2011426678}
 --- !u!1 &697023773
 GameObject:
   m_ObjectHideFlags: 0
@@ -8652,7 +8652,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 2
-  m_BackGroundColor: {r: 0.6792453, g: 0.8324084, b: 0.9056604, a: 1}
+  m_BackGroundColor: {r: 0.7397591, g: 0.8579322, b: 0.9112552, a: 1}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -8923,7 +8923,7 @@ Transform:
   m_GameObject: {fileID: 843658954}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0.052597333, w: 0.9986158}
-  m_LocalPosition: {x: 5.48, y: -6.1, z: 214.3}
+  m_LocalPosition: {x: 5.98032, y: -1.74962, z: 214.3}
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 1
   m_Children:
@@ -9084,11 +9084,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 843658954}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a72655e6321e64a2c8a1be56737fdde4, type: 3}
+  m_Script: {fileID: 11500000, guid: 8f3919ad3877d458db561bc85470faaf, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: '::'
+  m_EditorClassIdentifier: Assembly-CSharp::L3_Bird2Controller
   startMoving: 0
-  scaleDuration: 2
+  timelineController: {fileID: 1373690510}
 --- !u!1 &851846524
 GameObject:
   m_ObjectHideFlags: 0
@@ -15153,10 +15153,6 @@ PlayableDirector:
     value: {fileID: 1457516936}
   - key: {fileID: 9124578943011919538, guid: 4fd2a12849ea646d0b45d5ddd230bed8, type: 2}
     value: {fileID: 1725266260}
-  - key: {fileID: -2001110447899806307, guid: 4fd2a12849ea646d0b45d5ddd230bed8, type: 2}
-    value: {fileID: 2011426682}
-  - key: {fileID: -8876872758952980291, guid: 4fd2a12849ea646d0b45d5ddd230bed8, type: 2}
-    value: {fileID: 843658958}
   - key: {fileID: 2982063793969214691, guid: 4fd2a12849ea646d0b45d5ddd230bed8, type: 2}
     value: {fileID: 1886218349}
   - key: {fileID: 8683481611363726612, guid: 4fd2a12849ea646d0b45d5ddd230bed8, type: 2}
@@ -15208,6 +15204,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c4d0190c3bdae4340b4d9534834b9826, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TimelineController
+  timeline: {fileID: 0}
   player: {fileID: 736637009}
   playerAnim: {fileID: 1725266260}
 --- !u!1 &1393151588
@@ -22125,7 +22122,7 @@ Transform:
   m_GameObject: {fileID: 2011426678}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: 0.052597426, w: 0.9986158}
-  m_LocalPosition: {x: -5.5, y: -5.35, z: 124.5}
+  m_LocalPosition: {x: -8.4, y: -1, z: 124.5}
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 1
   m_Children:
@@ -22290,7 +22287,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: '::'
   startMoving: 0
-  scaleDuration: 2
+  timelineController: {fileID: 1373690510}
 --- !u!1 &2014056888
 GameObject:
   m_ObjectHideFlags: 0

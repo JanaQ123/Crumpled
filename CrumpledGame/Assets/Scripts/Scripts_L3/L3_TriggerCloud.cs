@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class TriggerCloud : MonoBehaviour
+public class L3_TriggerCloud : MonoBehaviour
 {   
     void OnTriggerEnter(Collider other)
     {
@@ -10,7 +10,7 @@ public class TriggerCloud : MonoBehaviour
             return;
         }
         //if other is a cloud, fade in
-        Cloud cloud = other.GetComponent<Cloud>();
+        L3_Cloud cloud = other.GetComponent<L3_Cloud>();
         if(cloud != null)
         {
             cloud.FadeIn();
@@ -24,7 +24,7 @@ public class TriggerCloud : MonoBehaviour
             return;
         }
         //if other is a cloud, fade out
-        Cloud cloud = other.GetComponent<Cloud>();
+        L3_Cloud cloud = other.GetComponent<L3_Cloud>();
         if(cloud != null)
         {
             cloud.FadeOut();

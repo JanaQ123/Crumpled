@@ -2,13 +2,13 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 
-public class Player_L3 : MonoBehaviour
+public class L3_Player : MonoBehaviour
 {
     float moveSpeed = 11.5f;
     float playerPosX;
     Vector3 direction;
     Vector3 playerPos;  
-    public TimelineController timelineController;
+    public L3_TimelineController timelineController;
     Animator isFlying;
     public bool isDead = false;
     void Start()
@@ -17,7 +17,11 @@ public class Player_L3 : MonoBehaviour
     }
     void Update()
     {
-       if(isDead) return;
+        if(isDead) return;
+        if (timelineController.timeline.time > 74f) 
+        {
+            moveSpeed = 20f;
+        }
        PlayerMove();
     }
     void PlayerMove()
@@ -38,7 +42,6 @@ public class Player_L3 : MonoBehaviour
         {
             //other.gameObject.transform.position = Vector3.MoveTowards(other.gameObject.transform.position, other.gameObject.transform.position + new Vector3(0, 10, 0), 8 * Time.deltaTime);
             //other.gameObject.SetActive(false);
-            print("I am hit");
             timelineController.StopTimeline();
             Invoke("RestartLevel", 3f);
         }

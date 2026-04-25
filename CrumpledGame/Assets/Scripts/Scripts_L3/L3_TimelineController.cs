@@ -1,25 +1,26 @@
 using UnityEngine;
 using UnityEngine.Playables;
 
-public class TimelineController : MonoBehaviour
+public class L3_TimelineController : MonoBehaviour
 {
-    PlayableDirector timeline;
+    public PlayableDirector timeline;
     float checkpoint = 36f;
     [SerializeField] GameObject player;
     [SerializeField] Animator playerAnim;
     void Start()
     {
         timeline = GetComponent<PlayableDirector>();
+        timeline.playableGraph.GetRootPlayable(0).SetSpeed(1.4f);
     }
     public void StopTimeline()
     {
         timeline.enabled = false;
-        player.GetComponent<Player_L3>().isDead = true;
+        player.GetComponent<L3_Player>().isDead = true;
         playerAnim.Play("player_died");
     }
     public void RestartAtCheckPoint()
     {
-        player.GetComponent<Player_L3>().isDead = false;
+        player.GetComponent<L3_Player>().isDead = false;
         playerAnim.Play("flying");
         timeline.enabled = true;
         timeline.time = checkpoint;
