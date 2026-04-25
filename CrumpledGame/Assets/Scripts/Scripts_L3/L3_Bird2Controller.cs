@@ -23,7 +23,7 @@ public class L3_Bird2Controller : MonoBehaviour
                 float t = timeElapsed / scaleDuration;
                 transform.localScale = Vector3.Lerp(startScale, targetScale, t);
             }
-            if (timelineController.timeline.time > 19f) 
+            if (timelineController.timeline.time > 18.5f) 
             {
                 transform.Translate(Vector3.up * speed * Time.deltaTime);
                 if (timeElapsed < upDuration)
