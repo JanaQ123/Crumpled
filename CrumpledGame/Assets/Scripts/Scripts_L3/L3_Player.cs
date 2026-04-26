@@ -1,3 +1,4 @@
+using JetBrains.Annotations;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
@@ -9,11 +10,15 @@ public class L3_Player : MonoBehaviour
     Vector3 direction;
     Vector3 playerPos;  
     public L3_TimelineController timelineController;
-    Animator isFlying;
+    Animator animator;
     public bool isDead = false;
+    AudioSource audioSource;
+    [SerializeField] AudioClip crumpledSound;
+    [SerializeField] AudioClip birdHitSound;
     void Start()
     {
-        isFlying = GetComponentInChildren<Animator>();
+        animator = GetComponentInChildren<Animator>();
+        audioSource = GetComponent<AudioSource>();
     }
     void Update()
     {
@@ -40,22 +45,27 @@ public class L3_Player : MonoBehaviour
         //if player hit bird, restart level
         if(other.collider.CompareTag("Bird"))
         {
-            //other.gameObject.transform.position = Vector3.MoveTowards(other.gameObject.transform.position, other.gameObject.transform.position + new Vector3(0, 10, 0), 8 * Time.deltaTime);
-            //other.gameObject.SetActive(false);
+            audioSource.PlayOneShot(birdHitSound);
             timelineController.StopTimeline();
             Invoke("RestartLevel", 3f);
         }
         //if player hit building or clothes, restart at checkpoint
         else if (other.collider.CompareTag("Building") || other.collider.CompareTag("Clothes"))
         {
+            audioSource.PlayOneShot(crumpledSound);
             timelineController.StopTimeline();
-            isFlying.SetTrigger("flying");
+            animator.SetTrigger("flying");
             Invoke("RestartCheckpoint", 3f);
         }
         //if player hits letter, collect it
         else if (other.collider.CompareTag("Letter_L3"))
         {
             other.gameObject.SetActive(false);
+        }
+        //if player hits tornado trigger, play cutscene
+        else if (other.collider.CompareTag("TornadoCutscene"))
+        {
+            timelineController.StopForCutscene();
         }
     }
     public void OnRestart(InputValue value)
@@ -68,7 +78,7 @@ public class L3_Player : MonoBehaviour
     void RestartLevel()
     {
         SceneManager.LoadScene("Level 3");
-        isFlying.Play("flying"); 
+        animator.Play("flying"); 
     }
     void RestartCheckpoint()
     {

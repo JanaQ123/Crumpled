@@ -7,6 +7,8 @@ public class L3_TimelineController : MonoBehaviour
     float checkpoint = 36f;
     [SerializeField] GameObject player;
     [SerializeField] Animator playerAnim;
+    public AudioSource musicSource;
+    float restartAudioTime = 25.5f;
     void Start()
     {
         timeline = GetComponent<PlayableDirector>();
@@ -18,12 +20,19 @@ public class L3_TimelineController : MonoBehaviour
         player.GetComponent<L3_Player>().isDead = true;
         playerAnim.Play("player_died");
     }
+    public void StopForCutscene()
+    {
+        timeline.enabled = false;
+        player.GetComponent<L3_Player>().isDead = true;
+        playerAnim.Play("tornado_player");
+    }
     public void RestartAtCheckPoint()
     {
         player.GetComponent<L3_Player>().isDead = false;
         playerAnim.Play("flying");
         timeline.enabled = true;
         timeline.time = checkpoint;
+        musicSource.time = restartAudioTime;
         timeline.Play();
     }
 }
