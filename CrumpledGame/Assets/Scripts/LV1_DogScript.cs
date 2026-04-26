@@ -17,11 +17,12 @@ public class LV1_DogScript : MonoBehaviour
     bool isAttached = false;
     float speed = 17;
     Animator anim;
-
+    AudioSource audio;
     void Start()
     {
         anim=dog.GetComponent<Animator>();
         endingTimeline.gameObject.SetActive(false);
+        audio= gameObject.GetComponent<AudioSource>();
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -73,6 +74,7 @@ public class LV1_DogScript : MonoBehaviour
             playerShadow.SetActive(false);
             player.transform.localScale = new Vector3(0.5f, 0.5f, 0.5f);
             player.transform.localRotation = Quaternion.identity;
+            audio.Stop();
             Invoke("PlayTimeline", 2f);
         }
     }

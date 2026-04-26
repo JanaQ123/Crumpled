@@ -43,6 +43,7 @@ public class LV1_PlayerController : MonoBehaviour
     [SerializeField] GameObject visual;
     [SerializeField] GameObject shadow;
     [SerializeField] CinemachineCamera mountainCam;
+
     public bool canMoveBack = true;
     bool inGum = false;
     bool inSewer = false;
@@ -284,7 +285,7 @@ public class LV1_PlayerController : MonoBehaviour
             speed = savedSpeed;
         }
         isSwitching = false;
-
+        
     }
 
     public bool getStairStatus()

@@ -13,6 +13,8 @@ public class LV1_NPCs : MonoBehaviour
     bool steppedDown = false;
     float originalY;
     bool climbedStairs = false;
+    LV1_PlayerHitSounds hitSounds;
+
     void Start()
     {
         anim = GetComponent<Animator>();
@@ -20,7 +22,7 @@ public class LV1_NPCs : MonoBehaviour
     }
     void Update()
     {
-        //Debug.DrawRay(transform.position + new Vector3(-10, 2, 0), -transform.right * 10f, Color.blue);
+        Debug.DrawRay(transform.position + new Vector3(-5, 0, 0), -transform.right * 10f, Color.blue);
 
         if (isWalking)
         {
@@ -85,10 +87,14 @@ public class LV1_NPCs : MonoBehaviour
         if (collision.gameObject.tag == "Player")
         {
             LayerMask mask = LayerMask.GetMask("Boundary", "Obstacle");
-            RaycastHit2D hit = Physics2D.Raycast(transform.position + new Vector3(-5, 2, 0), -transform.right, 5f, mask);
+            RaycastHit2D hit = Physics2D.Raycast(transform.position + new Vector3(-5, 0, 0), -transform.right, 5f, mask);
             if (hit.collider == null)
             {
-                collision.gameObject.GetComponent<LV1_PlayerController>().Kick();
+                if (hitSounds == null) { hitSounds = collision.gameObject.GetComponentInParent<LV1_PlayerHitSounds>(); }
+                    collision.gameObject.GetComponent<LV1_PlayerController>().Kick();
+                    hitSounds.OnHitByNPC();
+
+
             }
             if (hit)
             {
@@ -111,8 +117,11 @@ public class LV1_NPCs : MonoBehaviour
         if (collision.gameObject.tag == "Player")
         {
             LayerMask mask = LayerMask.GetMask("Boundary", "Obstacle");
-
-            RaycastHit2D hit = Physics2D.Raycast(transform.position + new Vector3(-5, 2, 0), -transform.right, 5f, mask);
+            if (hitSounds != null)
+            {
+                hitSounds.OnHitByNPC();
+            }
+                RaycastHit2D hit = Physics2D.Raycast(transform.position + new Vector3(-5, 0, 0), -transform.right, 5f, mask);
             if (hit.collider == null)
             {
 

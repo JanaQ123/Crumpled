@@ -34,7 +34,6 @@ public class LV1_CharacterStartingColliders : MonoBehaviour
 
         if (triggered && player.position.x < (previousTrigger.transform.position.x-10))
         {
-            Debug.Log($"Player local X: {player.position.x} | Boundary X: {previousTrigger.transform.position.x}");
 
             bool allNPCsOffScreen = true;
             for (int i = 0; i < Characters.Length; i++)
