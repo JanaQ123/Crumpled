@@ -38,11 +38,21 @@ public class LV1_StartBallHandler : MonoBehaviour
         {
             if (Keyboard.current.dKey.isPressed)
             {
-                rb.AddForce(Vector2.right * Time.deltaTime * 125);
+                rb.AddForce(Vector2.right * Time.deltaTime * 150);
             }
             if (Keyboard.current.aKey.isPressed)
             {
-                rb.AddForce(Vector2.left * Time.deltaTime * 125);
+                rb.AddForce(Vector2.left * Time.deltaTime * 150);
+            }
+
+            if (Keyboard.current.rightArrowKey.isPressed)
+            {
+                rb.AddForce(Vector2.right * Time.deltaTime * 200);
+            }
+
+            if (Keyboard.current.leftArrowKey.isPressed)
+            {
+                rb.AddForce(Vector2.left * Time.deltaTime * 200);
             }
         }
     }
