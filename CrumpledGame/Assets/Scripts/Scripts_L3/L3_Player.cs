@@ -15,6 +15,11 @@ public class L3_Player : MonoBehaviour
     AudioSource audioSource;
     [SerializeField] AudioClip crumpledSound;
     [SerializeField] AudioClip birdHitSound;
+    bool tornadoStart = false;
+    float sideDuration = 2f;
+    float timeElapsed = 0f;
+    Vector3 startXPos;
+    Vector3 targetX;
     void Start()
     {
         animator = GetComponentInChildren<Animator>();
@@ -27,7 +32,10 @@ public class L3_Player : MonoBehaviour
         {
             moveSpeed = 20f;
         }
-       PlayerMove();
+        PlayerMove();
+        //if player is not in the center, reset to be in the center to start cutscene
+        if(tornadoStart)
+            ResetPosition();
     }
     void PlayerMove()
     {
@@ -65,7 +73,8 @@ public class L3_Player : MonoBehaviour
         //if player hits tornado trigger, play cutscene
         else if (other.collider.CompareTag("TornadoCutscene"))
         {
-            timelineController.StopForCutscene();
+            tornadoStart = true;
+            Invoke("StartCutscene", 1f);
         }
     }
     public void OnRestart(InputValue value)
@@ -83,5 +92,37 @@ public class L3_Player : MonoBehaviour
     void RestartCheckpoint()
     {
         timelineController.RestartAtCheckPoint();
+    }
+    void StartCutscene()
+    {
+        timelineController.StopForCutscene();
+    }
+    void ResetPosition()
+    {
+        if(transform.localPosition.x != 0)
+        {
+            startXPos = new Vector3(transform.localPosition.x, transform.localPosition.y, transform.localPosition.z);
+            targetX = new Vector3(0f, transform.localPosition.y, transform.localPosition.z);
+            if(transform.localPosition.x < 0)
+            {
+                transform.Translate(Vector3.right * moveSpeed * Time.deltaTime);
+                if (timeElapsed < sideDuration)
+                {
+                    timeElapsed += Time.deltaTime;
+                    float x = timeElapsed / sideDuration;
+                    transform.localPosition = Vector3.Lerp(startXPos, targetX, x);
+                }
+            }
+            if(transform.localPosition.x > 0)
+            {
+                transform.Translate(Vector3.left * moveSpeed * Time.deltaTime);
+                if (timeElapsed < sideDuration)
+                {
+                    timeElapsed += Time.deltaTime;
+                    float x = timeElapsed / sideDuration;
+                    transform.localPosition = Vector3.Lerp(startXPos, targetX, x);
+                }
+            }
+        }
     }
 }
