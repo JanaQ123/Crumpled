@@ -20,6 +20,7 @@ public class L3_Player : MonoBehaviour
     float timeElapsed = 0f;
     Vector3 startXPos;
     Vector3 targetX;
+    SpriteRenderer sr;
     void Start()
     {
         animator = GetComponentInChildren<Animator>();
@@ -95,6 +96,8 @@ public class L3_Player : MonoBehaviour
     }
     void StartCutscene()
     {
+        sr = GetComponentInChildren<SpriteRenderer>();
+        sr.sortingLayerName = "Midground";
         timelineController.StopForCutscene();
     }
     void ResetPosition()
