@@ -17,6 +17,7 @@ public class L2PlayerMovement : MonoBehaviour
     bool introFinished=false;
     bool fallSceneActive = false;
     public bool fallSceneStarted = false;
+    bool onSticky = false;
 
     public Transform visual;
     public Sprite idleSprite;
@@ -35,6 +36,8 @@ public class L2PlayerMovement : MonoBehaviour
     Coroutine rotateBackCoroutine;
     bool isRotatingBack = false;
 
+   L2PlayerSounds  l2PlayerSounds = new L2PlayerSounds();
+
 
     void Start()
     {
@@ -48,6 +51,8 @@ public class L2PlayerMovement : MonoBehaviour
     {
         if (!introFinished) return;
         if (fallSceneActive) return;
+        if (LetterOverlay.Instance != null && LetterOverlay.Instance.IsReadingLetter) return;
+
         rb.linearVelocity = new Vector2(direction.x * speed, rb.linearVelocity.y);
         float vx = rb.linearVelocity.x;
 
@@ -128,6 +133,8 @@ public class L2PlayerMovement : MonoBehaviour
         if (collision.gameObject.CompareTag("Platform"))
         {
             isGrounded = true;
+            
+            l2PlayerSounds.HitSound();
         }
         
         L2KnockablePlatform kp = collision.gameObject.GetComponent<L2KnockablePlatform>();
@@ -144,13 +151,20 @@ public class L2PlayerMovement : MonoBehaviour
             isGrounded = false;
         }
     }
-
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("EndLvl"))
+        {
+            SceneManager.LoadScene(0);
+        }
+    }
     void OnMove(InputValue inputData)
     {
         direction = inputData.Get<Vector2>();
     }
     void OnJump(InputValue value)
     {
+        if (onSticky) return;
         if (value.isPressed && isGrounded)
         {
             rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
@@ -166,6 +180,7 @@ public class L2PlayerMovement : MonoBehaviour
     {
         speed = 0.4f;
         Invoke("RemoveSlow", 2f);
+        onSticky = true;
 
     }
 
@@ -173,6 +188,7 @@ public class L2PlayerMovement : MonoBehaviour
     {
         
         speed = originalSpeed;  
+        onSticky = false;
 
     }
 
