@@ -22,7 +22,7 @@ public class L4Snake : MonoBehaviour
     public float knockbackX = 6f;
     public float knockbackY = 2f;
     public float stunDuration = 0.5f;
-
+    public Transform head; 
     [Header("Scale")]
     public float scaleSize = 2.5f;
 
@@ -35,7 +35,9 @@ public class L4Snake : MonoBehaviour
     float biteTimer = 0f;
 
     float originalGravity;
-
+    public bool enteredSnake;
+    public bool snakeHit;
+    bool startedHit = false;
     void Start()
     {
         startPos = transform.position;
@@ -45,13 +47,23 @@ public class L4Snake : MonoBehaviour
 
     void Update()
     {
+        print("did snake enter?" + enteredSnake);
+        print("is snake in front?" + PlayerInFrontAndRange());
         biteTimer -= Time.deltaTime;
 
-        if (attacking) return;
+        if (enteredSnake)
+        {
+            snakeHit = PlayerInFrontAndRange();
 
-        bool playerDetected = PlayerInFrontAndRange();
+        }
+        else
+        {
+            snakeHit = false;
 
-        if (playerDetected)
+        }
+        if (attacking) { return; }
+
+        if (snakeHit)
         {
             print("detected");
             StartCoroutine(AttackLoop());
@@ -101,15 +113,12 @@ public class L4Snake : MonoBehaviour
 
     bool PlayerInFrontAndRange()
     {
-        float dist = Vector2.Distance(transform.position,player.position);
 
-        if (dist > detectionRange) return false;
-
-        // snake facing L
+        //// snake facing L
         if (movingLeft && player.position.x < transform.position.x) return true;
-       
+
         // snake facing R
-        if (!movingLeft && player.position.x > transform.position.x) return true;
+        if (!movingLeft && player.position.x > transform.position.x) return false;
 
         return false;
     }
@@ -118,8 +127,9 @@ public class L4Snake : MonoBehaviour
     {
         attacking = true;
 
-        while (PlayerInFrontAndRange())
+        while (snakeHit)
         {
+            print("I will bite");
             yield return StartCoroutine(BiteAttack());
 
             yield return new WaitForSeconds(biteCooldown);
@@ -131,27 +141,49 @@ public class L4Snake : MonoBehaviour
     IEnumerator BiteAttack()
     {
         print("biting");
-        // disable movement
+
+        //animator.SetTrigger("doBite");
+        animator.SetBool("isBiting", true);
+
         playerMovement.canMove = false;
 
-        // reset velocity
-        playerRb.linearVelocity = Vector2.zero;
-
-        // throw direction
         float dir = movingLeft ? -1f : 1f;
 
-        //playerMovement.externalForceActive = true;
+        float biteTime = 0.2f;
 
-        // apply knockback
-        playerMovement.beingHit = true;
-        playerRb.linearVelocity = new Vector2(dir * knockbackX,knockbackY);
-        yield return new WaitForSeconds(stunDuration);
+        float timer = 0f;
 
-        //playerRb.linearVelocity = new Vector2(0,playerRb.linearVelocity.y);
-        //playerMovement.externalForceActive = false;
-        playerMovement.canMove = true;
-        playerMovement.beingHit = false;
+        if (startedHit == false)
+        {
+            yield return new WaitForSeconds(0.5f);
+            startedHit = true;
+        }
+            while (timer < biteTime)
+        {
+            timer += Time.deltaTime;
+            dir = movingLeft ? -1f : 1f;
+
+
+            // continuously push player
+            player.position +=
+                Vector3.right *
+                dir *
+                50 *
+                Time.deltaTime;
+
+            yield return null;
+        }
+
+        if (snakeHit == false)
+        {
+            playerMovement.canMove = true;
+
+            animator.SetBool("isBiting", false);
+            startedHit = false;
+        }
+      
     }
+ 
 
     void FaceDirection(float dir)
     {
@@ -162,6 +194,6 @@ public class L4Snake : MonoBehaviour
     {
         Gizmos.color = Color.red;
 
-        Gizmos.DrawWireSphere(transform.position,detectionRange);
+        Gizmos.DrawWireSphere(head.position,detectionRange);
     }
 }

@@ -28,6 +28,7 @@ public class L4PlayerMovement : MonoBehaviour
     Quaternion originalRotation;
     Coroutine rotateBackCoroutine;
 
+    public L4Snake snake;
     bool isRotatingBack = false;
 
     [HideInInspector] public bool canMove = true;
@@ -54,8 +55,13 @@ public class L4PlayerMovement : MonoBehaviour
 
         if (beingHit)
         {
-            forceValue = 0.95f;
+            forceValue = 0.5f;
             print("95");
+        }
+        else if (snake.snakeHit)
+        {
+            forceValue = 0.95f;
+
         }
         else
         {

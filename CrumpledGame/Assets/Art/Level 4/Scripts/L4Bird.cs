@@ -1,6 +1,8 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 using System.Collections;
+using Unity.VisualScripting;
+//using static System.IO.Enumeration.FileSystemEnumerable<TResult>;
 
 public class L4Bird : MonoBehaviour
 {
@@ -22,7 +24,7 @@ public class L4Bird : MonoBehaviour
     public float exitX = -190f;
 
     [Header("Behavior")]
-    public float idleThreshold = 2f;
+    public float idleThreshold = 1f;
     public float warningDelay = 1f;
 
     public float flySpeed = 14f;
@@ -33,12 +35,14 @@ public class L4Bird : MonoBehaviour
     public float carryDuration = 2f;
 
     [Header("Feet Offset")]
-    public float playerHangOffsetY = -2f;
+    public float playerHangOffsetY = -1f;
 
     bool cycleActive = false;
     float idleTimer = 0f;
     float originalGravity;
 
+    public Transform startPosition;
+    public bool startFollowing;
     void Start()
     {
         bird.SetActive(false);
@@ -51,9 +55,9 @@ public class L4Bird : MonoBehaviour
         if (cycleActive) return;
 
         bool playerStill =
-            Mathf.Abs(playerRb.linearVelocity.x) < 0.5f;
+            Mathf.Abs(playerRb.linearVelocity.x) < 1f;
 
-        if (playerStill)
+        if (playerStill&&startFollowing)
         {
             idleTimer += Time.deltaTime;
 
@@ -122,22 +126,33 @@ public class L4Bird : MonoBehaviour
             // short hover pause
             yield return new WaitForSeconds(grabPause);
             birdAnim.SetBool("isFlying", true);
-            float timer = 0f;
+            //float timer = 0f;
 
-            while (timer < carryDuration)
+            //while (timer < carryDuration)
+            //{
+            //    timer += Time.deltaTime;
+
+            //    // bird flies left
+            //    bird.transform.position += Vector3.left * flySpeed * Time.deltaTime;
+
+            //    // player hangs under bird
+            //    
+
+            //    yield return null;
+            //}
+            while (Vector2.Distance(bird.transform.position, startPosition.position) >= 0.01f)
             {
-                timer += Time.deltaTime;
-
-                // bird flies left
-                bird.transform.position += Vector3.left * flySpeed * Time.deltaTime;
-
-                // player hangs under bird
+                bird.transform.position = Vector2.MoveTowards(
+                    bird.transform.position,
+                    startPosition.position,
+                    50 * Time.deltaTime
+                    );
                 Vector3 hangPos = bird.transform.position + new Vector3(playerHangOffsetY, 0, 0);
                 transform.position = hangPos;
-
                 yield return null;
-            }
 
+            }
+            bird.transform.position = startPosition.position;
             // DROP PLAYER
             playerRb.gravityScale = originalGravity;
             movementScript.canMove = true;
