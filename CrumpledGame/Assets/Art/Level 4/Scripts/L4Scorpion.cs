@@ -26,6 +26,8 @@ public class L4Scorpion : MonoBehaviour
     public float throwForceX = 10f;
     public float throwForceY = 5f;
 
+    Animator animator;
+
     //[Header("Player Hold Offset")]
     //public Vector2 holdOffset = new Vector2(-0.8f, 0.5f);
 
@@ -35,10 +37,12 @@ public class L4Scorpion : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        animator = GetComponent<Animator>();
     }
 
     void Update()
     {
+
         if (busy) return;
 
         float dist = Vector2.Distance (grabPoint.position,player.position);
@@ -52,6 +56,7 @@ public class L4Scorpion : MonoBehaviour
             if (dist <= detectionRange && playerOnLeft)
             {
                 chasing = true;
+                animator.SetBool("isWalking", true);
                 print("chase");
             }
         }
@@ -61,6 +66,7 @@ public class L4Scorpion : MonoBehaviour
             if (dist > loseRange || !playerOnLeft)
             {
                 print("escaped");
+                animator.SetBool("isWalking", false);
                 chasing = false;
                 rb.linearVelocity = new Vector2(0,rb.linearVelocity.y);
             }
@@ -89,6 +95,7 @@ public class L4Scorpion : MonoBehaviour
     IEnumerator GrabSequence()
     {
         print("grabbing");
+        animator.SetBool("isWalking", false);
         busy = true;
         chasing = false;
 
@@ -118,6 +125,7 @@ public class L4Scorpion : MonoBehaviour
 
         // PLAY WITH PLAYER
         print("play with player");
+        animator.SetBool("isPlaying", true);
         float timer = 0f;
 
         while (timer < playDuration)
@@ -135,7 +143,9 @@ public class L4Scorpion : MonoBehaviour
 
         // THROW PLAYER LEFT
         print("throw left");
-        playerMovement.beingHit = true;
+        animator.SetBool("isPlaying", false);
+
+        playerMovement.scorpianHit = true;
         playerRb.gravityScale = 5f;
         playerRb.linearVelocity = Vector2.zero;
 
@@ -145,13 +155,12 @@ public class L4Scorpion : MonoBehaviour
         playerMovement.canMove = true;
 
         yield return new WaitForSeconds(2f);
-        playerMovement.beingHit = false;
+        playerMovement.scorpianHit = false;
         busy = false;
     }
 
     void OnDrawGizmosSelected()
     {
-        print("whats this eeeeeeeeeeeeeeeeeeeeee");
         Gizmos.color = Color.yellow;
 
         Gizmos.DrawWireSphere(
@@ -162,7 +171,7 @@ public class L4Scorpion : MonoBehaviour
         Gizmos.color = Color.red;
 
         Gizmos.DrawWireSphere(
-            transform.position,
+            grabPoint.position,
             grabRange
         );
     }

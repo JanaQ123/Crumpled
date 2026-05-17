@@ -37,6 +37,13 @@ public class L4Bird : MonoBehaviour
     [Header("Feet Offset")]
     public float playerHangOffsetY = -1f;
 
+    [Header("Cave")]
+    public float caveYThreshold = -30f;
+
+    [Header("Dynamic Spawn")]
+    public float spawnOffsetX = 20f;
+    public float spawnOffsetY = 12f;
+
     bool cycleActive = false;
     float idleTimer = 0f;
     float originalGravity;
@@ -57,7 +64,9 @@ public class L4Bird : MonoBehaviour
         bool playerStill =
             Mathf.Abs(playerRb.linearVelocity.x) < 1f;
 
-        if (playerStill&&startFollowing)
+        bool inCave = transform.position.y < caveYThreshold;
+
+        if (playerStill && startFollowing && !movementScript.inHazard && !inCave)
         {
             idleTimer += Time.deltaTime;
 
@@ -95,8 +104,11 @@ public class L4Bird : MonoBehaviour
             pos.x -= flySpeed * Time.deltaTime;
 
             // follow player's Y smoothly
-            float targetY = transform.position.y + 2f;
-            pos.y = Mathf.Lerp(pos.y, targetY,4f * Time.deltaTime);
+            //float targetY = transform.position.y + 2f;
+            //pos.y = Mathf.Lerp(pos.y, targetY,4f * Time.deltaTime);
+            float targetY = Mathf.Max(transform.position.y + 2f, caveYThreshold + 8f);
+            pos.y = Mathf.Lerp(pos.y, targetY, 4f * Time.deltaTime);
+
             bird.transform.position = pos;
 
             bool playerStill =Mathf.Abs(playerRb.linearVelocity.x) < 0.5f;
@@ -142,11 +154,7 @@ public class L4Bird : MonoBehaviour
             //}
             while (Vector2.Distance(bird.transform.position, startPosition.position) >= 0.01f)
             {
-                bird.transform.position = Vector2.MoveTowards(
-                    bird.transform.position,
-                    startPosition.position,
-                    50 * Time.deltaTime
-                    );
+                bird.transform.position = Vector2.MoveTowards(bird.transform.position,startPosition.position,50 * Time.deltaTime);
                 Vector3 hangPos = bird.transform.position + new Vector3(playerHangOffsetY, 0, 0);
                 transform.position = hangPos;
                 yield return null;
@@ -172,8 +180,8 @@ public class L4Bird : MonoBehaviour
 
     void SpawnBird()
     {
-        float spawnX = transform.position.x < 190f ? middleSpawnX : endSpawnX;
+        Vector3 spawnPos = new Vector3(transform.position.x + spawnOffsetX,transform.position.y + spawnOffsetY,0f);
 
-        bird.transform.position = new Vector3(spawnX,flyHeight,0f);
+        bird.transform.position = spawnPos;
     }
 }

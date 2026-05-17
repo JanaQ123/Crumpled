@@ -20,6 +20,10 @@ public class L4PlayerMovement : MonoBehaviour
     public Sprite rollSprite;
     public Sprite jumpSprite;
 
+    [Header("Slope")]
+    public float steepSlopeAngle = 40f;
+    public float slopeSlowMultiplier = 0.3f;
+
     float lastDirection = 1f;
 
     Coroutine slowCoroutine;
@@ -27,7 +31,10 @@ public class L4PlayerMovement : MonoBehaviour
     int moveCounter = 0;
     Quaternion originalRotation;
     Coroutine rotateBackCoroutine;
+   
 
+    float currentSlopeAngle;
+    bool onSteepSlope;
     public L4Snake snake;
     bool isRotatingBack = false;
 
@@ -35,7 +42,8 @@ public class L4PlayerMovement : MonoBehaviour
     //[HideInInspector] public bool externalForceActive = false;
 
     float forceValue = 0.95f;
-    public bool beingHit = false;
+    public bool scorpianHit = false;
+    public bool inHazard = false;
 
     void Start()
     {
@@ -46,14 +54,25 @@ public class L4PlayerMovement : MonoBehaviour
 
     void FixedUpdate()
     {
+        inHazard = scorpianHit || snake.snakeHit;
         float targetX = 0f;
 
         if (canMove)
         {
-            targetX = direction.x * speed;
+            float moveSpeed = speed;
+
+            if (onSteepSlope)
+            {
+                moveSpeed *= slopeSlowMultiplier;
+
+                // extra downward pull
+                rb.linearVelocity += Vector2.down * 12f * Time.fixedDeltaTime;
+            }
+
+            targetX = direction.x * moveSpeed;
         }
 
-        if (beingHit)
+        if (scorpianHit)
         {
             forceValue = 0.5f;
             print("95");
@@ -152,6 +171,29 @@ public class L4PlayerMovement : MonoBehaviour
 
     }
 
+    void OnCollisionStay2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Platform"))
+        {
+            isGrounded = true;
+
+            onSteepSlope = false;
+
+            foreach (ContactPoint2D contact in collision.contacts)
+            {
+                Vector2 normal = contact.normal;
+
+                currentSlopeAngle = Vector2.Angle(normal, Vector2.up);
+
+                if (currentSlopeAngle > steepSlopeAngle)
+                {
+                    onSteepSlope = true;
+                    break;
+                }
+            }
+        }
+    }
+
     void OnCollisionExit2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("Platform"))
@@ -159,6 +201,7 @@ public class L4PlayerMovement : MonoBehaviour
             isGrounded = false;
         }
     }
+
 
     void OnMove(InputValue inputData)
     {
