@@ -14,7 +14,7 @@ public class LV1_PlayerHitSounds : MonoBehaviour
     public void OnHitByNPC()
     {
         Debug.Log("OnHitByNPC called on: " + gameObject.name);
-
+        if (audioSource.isPlaying) return;
         if (hitSounds.Length == 0)
         {
             Debug.Log("Hit sounds array is empty!");

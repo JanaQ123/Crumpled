@@ -11,6 +11,7 @@ public class LV1_DogScript : MonoBehaviour
     [SerializeField] GameObject dogHead;
     [SerializeField] GameObject dogHeadBone;
     [SerializeField] PlayableDirector endingTimeline;
+    [SerializeField] AudioClip Bark;
 
 
     bool isFollow =false;
@@ -49,6 +50,15 @@ public class LV1_DogScript : MonoBehaviour
     {
         if (isFollow)
         {
+            if(audio.clip != Bark)
+            {
+                audio.loop = false;
+                audio.Stop();
+                audio.clip = Bark;
+                audio.Play();
+
+            }
+
             player.GetComponent<LV1_PlayerController>().canSwitchLane=false;
             bool playerMoving = player.GetComponent<LV1_PlayerController>().direction !=Vector3.zero;
             anim.SetBool("Follow", playerMoving);
@@ -74,7 +84,6 @@ public class LV1_DogScript : MonoBehaviour
             playerShadow.SetActive(false);
             player.transform.localScale = new Vector3(0.5f, 0.5f, 0.5f);
             player.transform.localRotation = Quaternion.identity;
-            audio.Stop();
             Invoke("PlayTimeline", 2f);
         }
     }

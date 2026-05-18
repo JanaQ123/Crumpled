@@ -57,6 +57,10 @@ public class LV1_PlayerController : MonoBehaviour
     public float dragMultiplier = 0.95f;
     Vector2 rollVelocity = Vector2.zero;
 
+    bool isRotatingBack = false;
+    Coroutine rotateBackCoroutine;
+
+    float lastDirection = 1f;
     void Start()
     {
         y = transform.position.y;
@@ -128,19 +132,59 @@ public class LV1_PlayerController : MonoBehaviour
             }
         }
 
+        //if (directionX != Vector3.zero)
+        //{
+        //    moveCounter = Mathf.Min(moveCounter + 1, maxMove);
+        //    visual.transform.Rotate(0, 0, -directionX.x * speed * Time.deltaTime * moveCounter);
+        //}
+        //else
+        //{
+        //    if (moveCounter >= maxMove)
+        //    {
+        //        StartCoroutine(RotateBack());
+        //    }
+        //    moveCounter = 0;
+        //}
         if (directionX != Vector3.zero)
         {
+            if (isRotatingBack)
+            {
+                if (rotateBackCoroutine != null) StopCoroutine(rotateBackCoroutine);
+                isRotatingBack = false;
+            }
             moveCounter = Mathf.Min(moveCounter + 1, maxMove);
-            visual.transform.Rotate(0, 0, -directionX.x * speed * Time.deltaTime * moveCounter);
+            visual.GetComponent<Animator>().SetBool("Close", true);
+
+            float momentumFactor = (float)moveCounter / maxMove;
+            visual.transform.Rotate(0, 0, 0.1f*-direction.x * moveCounter);
+
+
         }
         else
         {
+
             if (moveCounter >= maxMove)
             {
-                StartCoroutine(RotateBack());
+                // Rolled a lot — snap eyes back to front
+                if (!isRotatingBack)
+                {
+                    rotateBackCoroutine = StartCoroutine(RotateBack());
+                }
+            }
+            else
+            {
+                // Short tap — just snap instantly, no full rotation happened
+                if (!isRotatingBack)
+                {
+                    visual.transform.rotation = originalRotation;
+                }
             }
             moveCounter = 0;
+            visual.GetComponent<Animator>().SetBool("Close", false);
+            //visual.rotation = Quaternion.identity;
         }
+
+
 
         if (isSwitching)
         {
@@ -201,9 +245,10 @@ public class LV1_PlayerController : MonoBehaviour
     }
     IEnumerator RotateBack()
     {
+        isRotatingBack = true;
         Quaternion currentRot = visual.transform.rotation;
         float t = 0f;
-        float duration = 0.5f;
+        float duration = 0.3f;
 
         while (t < 1f)
         {
@@ -213,7 +258,9 @@ public class LV1_PlayerController : MonoBehaviour
         }
 
         visual.transform.rotation = originalRotation;
+        isRotatingBack = false;
     }
+
     void OnMove(InputValue data)
     {
         direction = new Vector3(data.Get<Vector2>().x, data.Get<Vector2>().y, 0);

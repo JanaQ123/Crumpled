@@ -52,7 +52,15 @@ public class LV1_CharacterStartingColliders : MonoBehaviour
                 {
 
                     Characters[i].transform.position = npcStartPositions[i];
-                    Characters[i].GetComponentInChildren<LV1_NPCs>().StopWalking();
+
+                    if (Characters[i].gameObject.GetComponentInChildren<LV1_NPCs>() != null)
+                    {
+                        Characters[i].gameObject.GetComponentInChildren<LV1_NPCs>().StopWalking();
+                    }
+                    else
+                    {
+                        Characters[i].gameObject.GetComponentInChildren<LV1_NPCMarket>().StopWalking();
+                    }
                 }
             }
         }
@@ -63,15 +71,22 @@ public class LV1_CharacterStartingColliders : MonoBehaviour
         {
             for (int i = 0; i < Characters.Length; i++)
             {
-                Characters[i].gameObject.GetComponentInChildren<LV1_NPCs>().StartWalking();
+                if(Characters[i].gameObject.GetComponentInChildren<LV1_NPCs>() != null){
+                    Characters[i].gameObject.GetComponentInChildren<LV1_NPCs>().StartWalking(); }
+                else
+                {
+                    Characters[i].gameObject.GetComponentInChildren<LV1_NPCMarket>().StartWalking();
+                }
+
             }
+        }
 
             if (WorldBoundary != null)
             {
                 WorldBoundary.SetActive(true);
             }
-        }
-    }
+     }
+    
 
     void OnTriggerExit2D(Collider2D other)
     {
