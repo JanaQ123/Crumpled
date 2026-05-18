@@ -25,8 +25,8 @@ public class LetterUI : MonoBehaviour
         if (!collected)
         {
             unknownObject.SetActive(true);
-            foundObject.SetActive(false);
-            selectedObject.SetActive(false);
+            //foundObject.SetActive(false);
+            //selectedObject.SetActive(false);
 
             if(letterView != null)
                 letterView.SetActive(false);
@@ -37,9 +37,9 @@ public class LetterUI : MonoBehaviour
         // FOUND BUT NOT SELECTED
         if (!selected)
         {
-            unknownObject.SetActive(false);
+            //unknownObject.SetActive(false);
             foundObject.SetActive(true);
-            selectedObject.SetActive(false);
+            //selectedObject.SetActive(false);
 
             if(letterView != null)
                 letterView.SetActive(false);
@@ -48,8 +48,8 @@ public class LetterUI : MonoBehaviour
         }
 
         // SELECTED
-        unknownObject.SetActive(false);
-        foundObject.SetActive(false);
+        //unknownObject.SetActive(false);
+        //foundObject.SetActive(false);
         selectedObject.SetActive(true);
 
         if(letterView != null)
