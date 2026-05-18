@@ -3,24 +3,20 @@ using UnityEngine;
 public class LetterUI : MonoBehaviour
 {
     public int letterIndex;
-
     public GameObject unknownObject;
     public GameObject foundObject;
     public GameObject selectedObject;
-
+    public bool collected;
+    public bool selected;
     // Right page
     public GameObject letterView;
-
+    public LetterManager letterManager;
     void Update()
     {
         RefreshState();
     }
-
     void RefreshState()
     {
-        bool collected = LetterManager.collectedLetters[letterIndex];
-        bool selected = LetterManager.selectedLetter == letterIndex;
-
         // NOT FOUND
         if (!collected)
         {
@@ -33,34 +29,22 @@ public class LetterUI : MonoBehaviour
 
             return;
         }
-
         // FOUND BUT NOT SELECTED
-        if (!selected)
+        else
         {
-            //unknownObject.SetActive(false);
             foundObject.SetActive(true);
-            //selectedObject.SetActive(false);
-
-            if(letterView != null)
-                letterView.SetActive(false);
-
-            return;
         }
-
-        // SELECTED
-        //unknownObject.SetActive(false);
-        //foundObject.SetActive(false);
+    }
+    public void IAmSelected()
+    {
+        letterManager.SwitchSelection(letterIndex);
+    }
+    public void SelectLetter()
+    {
         selectedObject.SetActive(true);
 
         if(letterView != null)
-            letterView.SetActive(true);
-    }
-
-    public void SelectLetter()
-    {
-        if (!LetterManager.collectedLetters[letterIndex])
-            return;
-
-        LetterManager.selectedLetter = letterIndex;
+                letterView.SetActive(true);
+        selected = true;
     }
 }
