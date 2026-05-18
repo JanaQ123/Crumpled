@@ -1,14 +1,20 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class LV1_StopHillCollider : MonoBehaviour
 
 {
     [SerializeField] GameObject parent;
+    [SerializeField] GameObject UD;
+    [SerializeField] AudioSource grass;
+    bool canMove;
     void Start()
 
     {
 
         parent.GetComponent<LV1_PlayerParentFollow>().SetRollingMode(true);
+        UD.SetActive(false);
+
     }
     private void OnTriggerEnter2D(Collider2D collision)
 
@@ -17,21 +23,32 @@ public class LV1_StopHillCollider : MonoBehaviour
         if (collision.gameObject.tag == "Player")
 
         {
+            grass.Stop();
+            print(" I just entered uuuu");
             parent.GetComponent<LV1_PlayerParentFollow>().SetRollingMode(false);
+            UD.SetActive(true);
         }
 
     }
 
-    //private void OnTriggerExit2D(Collider2D collision)
+    void Update()
+    {
+        if (Keyboard.current.upArrowKey.isPressed || Keyboard.current.downArrowKey.isPressed|| Keyboard.current.wKey.isPressed || Keyboard.current.sKey.isPressed)
+        {
+            parent.GetComponentInChildren<LV1_PlayerController>().CanMove = true;
+            UD.SetActive(false);
+            Destroy(this);
+        }
 
-    //{
-    //    if (collision.gameObject.tag == "Player")
-    //    {
-    //        collision.GetComponent<LV1_PlayerController>().StartLanes();
-    //    }
+    }
 
+    void MustPressButton()
+    {
+        if (canMove)
+        {
+        }
 
+ 
 
-    //}
-
+    }
 }

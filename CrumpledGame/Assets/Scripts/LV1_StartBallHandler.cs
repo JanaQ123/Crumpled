@@ -10,10 +10,15 @@ public class LV1_StartBallHandler : MonoBehaviour
     private bool wasMoving = false;
     Animator anim;
     public CinemachineCamera mCam;
+    public GameObject keypad;
+    [SerializeField] AudioSource grass;
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         anim = rb.GetComponentInChildren<Animator>();
+        keypad.SetActive(false);
+        grass.Play();
 
     }
 
@@ -36,6 +41,7 @@ public class LV1_StartBallHandler : MonoBehaviour
 
             if (canMove)
         {
+            grass.Play();
             if (Keyboard.current.dKey.isPressed)
             {
                 rb.AddForce(Vector2.right * Time.deltaTime * 150);
@@ -79,11 +85,12 @@ public class LV1_StartBallHandler : MonoBehaviour
     }
     public void AllowMove()
     {
+        grass.Stop();
         StartCoroutine(LerpCameraOffset(new Vector3(0, 0, -10), 0.5f));
         print("could move");
         canMove = true;
         rb.constraints = RigidbodyConstraints2D.None;
-
+        keypad.SetActive(true);
     }
 
     IEnumerator LerpCameraOffset(Vector3 targetOffset, float duration)

@@ -60,6 +60,7 @@ public class LV1_PlayerController : MonoBehaviour
     bool isRotatingBack = false;
     Coroutine rotateBackCoroutine;
 
+    public bool CanMove;
     float lastDirection = 1f;
     void Start()
     {
@@ -263,17 +264,22 @@ public class LV1_PlayerController : MonoBehaviour
 
     void OnMove(InputValue data)
     {
-        direction = new Vector3(data.Get<Vector2>().x, data.Get<Vector2>().y, 0);
-        directionX = new Vector3(Mathf.RoundToInt(direction.x), 0, 0);
-        if (!canMoveBack && direction.x < 0) direction.x = 0; // block left input
-        currentPosition -= Mathf.RoundToInt(direction.y); //changes float direction value to int
-        currentPosition = Mathf.Clamp(currentPosition, 0, 2); //clamps to be in array
-        RaycastHit2D hit = Physics2D.Raycast(transform.position, new Vector2(0, data.Get<Vector2>().y), 2f, ~LayerMask.GetMask("Player"));
+        if (CanMove)
+        {
+            direction = new Vector3(data.Get<Vector2>().x, data.Get<Vector2>().y, 0);
+            directionX = new Vector3(Mathf.RoundToInt(direction.x), 0, 0);
+            if (!canMoveBack && direction.x < 0) direction.x = 0; // block left input
+            currentPosition -= Mathf.RoundToInt(direction.y); //changes float direction value to int
+            currentPosition = Mathf.Clamp(currentPosition, 0, 2); //clamps to be in array
+            RaycastHit2D hit = Physics2D.Raycast(transform.position, new Vector2(0, data.Get<Vector2>().y), 2f, ~LayerMask.GetMask("Player"));
 
-        if (hit.collider == null && data.Get<Vector2>().y != 0 && !isSwitching&&canSwitchLane) { 
-            ChangePositions(); //switch lanes
+            if (hit.collider == null && data.Get<Vector2>().y != 0 && !isSwitching && canSwitchLane)
+            {
+                ChangePositions(); //switch lanes
+            }
+            Vector2 input = data.Get<Vector2>();
         }
-        Vector2 input = data.Get<Vector2>();
+        
     }
 
     public void Kick()
