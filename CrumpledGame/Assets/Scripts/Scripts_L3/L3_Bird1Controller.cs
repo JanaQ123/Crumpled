@@ -3,7 +3,7 @@ using UnityEngine;
 public class L3_Bird1Controller : MonoBehaviour
 {
     public bool startMoving = false;
-    float speed = 10;
+    public float speed = 10f;
     float scaleDuration = 2f;
     float upDuration = 1f;
     float timeElapsed = 0f;

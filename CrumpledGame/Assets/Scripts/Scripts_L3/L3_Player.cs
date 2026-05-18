@@ -13,7 +13,7 @@ public class L3_Player : MonoBehaviour
     Animator animator;
     public bool isDead = false;
     AudioSource audioSource;
-    [SerializeField] AudioClip crumpledSound;
+    [SerializeField] AudioClip playerHitSound;
     [SerializeField] AudioClip birdHitSound;
     bool tornadoStart = false;
     float sideDuration = 2f;
@@ -55,13 +55,14 @@ public class L3_Player : MonoBehaviour
         if(other.collider.CompareTag("Bird"))
         {
             audioSource.PlayOneShot(birdHitSound);
+            audioSource.PlayOneShot(playerHitSound);
             timelineController.StopTimeline();
             Invoke("RestartLevel", 3f);
         }
         //if player hit building or clothes, restart at checkpoint
         else if (other.collider.CompareTag("Building") || other.collider.CompareTag("Clothes"))
         {
-            audioSource.PlayOneShot(crumpledSound);
+            audioSource.PlayOneShot(playerHitSound);
             timelineController.StopTimeline();
             animator.SetTrigger("flying");
             Invoke("RestartCheckpoint", 3f);

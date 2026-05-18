@@ -8,7 +8,6 @@ public class LetterUI : MonoBehaviour
     public GameObject selectedObject;
     public bool collected;
     public bool selected;
-    // Right page
     public GameObject letterView;
     public LetterManager letterManager;
     void Update()
@@ -21,8 +20,6 @@ public class LetterUI : MonoBehaviour
         if (!collected)
         {
             unknownObject.SetActive(true);
-            //foundObject.SetActive(false);
-            //selectedObject.SetActive(false);
 
             if(letterView != null)
                 letterView.SetActive(false);

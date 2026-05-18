@@ -2,10 +2,12 @@ using UnityEngine;
 
 public class L3_TriggerCloud : MonoBehaviour
 {   
+    public bool StartFadeIn;
     void OnTriggerEnter(Collider other)
     {
-        //if other is not a cloud, ignore
-        if(!other.CompareTag("Cloud"))
+        if (StartFadeIn)
+        {
+            if(!other.CompareTag("Cloud"))
         {
             return;
         }
@@ -15,6 +17,9 @@ public class L3_TriggerCloud : MonoBehaviour
         {
             cloud.FadeIn();
         }
+        }
+        //if other is not a cloud, ignore
+        
     }
     void OnTriggerExit(Collider other)
     {
