@@ -5,6 +5,7 @@ public class L4CSTrigger : MonoBehaviour
 {
     public PlayableDirector timeline;
     public GameObject CSCamera;
+    public GameObject player;
 
     bool hasPlayed = false;
 
@@ -17,6 +18,7 @@ public class L4CSTrigger : MonoBehaviour
     {
 
         print("hellooo???");
+        player.SetActive(false);
         //if (hasPlayed)
         //    return;
 

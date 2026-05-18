@@ -68,6 +68,7 @@ public class L4Bird : MonoBehaviour
 
         if (playerStill && startFollowing && !movementScript.inHazard && !inCave)
         {
+            print("start following");
             idleTimer += Time.deltaTime;
 
             if (idleTimer >= idleThreshold)
@@ -84,6 +85,7 @@ public class L4Bird : MonoBehaviour
 
     IEnumerator AttackCycle()
     {
+        print("attack");
         cycleActive = true;
 
         audioSource.PlayOneShot(warningSoundClip);
@@ -98,10 +100,12 @@ public class L4Bird : MonoBehaviour
         // Fly toward player
         while (bird.transform.position.x > exitX)
         {
+            print("hello?? fly towards");
             Vector3 pos = bird.transform.position;
 
             // move left
             pos.x -= flySpeed * Time.deltaTime;
+            print("move left");
 
             // follow player's Y smoothly
             //float targetY = transform.position.y + 2f;
@@ -110,6 +114,7 @@ public class L4Bird : MonoBehaviour
             pos.y = Mathf.Lerp(pos.y, targetY, 4f * Time.deltaTime);
 
             bird.transform.position = pos;
+            print("change position");
 
             bool playerStill =Mathf.Abs(playerRb.linearVelocity.x) < 0.5f;
 
@@ -118,6 +123,7 @@ public class L4Bird : MonoBehaviour
             if (playerStill && distance <= grabRange)
             {
                 grabbed = true;
+                print("grab");
                 break;
             }
 
@@ -128,7 +134,7 @@ public class L4Bird : MonoBehaviour
         if (grabbed)
         {
             birdAnim.SetBool("isFlying", false);
-            birdAnim.SetTrigger("doGrab");
+            //birdAnim.SetTrigger("doGrab");
 
             // stop movement
             movementScript.canMove = false;
