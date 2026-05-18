@@ -17,7 +17,7 @@ public class L2KnockablePlatform : MonoBehaviour
 
     bool isFalling = false;
     bool isShaking = false;
-    public float pushValue = -3;
+    public float pushValue = -2;
 
     public Transform visual;
 
@@ -58,6 +58,7 @@ public class L2KnockablePlatform : MonoBehaviour
         else
         {
             isShaking = false;
+
             visual.localPosition = originalPos;
             visual.localRotation = originalRotation;
         }
@@ -66,7 +67,7 @@ public class L2KnockablePlatform : MonoBehaviour
     void HandleFall()
     {
         if (!isFalling) return;
-
+        print("fall sideways");
         transform.rotation = Quaternion.Lerp(transform.rotation,targetRotation,Time.deltaTime * fallSpeed);
     }
 
@@ -87,6 +88,7 @@ public class L2KnockablePlatform : MonoBehaviour
         if (currentHits >= hitsToFall)
         {
             isFalling = true;
+            print("falling");
             targetRotation = Quaternion.Euler(0, 0, fallRotation);
         }
     }
