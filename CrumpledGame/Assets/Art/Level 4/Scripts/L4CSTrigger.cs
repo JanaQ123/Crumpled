@@ -4,6 +4,7 @@ using UnityEngine.Playables;
 public class L4CSTrigger : MonoBehaviour
 {
     public PlayableDirector timeline;
+    public GameObject CSCamera;
 
     bool hasPlayed = false;
 
@@ -23,6 +24,7 @@ public class L4CSTrigger : MonoBehaviour
         {
             hasPlayed = true;
             print("hi");
+            //CSCamera.SetActive(true);
             timeline.Play();
         }
     }
