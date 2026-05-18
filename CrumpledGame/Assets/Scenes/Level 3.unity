@@ -2940,9 +2940,9 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
-  m_Resource: {fileID: 8300000, guid: fc52f77e5b442407fa43c98a698a8583, type: 3}
+  m_Resource: {fileID: 8300000, guid: 469be3f5e4fb94fe6a7cebdeb8e1d80f, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.8
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -17133,8 +17133,8 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
-  m_Resource: {fileID: 8300000, guid: 7d90213402044430b9bb8915782490ae, type: 3}
-  m_PlayOnAwake: 1
+  m_Resource: {fileID: 8300000, guid: 5ef5cde87b14a401eaa2e1b7ef94ffe3, type: 3}
+  m_PlayOnAwake: 0
   m_Volume: 0.55
   m_Pitch: 1
   Loop: 0
@@ -18937,6 +18937,7 @@ GameObject:
   - component: {fileID: 1725266259}
   - component: {fileID: 1725266258}
   - component: {fileID: 1725266260}
+  - component: {fileID: 1725266261}
   m_Layer: 0
   m_Name: player visual
   m_TagString: Untagged
@@ -19045,6 +19046,20 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &1725266261
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1725266257}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8025f4f76442749a28858ef49bccf6c7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::L3_TornadoAudio
+  audioSource: {fileID: 1555696633}
+  soundEffect: {fileID: 8300000, guid: 5ef5cde87b14a401eaa2e1b7ef94ffe3, type: 3}
 --- !u!1 &1730902978
 GameObject:
   m_ObjectHideFlags: 0
