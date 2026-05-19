@@ -37,6 +37,8 @@ public class L2PlayerMovement : MonoBehaviour
     bool isRotatingBack = false;
 
    L2PlayerSounds  l2PlayerSounds = new L2PlayerSounds();
+    public L2IntroTrigger introTrigger;
+    public bool canMove = true;
 
 
     void Start()
@@ -51,6 +53,12 @@ public class L2PlayerMovement : MonoBehaviour
     {
         if (!introFinished) return;
         if (fallSceneActive) return;
+        if(!canMove)
+        {
+            rb.linearVelocity = new Vector2(0, rb.linearVelocity.y);
+            return;
+        }
+
         if (LetterOverlay.Instance != null && LetterOverlay.Instance.IsReadingLetter) return;
 
         rb.linearVelocity = new Vector2(direction.x * speed, rb.linearVelocity.y);
@@ -136,8 +144,10 @@ public class L2PlayerMovement : MonoBehaviour
             
             l2PlayerSounds.HitSound();
         }
-        
-        L2KnockablePlatform kp = collision.gameObject.GetComponent<L2KnockablePlatform>();
+
+        print(collision.gameObject.name);
+        //L2KnockablePlatform kp = collision.gameObject.GetComponent<L2KnockablePlatform>();
+        L2KnockablePlatform kp = collision.gameObject.GetComponentInParent<L2KnockablePlatform>();
         if (kp != null)
         {
             kp.Hit();
@@ -161,9 +171,17 @@ public class L2PlayerMovement : MonoBehaviour
     void OnMove(InputValue inputData)
     {
         direction = inputData.Get<Vector2>();
+
+        // intro screen input
+        if (!canMove && direction != Vector2.zero)
+        {
+            introTrigger.StartGame();
+            return;
+        }
     }
     void OnJump(InputValue value)
     {
+        if(!canMove) return;
         if (onSticky) return;
         if (value.isPressed && isGrounded)
         {

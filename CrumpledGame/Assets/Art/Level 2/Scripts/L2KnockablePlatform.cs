@@ -19,7 +19,7 @@ public class L2KnockablePlatform : MonoBehaviour
     bool isShaking = false;
     public float pushValue = -2;
 
-    public Transform visual;
+    //public Transform visual;
 
     Vector3 originalPos;
     Quaternion originalRotation;
@@ -27,24 +27,26 @@ public class L2KnockablePlatform : MonoBehaviour
 
     void Start()
     {
-        originalRotation = visual.localRotation;
-        originalPos = visual.localPosition;
-        targetRotation = visual.rotation;
+        originalRotation = transform.localRotation;
+        originalPos = transform.localPosition;
+        targetRotation = transform.rotation;
     }
 
     void Update()
     {
         HandleShake();
         HandleFall();
-
+        print(currentHits);
     }
 
     void HandleShake()
     {
+        print("handle");
         if (!isShaking) return;
 
         if (shakeTimer > 0)
         {
+            print("shake");
             shakeTimer -= Time.deltaTime;
 
             float intensity = shakeAmount * currentHits;
@@ -52,15 +54,15 @@ public class L2KnockablePlatform : MonoBehaviour
             float x = UnityEngine.Random.Range(-intensity, intensity);
             float r = UnityEngine.Random.Range(-5f * currentHits, 5f * currentHits);
 
-            visual.localPosition = originalPos + new Vector3(x, 0, 0);
-            visual.localRotation = Quaternion.Euler(0, 0, r);
+            transform.localPosition = originalPos + new Vector3(x, 0, 0);
+            transform.localRotation = Quaternion.Euler(0, 0, r);
         }
         else
         {
             isShaking = false;
 
-            visual.localPosition = originalPos;
-            visual.localRotation = originalRotation;
+            transform.localPosition = originalPos;
+            transform.localRotation = originalRotation;
         }
     }
 
@@ -73,6 +75,7 @@ public class L2KnockablePlatform : MonoBehaviour
 
     public void Hit()
     {
+        print("HIT CALLED");
         if (isFalling)
         {
             transform.position += new Vector3(pushValue, 0, 0);
@@ -93,6 +96,10 @@ public class L2KnockablePlatform : MonoBehaviour
         }
     }
 
-  
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        //if(collision.gameObject.)
+    }
+
 }
 

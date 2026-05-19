@@ -16,5 +16,10 @@ public class PlaySoundOnTouch : MonoBehaviour
             print("play");
             audioSource.Play();
         }
+        else if (collision.transform.CompareTag("Platform"))
+        {
+            print("play");
+            //audioSource.Play();
+        }
     }
 }
