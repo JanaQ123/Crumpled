@@ -65,7 +65,7 @@ public class LV1_StartBallHandler : MonoBehaviour
     IEnumerator SettleAndWakeUp()
     {
         rb.constraints = RigidbodyConstraints2D.FreezeAll;
-
+        grass.Stop();
         float duration = 0.4f;
         float elapsed = 0f;
         float startAngle = transform.eulerAngles.z;

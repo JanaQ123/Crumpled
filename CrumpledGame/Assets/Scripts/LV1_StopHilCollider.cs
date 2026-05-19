@@ -36,7 +36,6 @@ public class LV1_StopHillCollider : MonoBehaviour
         if (Keyboard.current.upArrowKey.isPressed || Keyboard.current.downArrowKey.isPressed|| Keyboard.current.wKey.isPressed || Keyboard.current.sKey.isPressed)
         {
             parent.GetComponentInChildren<LV1_PlayerController>().CanMove = true;
-            UD.SetActive(false);
             Destroy(this);
         }
 
