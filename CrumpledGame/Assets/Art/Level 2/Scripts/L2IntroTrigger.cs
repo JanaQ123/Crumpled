@@ -19,7 +19,7 @@ public class L2IntroTrigger : MonoBehaviour
 
             player.canMove = false;
 
-            //gameObject.SetActive(false);
+            gameObject.SetActive(false);
 
             Invoke(nameof(ShowCanvas), 1f);
         }
