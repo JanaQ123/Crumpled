@@ -34,6 +34,9 @@ public class L2IntroTrigger : MonoBehaviour
 
     public void StartGame()
     {
+        if (player == null)
+            print("i can't find the player :(");
+
         canvas.SetActive(false);
         ST.Play();
         AudioListener.pause = false;

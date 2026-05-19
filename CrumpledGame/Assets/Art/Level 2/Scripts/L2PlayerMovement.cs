@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -40,6 +41,9 @@ public class L2PlayerMovement : MonoBehaviour
     public L2IntroTrigger introTrigger;
     public bool canMove = true;
 
+    [SerializeField] AudioSource bgMusic;
+    [SerializeField] AudioSource fallSound;
+
 
     void Start()
     {
@@ -48,7 +52,11 @@ public class L2PlayerMovement : MonoBehaviour
         originalRotation = visual.rotation;
         StartCoroutine(IntroFall());
     }
-
+    void OnEnable()
+    {
+        GetComponent<PlayerInput>().enabled = false;
+        GetComponent<PlayerInput>().enabled = true;
+    }
     void FixedUpdate()
     {
         if (!introFinished) return;
@@ -165,11 +173,28 @@ public class L2PlayerMovement : MonoBehaviour
     {
         if (collision.CompareTag("EndLvl"))
         {
-            SceneManager.LoadScene(0);
+            SceneManager.LoadScene("TransitionLV2To3");
+            StartCoroutine(FadeAndLoad());
         }
+    }
+
+    IEnumerator FadeAndLoad()
+    {
+        float duration = 1f;
+        float startVolume = bgMusic.volume;
+
+        while (bgMusic.volume > 0)
+        {
+            bgMusic.volume -= startVolume * Time.deltaTime / duration;
+            yield return null;
+        }
+
+        bgMusic.Stop();
+        SceneManager.LoadScene("TransitionLV2To3");
     }
     void OnMove(InputValue inputData)
     {
+        print("I am moving");
         direction = inputData.Get<Vector2>();
 
         // intro screen input
@@ -239,6 +264,7 @@ public class L2PlayerMovement : MonoBehaviour
     {
         fallSceneActive = true;
         fallSceneStarted = true;
+        fallSound.Play();
 
         // Disable movement and ignore platform collisions
         direction = Vector2.zero;

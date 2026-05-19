@@ -19,8 +19,8 @@ public class L2PlayerSounds : MonoBehaviour
     {
         //if (hitSounds.Length == 0) return;
 
-        int randomIndex = Random.Range(0, hitSounds.Length);
-        audioSource.PlayOneShot(hitSounds[randomIndex]);
+        //int randomIndex = Random.Range(0, hitSounds.Length);
+        //audioSource.PlayOneShot(hitSounds[randomIndex]);
     }
     
 }

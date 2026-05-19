@@ -12,6 +12,7 @@ public class L2EndTrigger : MonoBehaviour
 
         hasTriggered = true;
 
+
         foreach (GameObject obj in fallingObjects)
         {
             if (obj != null)

@@ -39,7 +39,7 @@ public class LV1_StartBallHandler : MonoBehaviour
         wasMoving = isMoving;
 
 
-            if (canMove)
+        if (canMove)
         {
             grass.Play();
             if (Keyboard.current.dKey.isPressed)

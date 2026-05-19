@@ -453,6 +453,8 @@ MonoBehaviour:
   rollSprite: {fileID: 0}
   jumpSprite: {fileID: 0}
   maxMove: 15
+  introTrigger: {fileID: 0}
+  canMove: 1
 --- !u!1 &8796050011255211265
 GameObject:
   m_ObjectHideFlags: 0
@@ -467,7 +469,6 @@ GameObject:
   - component: {fileID: 8556310304270364691}
   - component: {fileID: 1389271293262841357}
   - component: {fileID: 7879897036693224714}
-  - component: {fileID: 6115382609312982189}
   m_Layer: 0
   m_Name: PlayerRig
   m_TagString: Player
@@ -543,6 +544,8 @@ MonoBehaviour:
   rollSprite: {fileID: 21300000, guid: 44f6317ad9c6b9c4ba13148c5b89ab83, type: 3}
   jumpSprite: {fileID: 21300000, guid: 44f6317ad9c6b9c4ba13148c5b89ab83, type: 3}
   maxMove: 10
+  introTrigger: {fileID: 0}
+  canMove: 1
 --- !u!50 &8556310304270364691
 Rigidbody2D:
   serializedVersion: 5
@@ -703,19 +706,3 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &6115382609312982189
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8796050011255211265}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 635fe806ec7b45c4f826cee71d388804, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::L2PlayerSounds
-  hitSounds:
-  - {fileID: 8300000, guid: d8bb39714c8c69348957abeb7ab8e04f, type: 3}
-  - {fileID: 8300000, guid: 37b98c59542c9914ba24b0b4861adb56, type: 3}
-  - {fileID: 8300000, guid: 7d60d43dd4f985d47a24a7a581706a12, type: 3}

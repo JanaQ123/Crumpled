@@ -263,7 +263,9 @@ public class LV1_PlayerController : MonoBehaviour
 
     void OnMove(InputValue data)
     {
-     
+        if (CanMove)
+        {
+
             direction = new Vector3(data.Get<Vector2>().x, data.Get<Vector2>().y, 0);
             directionX = new Vector3(Mathf.RoundToInt(direction.x), 0, 0);
             if (!canMoveBack && direction.x < 0) direction.x = 0; // block left input
@@ -276,8 +278,8 @@ public class LV1_PlayerController : MonoBehaviour
                 ChangePositions(); //switch lanes
             }
             Vector2 input = data.Get<Vector2>();
-        
-        
+
+        }
     }
 
     public void Kick()
