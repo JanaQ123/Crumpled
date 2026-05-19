@@ -6,7 +6,6 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 using UnityEngine.Windows;
-using static UnityEditor.Experimental.AssetDatabaseExperimental.AssetDatabaseCounters;
 public class LV1_PlayerController : MonoBehaviour
 {
     public Vector3 direction;
@@ -60,7 +59,7 @@ public class LV1_PlayerController : MonoBehaviour
     bool isRotatingBack = false;
     Coroutine rotateBackCoroutine;
 
-    public bool CanMove;
+    public bool CanMove=true;
     float lastDirection = 1f;
     void Start()
     {
@@ -264,8 +263,7 @@ public class LV1_PlayerController : MonoBehaviour
 
     void OnMove(InputValue data)
     {
-        if (CanMove)
-        {
+     
             direction = new Vector3(data.Get<Vector2>().x, data.Get<Vector2>().y, 0);
             directionX = new Vector3(Mathf.RoundToInt(direction.x), 0, 0);
             if (!canMoveBack && direction.x < 0) direction.x = 0; // block left input
@@ -278,7 +276,7 @@ public class LV1_PlayerController : MonoBehaviour
                 ChangePositions(); //switch lanes
             }
             Vector2 input = data.Get<Vector2>();
-        }
+        
         
     }
 
@@ -409,60 +407,7 @@ public class LV1_PlayerController : MonoBehaviour
         //rb.MovePosition(newPos);
     }
 
-    //void RollDownHill()
-    //{
-    //    Vector2 rayOrigin = rb.position + Vector2.up * 0.1f;
-    //    RaycastHit2D hit = Physics2D.Raycast(rayOrigin, Vector2.down, 3f, LayerMask.GetMask("Ground"));
-
-    //    Debug.DrawRay(rayOrigin, Vector2.down * 3f, Color.red); // visualize in scene view
-
-    //    if (hit.collider != null)
-    //    {
-    //        Vector2 slope = new Vector2(hit.normal.y, -hit.normal.x);
-
-    //        float slopeAngle = Vector2.Angle(hit.normal, Vector2.up);
-    //        if (slopeAngle > 5f)
-    //        {
-    //            // is the slope going down in the direction of movement?
-    //            bool goingDownhill = (slope.x > 0 && rollVelocity.x > 0) ||
-    //                                 (slope.x < 0 && rollVelocity.x < 0);
-
-    //            if (goingDownhill)
-    //            {
-    //                // downhill - apply light gravity, heavy drag
-    //                rollVelocity += slope * rollGravity * Time.fixedDeltaTime;
-    //                rollVelocity *= 0.92f; // strong drag going down
-    //            }
-    //            else
-    //            {
-    //                // uphill - help the player climb, no gravity fighting them
-    //                rollVelocity += slope * rollGravity * 0.2f * Time.fixedDeltaTime; // barely any gravity
-    //                rollVelocity *= 0.98f; // light drag going up
-    //            }
-    //        }
-    //        else
-    //        {
-    //            // flat ground friction
-    //            rollVelocity.x = Mathf.MoveTowards(rollVelocity.x, 0, rollGravity * Time.fixedDeltaTime);
-    //        }
-
-
-    //        // ✅ player input nudges him forward/back on top of slope gravity
-    //        rollVelocity.x += direction.x * speed * Time.fixedDeltaTime;
-
-    //        rollVelocity.x = Mathf.Clamp(rollVelocity.x, -maxRollSpeed, maxRollSpeed);
-    //        rollVelocity.y = Mathf.Clamp(rollVelocity.y, -maxRollSpeed, maxRollSpeed);
-
-    //        Vector2 newPos = rb.position + rollVelocity * Time.fixedDeltaTime;
-    //        newPos.y = hit.point.y + playerHalfHeight;
-    //        rb.MovePosition(newPos);
-    //    }
-    //    else
-    //    {
-    //        rollVelocity += Vector2.down * rollGravity * Time.fixedDeltaTime;
-    //        rb.MovePosition(rb.position + rollVelocity * Time.fixedDeltaTime);
-    //    }
-    //}
+    
     public void StartRolling()
 
     {
@@ -514,4 +459,6 @@ public class LV1_PlayerController : MonoBehaviour
 
 
     }
+
+
 }
