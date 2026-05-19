@@ -45,13 +45,24 @@ public class L4PlayerMovement : MonoBehaviour
     public bool scorpianHit = false;
     public bool inHazard = false;
 
+    public GameObject ui;
+
+    bool firstMove = false;
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         sr = visual.GetComponent<SpriteRenderer>();
         originalRotation = visual.rotation;
+        ui.SetActive(true);
+
+    }
+    void OnEnable()
+    {
+        GetComponent<PlayerInput>().enabled = false;
+        GetComponent<PlayerInput>().enabled = true;
     }
 
+  
     void FixedUpdate()
     {
         inHazard = scorpianHit || snake.snakeHit;
@@ -210,7 +221,11 @@ public class L4PlayerMovement : MonoBehaviour
             direction = Vector2.zero;
             return;
         }
-
+        if (firstMove == false)
+        {
+            firstMove = true;
+            ui.SetActive(false);    
+        }
         direction = inputData.Get<Vector2>();
     }
     void OnJump(InputValue value)

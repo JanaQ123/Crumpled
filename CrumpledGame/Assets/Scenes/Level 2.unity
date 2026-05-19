@@ -151,7 +151,7 @@ AudioSource:
   m_PlayOnAwake: 0
   m_Volume: 0.538
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -14787,7 +14787,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1293518581}
   - component: {fileID: 1293518580}
-  - component: {fileID: 1293518579}
   m_Layer: 0
   m_Name: TriggerEndLVL
   m_TagString: EndLvl
@@ -14795,20 +14794,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1293518579
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1293518578}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1bfbc1474dc22f14f92a9e636a7296ca, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::L2LayerTriggerSwitch
-  enterLayer: Foreground
-  exitLayer: Background
 --- !u!61 &1293518580
 BoxCollider2D:
   m_ObjectHideFlags: 0

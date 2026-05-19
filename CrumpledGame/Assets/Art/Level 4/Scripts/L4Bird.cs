@@ -50,6 +50,7 @@ public class L4Bird : MonoBehaviour
 
     public Transform startPosition;
     public bool startFollowing;
+
     void Start()
     {
         bird.SetActive(false);
