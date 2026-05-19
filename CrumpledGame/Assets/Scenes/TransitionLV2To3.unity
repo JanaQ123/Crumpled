@@ -5745,6 +5745,7 @@ GameObject:
   - component: {fileID: 1205365185}
   - component: {fileID: 1205365189}
   - component: {fileID: 1205365188}
+  - component: {fileID: 1205365190}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -5770,7 +5771,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 2
-  m_BackGroundColor: {r: 0.7479174, g: 0.8412989, b: 0.8867924, a: 0}
+  m_BackGroundColor: {r: 0.6784314, g: 0.83137256, b: 0.90588236, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -5893,6 +5894,18 @@ MonoBehaviour:
     m_VarianceClampScale: 0.9
     m_ContrastAdaptiveSharpening: 0
   m_Version: 2
+--- !u!114 &1205365190
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1205365184}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 687c03d3b17a8f041baeb4891dbb3501, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: '::'
 --- !u!1 &1220289651
 GameObject:
   m_ObjectHideFlags: 0
@@ -7123,7 +7136,7 @@ Transform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -10.3, y: 1.242324, z: 0}
   m_LocalScale: {x: 1.4384, y: 1.4384, z: 1.4384}
-  m_ConstrainProportionsScale: 0
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 952876622}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -7766,7 +7779,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -22.8, y: 2.7, z: 0}
   m_LocalScale: {x: 1.550308, y: 2.092915, z: 1.550308}
-  m_ConstrainProportionsScale: 0
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 952876622}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

@@ -1160,6 +1160,7 @@ GameObject:
   - component: {fileID: 202924164}
   - component: {fileID: 202924163}
   - component: {fileID: 202924165}
+  - component: {fileID: 202924166}
   m_Layer: 0
   m_Name: ball_no_eyes
   m_TagString: Untagged
@@ -1263,6 +1264,18 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &202924166
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 202924162}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 695cd9b39b429a344a4d7d1936089949, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: '::'
 --- !u!1 &221588741
 GameObject:
   m_ObjectHideFlags: 0

@@ -21,10 +21,18 @@ public class L3_Player : MonoBehaviour
     Vector3 startXPos;
     Vector3 targetX;
     SpriteRenderer sr;
+    [SerializeField] ReadingLetter letterOverlay;
+
     void Start()
     {
         animator = GetComponentInChildren<Animator>();
         audioSource = GetComponent<AudioSource>();
+        tornadoStart = false;
+    }
+    void OnEnable()
+    {
+        GetComponent<PlayerInput>().enabled = false;
+        GetComponent<PlayerInput>().enabled = true;
     }
     void Update()
     {
@@ -54,15 +62,20 @@ public class L3_Player : MonoBehaviour
         //if player hit bird, restart level
         if(other.collider.CompareTag("Bird"))
         {
-            audioSource.PlayOneShot(birdHitSound);
-            audioSource.PlayOneShot(playerHitSound);
+            if (!audioSource.isPlaying)
+            {
+                audioSource.PlayOneShot(birdHitSound);
+                audioSource.PlayOneShot(playerHitSound);
+            }
             timelineController.StopTimeline();
             Invoke("RestartLevel", 3f);
         }
         //if player hit building or clothes, restart at checkpoint
         else if (other.collider.CompareTag("Building") || other.collider.CompareTag("Clothes"))
         {
-            audioSource.PlayOneShot(playerHitSound);
+            if (!audioSource.isPlaying){
+                audioSource.PlayOneShot(playerHitSound);
+            }
             timelineController.StopTimeline();
             animator.SetTrigger("flying");
             Invoke("RestartCheckpoint", 3f);
@@ -70,6 +83,7 @@ public class L3_Player : MonoBehaviour
         //if player hits letter, collect it
         else if (other.collider.CompareTag("Letter_L3"))
         {
+            letterOverlay.ShowLetter();
             other.gameObject.SetActive(false);
         }
         //if player hits tornado trigger, play cutscene
