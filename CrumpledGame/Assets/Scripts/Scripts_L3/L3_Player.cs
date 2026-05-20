@@ -20,6 +20,7 @@ public class L3_Player : MonoBehaviour
     float timeElapsed = 0f;
     Vector3 startXPos;
     Vector3 targetX;
+    bool collected;
     SpriteRenderer sr;
     [SerializeField] ReadingLetter letterOverlay;
 
@@ -81,8 +82,9 @@ public class L3_Player : MonoBehaviour
             Invoke("RestartCheckpoint", 3f);
         }
         //if player hits letter, collect it
-        else if (other.collider.CompareTag("Letter_L3"))
+        else if (other.collider.CompareTag("Letter_L3") && other.gameObject.activeSelf)
         {
+            
             letterOverlay.ShowLetter();
             other.gameObject.SetActive(false);
         }

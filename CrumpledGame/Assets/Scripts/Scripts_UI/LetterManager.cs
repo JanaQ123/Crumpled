@@ -14,12 +14,16 @@ public class LetterManager : MonoBehaviour
     {
         letterUIs = letterData;
         instance = this;
+        print(collectedLetters);
     }
+
     public static void CollectLetter()
     {
         collectedLetters++;
         letterUIs[collectedLetters].collected = true;
+        print(collectedLetters);
         instance.ChangeTotal();
+
     }
     public void SwitchSelection(int index)
     {
@@ -48,9 +52,15 @@ public class LetterManager : MonoBehaviour
     public void ShowBook()
     {
         bookMenu.SetActive(true);
+        Time.timeScale = 0;
+        AudioListener.pause = true;
+
     }
     public void HideBook()
     {
+        Time.timeScale = 1;
+        AudioListener.pause = false;
+
         bookMenu.SetActive(false);
     }
 }

@@ -6,6 +6,7 @@ using System.Collections;
 public class ReadingLetter : MonoBehaviour
 {
     [SerializeField] GameObject LetterPanel;
+
     AudioSource paperOpen;
     Animator animator;
     void Start()
@@ -21,7 +22,7 @@ public class ReadingLetter : MonoBehaviour
     public void ShowLetter()
     {
         LetterPanel.SetActive(true);
-        //static int ++
+        LetterManager.CollectLetter();
         paperOpen.Play();
         Time.timeScale = 0;
         AudioListener.pause = true;

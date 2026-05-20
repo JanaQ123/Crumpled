@@ -10,6 +10,13 @@ public class LetterUI : MonoBehaviour
     public bool selected;
     public GameObject letterView;
     public LetterManager letterManager;
+    void Start()
+    {
+        if (LetterManager.collectedLetters >= letterIndex)
+        {
+            collected = true;
+        }
+    }
     void Update()
     {
         RefreshState();
