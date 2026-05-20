@@ -137,7 +137,6 @@ public class L4Snake : MonoBehaviour
 
     IEnumerator BiteAttack()
     {
-        print("biting");
 
         //animator.SetTrigger("doBite");
         animator.SetBool("isBiting", true);

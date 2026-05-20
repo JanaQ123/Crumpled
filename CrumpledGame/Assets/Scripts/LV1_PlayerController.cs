@@ -61,6 +61,8 @@ public class LV1_PlayerController : MonoBehaviour
 
     public bool CanMove=true;
     float lastDirection = 1f;
+
+    [SerializeField] AudioSource sewerSound;
     void Start()
     {
         y = transform.position.y;
@@ -82,7 +84,11 @@ public class LV1_PlayerController : MonoBehaviour
     //}
     void Update()
     {
+        if (directionX == Vector3.zero)
+        {
+            sewerSound.Pause();
 
+        }
         if (gotKicked)
 
             {
@@ -265,7 +271,11 @@ public class LV1_PlayerController : MonoBehaviour
     {
         if (CanMove)
         {
-
+            if (inSewer&& !sewerSound.isPlaying)
+            {
+                sewerSound.Play();
+                print("sewer sound playing");
+            }
             direction = new Vector3(data.Get<Vector2>().x, data.Get<Vector2>().y, 0);
             directionX = new Vector3(Mathf.RoundToInt(direction.x), 0, 0);
             if (!canMoveBack && direction.x < 0) direction.x = 0; // block left input
@@ -352,6 +362,8 @@ public class LV1_PlayerController : MonoBehaviour
         canSwitchLane = false;
         visual.GetComponent<Animator>().SetBool("Pain", true);
         inSewer = true;
+        sewerSound.Play();
+
 
     }
 

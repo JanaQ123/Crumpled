@@ -8,11 +8,14 @@ public class TimelineSequencer : MonoBehaviour
         public PlayableDirector secondTimeline;
         public GameObject secondPlayer;
         public GameObject FirstPlayer;
-
+    public bool firstScene;
 
     void Start()
         {
-            //firstTimeline.stopped += OnFirstTimelineFinished;
+        if (firstScene)
+        {
+            firstTimeline.Play();
+        }
         secondPlayer.SetActive(false);  
         }
 

@@ -4,7 +4,7 @@ public class LV1_Hazards : MonoBehaviour
 {
     [SerializeField] int identifier;
     GameObject player;
-
+    
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.tag == "Player")
@@ -43,4 +43,5 @@ public class LV1_Hazards : MonoBehaviour
           
         }
     }
+
 }
