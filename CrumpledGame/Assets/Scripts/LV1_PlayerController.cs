@@ -162,7 +162,7 @@ public class LV1_PlayerController : MonoBehaviour
             visual.GetComponent<Animator>().SetBool("Close", true);
 
             float momentumFactor = (float)moveCounter / maxMove;
-            visual.transform.Rotate(0, 0, 0.1f*-direction.x * moveCounter);
+            visual.transform.Rotate(0, 0, 0.05f*-direction.x * moveCounter);
 
 
         }
