@@ -14,7 +14,7 @@ public class LetterManager : MonoBehaviour
     {
         letterUIs = letterData;
         instance = this;
-        //print(collectedLetters);
+        collectedLettersText.text = (collectedLetters + 1) + "/5 Letters Collected";
     }
 
     public static void CollectLetter()

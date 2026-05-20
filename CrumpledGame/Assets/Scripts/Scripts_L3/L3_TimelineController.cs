@@ -51,11 +51,19 @@ public class L3_TimelineController : MonoBehaviour
     }
     public void RestartAtCheckPoint()
     {
-        player.GetComponent<L3_Player>().isDead = false;
-        playerAnim.Play("flying");
+       
         timeline.enabled = true;
         timeline.time = checkpoint;
+        musicSource.Pause();
         musicSource.time = restartAudioTime;
+        Invoke("StartMusicAgain", 1f);
         timeline.Play();
+        player.GetComponent<L3_Player>().isDead = false;
+        playerAnim.Play("flying");
+    }
+    void StartMusicAgain()
+    {
+        musicSource.UnPause();
+
     }
 }
