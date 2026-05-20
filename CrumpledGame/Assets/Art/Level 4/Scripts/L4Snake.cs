@@ -47,8 +47,7 @@ public class L4Snake : MonoBehaviour
 
     void Update()
     {
-        print("did snake enter?" + enteredSnake);
-        print("is snake in front?" + PlayerInFrontAndRange());
+      
         biteTimer -= Time.deltaTime;
 
         if (enteredSnake)
@@ -65,7 +64,6 @@ public class L4Snake : MonoBehaviour
 
         if (snakeHit)
         {
-            print("detected");
             StartCoroutine(AttackLoop());
         }
         else
@@ -129,7 +127,6 @@ public class L4Snake : MonoBehaviour
 
         while (snakeHit)
         {
-            print("I will bite");
             yield return StartCoroutine(BiteAttack());
 
             yield return new WaitForSeconds(biteCooldown);

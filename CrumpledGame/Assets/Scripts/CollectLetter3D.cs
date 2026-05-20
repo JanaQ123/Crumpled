@@ -6,7 +6,6 @@ public class CollectLetter3D : MonoBehaviour
     private void OnTriggerEnter3D(Collider2D collision)
     {
         
-            print("someonee entered me");
             letterOverlay.ShowLetter();
             this.gameObject.SetActive(false);
         

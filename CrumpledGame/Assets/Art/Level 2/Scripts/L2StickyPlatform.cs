@@ -13,21 +13,9 @@ public class L2StickyPlatform : MonoBehaviour
 
             if (player != null)
             {
-                print("I entered slow");
                 player.ApplySlow(slowMultiplier);
             }
         }
     }
-    //void OnTriggerExit2D(Collider2D collision)
-    //{
-    //    if (collision.gameObject.CompareTag("Player"))
-    //    {
-    //        L2PlayerMovement player = collision.gameObject.GetComponent<L2PlayerMovement>();
-
-    //        if (player != null)
-    //        {
-    //            player.RemoveSlow();
-    //        }
-    //    }
-    //}
+    
 }

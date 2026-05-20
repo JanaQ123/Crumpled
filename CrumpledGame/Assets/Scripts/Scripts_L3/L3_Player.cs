@@ -95,13 +95,7 @@ public class L3_Player : MonoBehaviour
             Invoke("StartCutscene", 1f);
         }
     }
-    public void OnRestart(InputValue value)
-    {
-        if (value.isPressed)
-        {
-            SceneManager.LoadScene("Level 3");
-        }
-    }
+  
     void RestartLevel()
     {
         SceneManager.LoadScene("Level 3");

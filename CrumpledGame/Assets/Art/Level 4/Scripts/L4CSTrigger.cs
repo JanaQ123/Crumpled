@@ -25,7 +25,7 @@ public class L4CSTrigger : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             hasPlayed = true;
-            print("hi");
+
             //CSCamera.SetActive(true);
             timeline.Play();
         }

@@ -57,7 +57,7 @@ public class L4Scorpion : MonoBehaviour
             {
                 chasing = true;
                 animator.SetBool("isWalking", true);
-                print("chase");
+
             }
         }
         else
@@ -65,7 +65,7 @@ public class L4Scorpion : MonoBehaviour
             // Stop chase if escaped
             if (dist > loseRange || !playerOnLeft)
             {
-                print("escaped");
+
                 animator.SetBool("isWalking", false);
                 chasing = false;
                 rb.linearVelocity = new Vector2(0,rb.linearVelocity.y);
@@ -75,7 +75,6 @@ public class L4Scorpion : MonoBehaviour
         // Chase movement
         if (chasing)
         {
-            print("isChasing");
             //rb.linearVelocity = new Vector2(-chaseSpeed,rb.linearVelocity.y);
             transform.position +=Vector3.left * chaseSpeed *Time.deltaTime;
 
@@ -94,7 +93,7 @@ public class L4Scorpion : MonoBehaviour
 
     IEnumerator GrabSequence()
     {
-        print("grabbing");
+
         animator.SetBool("isWalking", false);
         busy = true;
         chasing = false;
@@ -107,7 +106,6 @@ public class L4Scorpion : MonoBehaviour
         playerRb.gravityScale = 0f;
 
         // PICK UP PLAYER
-        print("PICK UP PLAYER");
         float grabTime = 0.25f;
         float t = 0f;
 
@@ -124,7 +122,6 @@ public class L4Scorpion : MonoBehaviour
         }
 
         // PLAY WITH PLAYER
-        print("play with player");
         animator.SetBool("isPlaying", true);
         float timer = 0f;
 
@@ -142,7 +139,6 @@ public class L4Scorpion : MonoBehaviour
         }
 
         // THROW PLAYER LEFT
-        print("throw left");
         animator.SetBool("isPlaying", false);
 
         playerMovement.scorpianHit = true;

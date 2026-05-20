@@ -24,7 +24,6 @@ public class LV1_StopHillCollider : MonoBehaviour
 
         {
             grass.Stop();
-            print(" I just entered uuuu");
             parent.GetComponent<LV1_PlayerParentFollow>().SetRollingMode(false);
             UD.SetActive(true);
         }

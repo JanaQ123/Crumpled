@@ -87,7 +87,6 @@ public class LV1_StartBallHandler : MonoBehaviour
     {
         grass.Stop();
         StartCoroutine(LerpCameraOffset(new Vector3(0, 0, -10), 0.5f));
-        print("could move");
         canMove = true;
         rb.constraints = RigidbodyConstraints2D.None;
         keypad.SetActive(true);

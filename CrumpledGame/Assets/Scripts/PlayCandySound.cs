@@ -13,7 +13,6 @@ public class PlayCandySound : MonoBehaviour
     {
         if (collision.transform.CompareTag("Player"))
         {
-            print(gameObject.name);
             if (!audioSource.isPlaying)
             {
                 audioSource.Play();

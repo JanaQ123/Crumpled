@@ -14,7 +14,6 @@ public class L4SnakeDetectPlayerCollider : MonoBehaviour
         if (collision.tag == "Player")
         {
             snake.enteredSnake = true;
-            print("player enetred");
         }
 
     }

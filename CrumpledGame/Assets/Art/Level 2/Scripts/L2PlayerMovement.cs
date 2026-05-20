@@ -153,8 +153,7 @@ public class L2PlayerMovement : MonoBehaviour
             l2PlayerSounds.HitSound();
         }
 
-        print(collision.gameObject.name);
-        //L2KnockablePlatform kp = collision.gameObject.GetComponent<L2KnockablePlatform>();
+        
         L2KnockablePlatform kp = collision.gameObject.GetComponentInParent<L2KnockablePlatform>();
         if (kp != null)
         {
@@ -194,7 +193,6 @@ public class L2PlayerMovement : MonoBehaviour
     }
     void OnMove(InputValue inputData)
     {
-        print("I am moving");
         direction = inputData.Get<Vector2>();
 
         // intro screen input
@@ -213,10 +211,10 @@ public class L2PlayerMovement : MonoBehaviour
             rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
         }
     }
-    void OnRestart()
-    {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-    }
+    //void OnRestart()
+    //{
+    //    SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    //}
 
     //for the sticky platforms
     public void ApplySlow (float slowMultiplier)

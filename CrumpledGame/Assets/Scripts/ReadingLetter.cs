@@ -31,8 +31,6 @@ public class ReadingLetter : MonoBehaviour
     }
     public void HideLetter()
     {
-        print("Im tryna hiiiiideeeeee");
-
         LetterPanel.SetActive(false);
         paperOpen.Play();
         Time.timeScale =1 ;

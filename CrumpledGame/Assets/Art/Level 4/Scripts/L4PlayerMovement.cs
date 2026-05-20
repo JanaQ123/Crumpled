@@ -86,7 +86,7 @@ public class L4PlayerMovement : MonoBehaviour
         if (scorpianHit)
         {
             forceValue = 0.5f;
-            print("95");
+
         }
         else if (snake.snakeHit)
         {
@@ -96,7 +96,7 @@ public class L4PlayerMovement : MonoBehaviour
         else
         {
             forceValue = 0.35f;
-            print("35");
+
         }
         rb.linearVelocity = new Vector2(targetX + rb.linearVelocity.x * forceValue, rb.linearVelocity.y);
 

@@ -22,7 +22,6 @@ public class L2EndTrigger : MonoBehaviour
         L2PlayerMovement player = other.GetComponent<L2PlayerMovement>();
         if (player != null)
         {
-            print("enteredFallScene");
             player.StartFallScene();
         }
 

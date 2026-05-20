@@ -76,10 +76,10 @@ public class LV1_PlayerController : MonoBehaviour
         mountainCam.Priority = 0;
 
     }
-    void OnRestart()
-    {
-        SceneManager.LoadScene("Level 1");
-    }
+    //void OnRestart()
+    //{
+    //    SceneManager.LoadScene("Level 1");
+    //}
     void Update()
     {
 

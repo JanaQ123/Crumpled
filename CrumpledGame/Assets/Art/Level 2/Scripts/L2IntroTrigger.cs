@@ -3,6 +3,8 @@ using UnityEngine;
 public class L2IntroTrigger : MonoBehaviour
 {
     public GameObject canvas;
+    public GameObject fadeIn;
+
 
     L2PlayerMovement player;
     //AudioSource audioS;
@@ -12,6 +14,7 @@ public class L2IntroTrigger : MonoBehaviour
     void OnTriggerEnter2D(Collider2D other)
     {
         player = other.GetComponent<L2PlayerMovement>();
+        fadeIn.SetActive(false);
 
         if (player != null)
         {
@@ -34,8 +37,8 @@ public class L2IntroTrigger : MonoBehaviour
 
     public void StartGame()
     {
-        if (player == null)
-            print("i can't find the player :(");
+        //if (player == null)
+        //    print("i can't find the player :(");
 
         canvas.SetActive(false);
         ST.Play();

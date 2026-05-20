@@ -27,7 +27,7 @@ public class LV1_CharacterStartingColliders : MonoBehaviour
 
     void Update()
     {
-        if (player != null) { print("found player"); }
+        //if (player != null) { print("found player"); }
 
         if (previousTrigger == null) return;
 

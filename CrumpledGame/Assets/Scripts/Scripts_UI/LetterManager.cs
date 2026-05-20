@@ -14,14 +14,14 @@ public class LetterManager : MonoBehaviour
     {
         letterUIs = letterData;
         instance = this;
-        print(collectedLetters);
+        //print(collectedLetters);
     }
 
     public static void CollectLetter()
     {
         collectedLetters++;
         letterUIs[collectedLetters].collected = true;
-        print(collectedLetters);
+        //print(collectedLetters);
         instance.ChangeTotal();
 
     }

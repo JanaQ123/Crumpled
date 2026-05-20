@@ -36,17 +36,14 @@ public class L2KnockablePlatform : MonoBehaviour
     {
         HandleShake();
         HandleFall();
-        print(currentHits);
     }
 
     void HandleShake()
     {
-        print("handle");
         if (!isShaking) return;
 
         if (shakeTimer > 0)
         {
-            print("shake");
             shakeTimer -= Time.deltaTime;
 
             float intensity = shakeAmount * currentHits;
@@ -69,13 +66,11 @@ public class L2KnockablePlatform : MonoBehaviour
     void HandleFall()
     {
         if (!isFalling) return;
-        print("fall sideways");
         transform.rotation = Quaternion.Lerp(transform.rotation,targetRotation,Time.deltaTime * fallSpeed);
     }
 
     public void Hit()
     {
-        print("HIT CALLED");
         if (isFalling)
         {
             transform.position += new Vector3(pushValue, 0, 0);
@@ -91,7 +86,6 @@ public class L2KnockablePlatform : MonoBehaviour
         if (currentHits >= hitsToFall)
         {
             isFalling = true;
-            print("falling");
             targetRotation = Quaternion.Euler(0, 0, fallRotation);
         }
     }
